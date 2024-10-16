@@ -53,7 +53,7 @@ def extract_video_id(url):
 # Function to transcribe the video from its ID
 import time
 
-def get_transcript(video_id, retries=3, delay=5):
+def get_transcript(video_id, retries=3, delay=15):
     for attempt in range(retries):
         try:
             # Intenta obtener la transcripción
