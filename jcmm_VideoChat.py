@@ -10,6 +10,7 @@ import os
 import re
 import time
 from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._errors import CouldNotRetrieveTranscript
 
 # Load environment variables
 # load_dotenv()
@@ -60,7 +61,7 @@ def get_transcript(video_id):
         transcript_text = f"{video_url}\n\n{transcript_text}"
         return transcript_text
 
-    except YouTubeTranscriptApi.CouldNotRetrieveTranscript as e:
+    except CouldNotRetrieveTranscript as e:
         st.error("No se pudo recuperar la transcripción para este video. Intente con otro video.")
     except Exception as e:
         st.error(f"Error al obtener la transcripción: {str(e)}")
