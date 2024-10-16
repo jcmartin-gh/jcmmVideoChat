@@ -51,20 +51,24 @@ def extract_video_id(url):
     raise ValueError("Invalid video URL")
 
 # Function to transcribe the video from its ID
-def get_transcript(video_id):
-    try:
-        # Get the video transcript
-        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'es', 'fr', 'de'])
+import time
 
-        # Concatenate transcript parts into a single text
-        transcript_text = "\n".join([entry['text'] for entry in transcript])
-        transcript_text = f"{video_url}\n\n{transcript_text}"
-        return transcript_text
-
-    except CouldNotRetrieveTranscript as e:
-        st.error("No se pudo recuperar la transcripción para este video. Intente con otro video.")
-    except Exception as e:
-        st.error(f"Error al obtener la transcripción: {str(e)}")
+def get_transcript(video_id, retries=3, delay=5):
+    for attempt in range(retries):
+        try:
+            # Intenta obtener la transcripción
+            transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'es', 'fr', 'de'])
+            transcript_text = "\n".join([entry['text'] for entry in transcript])
+            return transcript_text
+        except CouldNotRetrieveTranscript:
+            if attempt < retries - 1:
+                time.sleep(delay)
+            else:
+                st.error("No se pudo recuperar la transcripción para este video. Intente con otro video.")
+                st.stop()
+        except Exception as e:
+            st.error(f"Error al obtener la transcripción: {str(e)}")
+            st.stop()
 
 # Function to get chatbot response
 def get_response(user_query, chat_history):
