@@ -4,7 +4,7 @@ import streamlit as st
 from langchain.schema import AIMessage, HumanMessage
 from langchain.chat_models import ChatOpenAI
 from langchain_community.chat_models import ChatOpenAI
-rom langchain-community.chat_models import ChatOpenAI
+from langchain-community.chat_models import ChatOpenAI
 from dotenv import load_dotenv
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chains import LLMChain
