@@ -69,20 +69,51 @@ def get_transcript(video_id):
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
         }
+
         # Hacer la solicitud a YouTube con el encabezado personalizado
         response = requests.get(transcript_url, headers=headers)
+
         # Verificar si la respuesta fue exitosa
         if response.status_code != 200:
             st.error("Error al obtener la página del video. No se pudo acceder al video.")
             st.stop()
+
         # Analizar el HTML de la página usando BeautifulSoup
         soup = BeautifulSoup(response.text, 'html.parser')
-        # Buscar el script con la transcripción (esto es más complejo porque necesitamos el JSON de la página)
-        # Dependiendo de cómo esté estructurada la página, puedes necesitar ubicar los datos en un script específico
-        # Por simplicidad, mostramos un mensaje indicando que estamos trabajando en esta implementación
-        # st.info("Esta implementación para obtener la transcripción está en desarrollo. Intente de nuevo más tarde o pruebe otra URL.")
-        # Devolver una transcripción simulada
-        # transcript_text = "Transcripción simulada para el video de prueba."
+
+        # Intentar encontrar la transcripción en los scripts JSON de la página
+        scripts = soup.find_all('script')
+        transcript_text = None
+
+        for script in scripts:
+            if 'captions' in script.text:  # Buscar el contenido relevante
+                try:
+                    json_data = script.string
+                    start_index = json_data.find('"captions":')
+                    if start_index != -1:
+                        # Extraer la parte del JSON que contiene las captions
+                        json_data = json_data[start_index:]
+                        end_index = json_data.find('}}}') + 3
+                        json_data = json_data[:end_index]
+
+                        # Convertir el texto JSON a un diccionario Python
+                        import json
+                        data = json.loads('{' + json_data)
+
+                        # Extraer la transcripción
+                        caption_tracks = data['captions']['playerCaptionsTracklistRenderer']['captionTracks']
+                        transcript_text = ''
+                        for caption in caption_tracks:
+                            transcript_text += f"{caption['name']['simpleText']}: {caption['baseUrl']}\n"
+
+                        break
+                except (KeyError, json.JSONDecodeError):
+                    continue
+
+        if not transcript_text:
+            st.warning("No se pudo encontrar una transcripción en este video.")
+            return None
+
         return transcript_text
 
     except requests.exceptions.RequestException as e:
