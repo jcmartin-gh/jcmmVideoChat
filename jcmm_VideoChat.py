@@ -83,7 +83,7 @@ def get_transcript(video_id):
 
         # Intentar encontrar la transcripción en los scripts JSON de la página
         scripts = soup.find_all('script')
-        transcript_text = None
+        transcript_text = None  # Inicializar la variable transcript_text
 
         for script in scripts:
             if 'captions' in script.text:  # Buscar el contenido relevante
@@ -97,19 +97,19 @@ def get_transcript(video_id):
                         json_data = json_data[:end_index]
 
                         # Convertir el texto JSON a un diccionario Python
-                        import json
                         data = json.loads('{' + json_data)
 
-                        # Extraer la transcripción
+                        # Extraer la transcripción (solo la primera pista para simplificar)
                         caption_tracks = data['captions']['playerCaptionsTracklistRenderer']['captionTracks']
                         transcript_text = ''
                         for caption in caption_tracks:
                             transcript_text += f"{caption['name']['simpleText']}: {caption['baseUrl']}\n"
 
                         break
-                except (KeyError, json.JSONDecodeError):
+                except (KeyError, json.JSONDecodeError) as e:
                     continue
 
+        # Si transcript_text sigue siendo None, mostrar advertencia
         if not transcript_text:
             st.warning("No se pudo encontrar una transcripción en este video.")
             return None
@@ -122,6 +122,7 @@ def get_transcript(video_id):
     except Exception as e:
         st.error(f"Error inesperado: {str(e)}")
         st.stop()
+
         
 # Function to get chatbot response
 def get_response(user_query, chat_history):
