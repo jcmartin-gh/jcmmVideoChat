@@ -83,7 +83,8 @@ def get_transcript(video_id):
 
         # Intentar encontrar la transcripción en los scripts JSON de la página
         scripts = soup.find_all('script')
-        transcript_text = None  # Inicializar la variable transcript_text
+        
+        transcript_text = ""  # Inicializar la variable transcript_text
 
         for script in scripts:
             if 'captions' in script.text:  # Buscar el contenido relevante
