@@ -80,9 +80,9 @@ def get_transcript(video_id):
         # Buscar el script con la transcripción (esto es más complejo porque necesitamos el JSON de la página)
         # Dependiendo de cómo esté estructurada la página, puedes necesitar ubicar los datos en un script específico
         # Por simplicidad, mostramos un mensaje indicando que estamos trabajando en esta implementación
-        st.info("Esta implementación para obtener la transcripción está en desarrollo. Intente de nuevo más tarde o pruebe otra URL.")
+        # st.info("Esta implementación para obtener la transcripción está en desarrollo. Intente de nuevo más tarde o pruebe otra URL.")
         # Devolver una transcripción simulada
-        transcript_text = "Transcripción simulada para el video de prueba."
+        # transcript_text = "Transcripción simulada para el video de prueba."
         return transcript_text
 
     except requests.exceptions.RequestException as e:
