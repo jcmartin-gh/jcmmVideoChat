@@ -7,6 +7,8 @@ from langchain_community.chat_models import ChatOpenAI  # Actualizado para la ve
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chains import LLMChain
 from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled
+from youtube_transcript_api._errors import NoTranscriptAvailable
+
 import os
 import re
 
@@ -68,26 +70,34 @@ def extract_video_id(url):
 # Agragar un Log de Depuración
 def get_transcript(video_id):
     try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'es', 'fr', 'de'])
-        transcript_text = "\n".join([entry['text'] for entry in transcript])
+        # Primero intentamos listar las transcripciones disponibles para el video
+        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+
+        # Imprimimos o mostramos los idiomas disponibles para mayor información
+        available_transcripts = [t.language for t in transcript_list.transcripts]
+        st.info(f"Transcripciones disponibles en los siguientes idiomas: {', '.join(available_transcripts)}")
+
+        # Intentamos obtener la transcripción en el idioma especificado
+        transcript = None
+        try:
+            transcript = transcript_list.find_transcript(['en', 'es', 'fr', 'de'])
+        except NoTranscriptFound:
+            # Si no se encuentra en los idiomas especificados, intentamos obtener cualquiera disponible
+            transcript = transcript_list.find_transcript([t.language_code for t in transcript_list.transcripts])
+
+        # Si encontramos una transcripción, la retornamos en formato de texto concatenado
+        transcript_data = transcript.fetch()
+        transcript_text = "\n".join([entry['text'] for entry in transcript_data])
         return transcript_text
 
     except TranscriptsDisabled:
         st.error("Los subtítulos están deshabilitados para este video. Intenta con otro.")
     except VideoUnavailable:
         st.error("El video no está disponible. Intenta con otro.")
-    except NoTranscriptFound:
-        st.warning("No se encontró una transcripción para este video en los idiomas especificados. Intentando con cualquier idioma disponible.")
-        try:
-            transcript = YouTubeTranscriptApi.get_transcript(video_id)
-            transcript_text = "\n".join([entry['text'] for entry in transcript])
-            st.info("Transcripción encontrada en otro idioma.")
-            return transcript_text
-        except Exception as e:
-            st.error(f"No se pudo recuperar la transcripción en ningún idioma: {str(e)}")
+    except NoTranscriptAvailable:
+        st.warning("No hay transcripción disponible para este video.")
     except Exception as e:
-        st.error(f"Error desconocido al obtener la transcripción: {str(e)}")
-        st.warning("Por favor, verifique si el video tiene restricciones o si los subtítulos deberían estar disponibles.")
+        st.error(f"Error al obtener la transcripción: {str(e)}")
     return None
 
 
