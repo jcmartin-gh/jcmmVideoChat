@@ -7,12 +7,5 @@ langchain_openai<=0.2.2
 youtube-transcript-api>=0.6.2
 openai>=0.27.0
 certifi>=2023.7.22  # Para asegurar la configuración SSL adecuada
-<<<<<<< HEAD
-
-
-
-
-=======
 requests>=2.28.0 # Para realizar una solicitud directamente al endpoint de YouTube, añadiendo un User-Agent personalizado.
 beautifulsoup4>=4.12.0 # Utilizamos BeautifulSoup para analizar la página HTML y buscar dónde podrían estar los datos de la transcripción.
->>>>>>> b82f7db2a4b388b3dc23a751e18c06045c90aa62
