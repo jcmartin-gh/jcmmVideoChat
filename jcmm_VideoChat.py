@@ -224,9 +224,9 @@ def reset_conversation():
 with st.sidebar:
     col1, col2 = st.columns(2)
     with col1:
-        if st.button('Cargar video'):
+        if st.button('Load video'):
             load_video(video_url)
-        if st.button("Generar Resumen"):
+        if st.button("Summary"):
             if st.session_state.transcription_y:
                 st.session_state['summary'] = get_summary(st.session_state.transcription_y)
                 st.session_state.chat_history.append({
@@ -238,13 +238,13 @@ with st.sidebar:
             else:
                 st.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
-        if st.button("Mostrar Transcripción"):
+        if st.button("Transcription"):
             if st.session_state.transcription_y:
                 st.write("**Transcripción del Video:**")
                 st.write(st.session_state.transcription_y)
             else:
                 st.warning("No se ha cargado ninguna transcripción aún.")
-        if st.button('Reiniciar Conversación'):
+        if st.button('New Conversation'):
             reset_conversation()
 
 # Mostrar el video si ya está cargado
