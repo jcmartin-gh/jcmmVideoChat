@@ -17,15 +17,6 @@ from youtube_transcript_api import YouTubeTranscriptApi
 # Configuración de la API de OpenAI
 # OPENAI_API_KEY = st.secrets["api"]["key"]
 
-# Inicialización del modelo de Langchain
-model_name = "gpt-4o-mini"
-model = ChatOpenAI(
-    openai_api_key=OPENAI_API_KEY,
-    model_name=model_name,
-    temperature=0,
-    max_tokens=2000,
-)
-
 # Configuración de la aplicación
 st.set_page_config(page_title="VideoChat bot", page_icon="")
 st.subheader("jcmm VideoChat")
@@ -72,6 +63,15 @@ def get_transcript(video_id):
     except Exception as e:
         st.error(f"Error al obtener la transcripción: {str(e)}")
     return None
+
+# Inicialización del modelo de Langchain
+model_name = "gpt-4o-mini"
+model = ChatOpenAI(
+    openai_api_key=OPENAI_API_KEY,
+    model_name=model_name,
+    temperature=0,
+    max_tokens=2000,
+)
 
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
