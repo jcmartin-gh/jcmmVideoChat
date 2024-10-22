@@ -68,22 +68,25 @@ def extract_video_id(url):
 #     return None
 
 # Agragar un Log de Depuración
+from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled, NoTranscriptFound
+from youtube_transcript_api._errors import NoTranscriptAvailable
+
 def get_transcript(video_id):
     try:
         # Primero intentamos listar las transcripciones disponibles para el video
         transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
 
         # Imprimimos o mostramos los idiomas disponibles para mayor información
-        available_transcripts = [t.language for t in transcript_list.transcripts]
+        available_transcripts = [t.language for t in transcript_list]
         st.info(f"Transcripciones disponibles en los siguientes idiomas: {', '.join(available_transcripts)}")
 
-        # Intentamos obtener la transcripción en el idioma especificado
+        # Intentamos obtener la transcripción en los idiomas especificados
         transcript = None
         try:
             transcript = transcript_list.find_transcript(['en', 'es', 'fr', 'de'])
         except NoTranscriptFound:
             # Si no se encuentra en los idiomas especificados, intentamos obtener cualquiera disponible
-            transcript = transcript_list.find_transcript([t.language_code for t in transcript_list.transcripts])
+            transcript = transcript_list.find_generated_transcript([t.language_code for t in transcript_list])
 
         # Si encontramos una transcripción, la retornamos en formato de texto concatenado
         transcript_data = transcript.fetch()
@@ -99,6 +102,7 @@ def get_transcript(video_id):
     except Exception as e:
         st.error(f"Error al obtener la transcripción: {str(e)}")
     return None
+
 
 
 
