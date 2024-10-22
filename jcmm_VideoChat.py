@@ -1,15 +1,14 @@
 
 
 import streamlit as st
-from langchain.schema import AIMessage, HumanMessage
-from langchain.chat_models import ChatOpenAI
-from dotenv import load_dotenv
+# from langchain.schema import AIMessage, HumanMessage
+# from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI  # Actualizado para la versión recomendada de LangChain
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chains import LLMChain
+from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled
 import os
 import re
-import time
-from youtube_transcript_api import YouTubeTranscriptApi
 
 # Load environment variables
 # load_dotenv()
@@ -58,11 +57,14 @@ def get_transcript(video_id):
         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'es', 'fr', 'de'])
         transcript_text = "\n".join([entry['text'] for entry in transcript])
         return transcript_text
-    except YouTubeTranscriptApi.CouldNotRetrieveTranscript as e:
-        st.error("No se pudo recuperar la transcripción para este video. Intente con otro video.")
+    except TranscriptsDisabled:
+        st.error("Los subtítulos están deshabilitados para este video. Intenta con otro.")
+    except VideoUnavailable:
+        st.error("El video no está disponible. Intenta con otro.")
     except Exception as e:
         st.error(f"Error al obtener la transcripción: {str(e)}")
     return None
+
 
 # Inicialización del modelo de Langchain
 model_name = "gpt-4o-mini"
