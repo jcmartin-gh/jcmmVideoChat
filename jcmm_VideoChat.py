@@ -65,16 +65,6 @@ def get_transcript(video_id):
         st.error(f"Error al obtener la transcripción: {str(e)}")
     return None
 
-
-# Inicialización del modelo de Langchain
-model_name = "gpt-4o-mini"
-model = ChatOpenAI(
-    openai_api_key=OPENAI_API_KEY,
-    model_name=model_name,
-    temperature=0,
-    max_tokens=2000,
-)
-
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
     template = """
@@ -88,6 +78,14 @@ def get_response(user_query, chat_history):
     User query:
     {user_query}
     """
+    # Inicialización del modelo de Langchain
+    model_name = "gpt-4o-mini"
+    model = ChatOpenAI(
+        openai_api_key=OPENAI_API_KEY,
+        model_name=model_name,
+        temperature=0,
+        max_tokens=2000,
+    )
     prompt = ChatPromptTemplate.from_template(template)
     chain = LLMChain(llm=model, prompt=prompt)
 
@@ -138,6 +136,16 @@ def get_summary(transcription_text):
     Transcription text:
     {transcription_t}
     """
+    
+    # Inicialización del modelo de Langchain
+    model_name = "gpt-4o-mini"
+    model = ChatOpenAI(
+        openai_api_key=OPENAI_API_KEY,
+        model_name=model_name,
+        temperature=0,
+        max_tokens=2000,
+    )
+    
     prompt = ChatPromptTemplate.from_template(template)
     chain = LLMChain(llm=model, prompt=prompt)
     response = chain.run({
