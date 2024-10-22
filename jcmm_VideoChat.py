@@ -6,9 +6,8 @@ import streamlit as st
 from langchain_community.chat_models import ChatOpenAI  # Actualizado para la versión recomendada de LangChain
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chains import LLMChain
-from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled
+from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled, NoTranscriptFound
 from youtube_transcript_api._errors import NoTranscriptAvailable
-
 import os
 import re
 
@@ -208,6 +207,7 @@ if 'transcription_y' not in st.session_state:
 def load_video(video_url):
     video_id = extract_video_id(video_url)
     if video_id:
+        st.session_state.video_url = video_url  # Actualizamos la URL del video en el estado de la sesión
         transcription_y = get_transcript(video_id)
         if transcription_y:
             st.session_state.transcription_y = transcription_y
