@@ -52,18 +52,45 @@ def extract_video_id(url):
     return None
 
 # Función para transcribir el video a partir de su ID
+# def get_transcript(video_id):
+#     try:
+#         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'es', 'fr', 'de'])
+#         transcript_text = "\n".join([entry['text'] for entry in transcript])
+#         return transcript_text
+#     except TranscriptsDisabled:
+#         st.error("Los subtítulos están deshabilitados para este video. Intenta con otro.")
+#     except VideoUnavailable:
+#         st.error("El video no está disponible. Intenta con otro.")
+#     except Exception as e:
+#         st.error(f"Error al obtener la transcripción: {str(e)}")
+#     return None
+
+# Agragar un Log de Depuración
 def get_transcript(video_id):
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'es', 'fr', 'de'])
         transcript_text = "\n".join([entry['text'] for entry in transcript])
         return transcript_text
+
     except TranscriptsDisabled:
         st.error("Los subtítulos están deshabilitados para este video. Intenta con otro.")
     except VideoUnavailable:
         st.error("El video no está disponible. Intenta con otro.")
+    except NoTranscriptFound:
+        st.warning("No se encontró una transcripción para este video en los idiomas especificados. Intentando con cualquier idioma disponible.")
+        try:
+            transcript = YouTubeTranscriptApi.get_transcript(video_id)
+            transcript_text = "\n".join([entry['text'] for entry in transcript])
+            st.info("Transcripción encontrada en otro idioma.")
+            return transcript_text
+        except Exception as e:
+            st.error(f"No se pudo recuperar la transcripción en ningún idioma: {str(e)}")
     except Exception as e:
-        st.error(f"Error al obtener la transcripción: {str(e)}")
+        st.error(f"Error desconocido al obtener la transcripción: {str(e)}")
+        st.warning("Por favor, verifique si el video tiene restricciones o si los subtítulos deberían estar disponibles.")
     return None
+
+
 
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
