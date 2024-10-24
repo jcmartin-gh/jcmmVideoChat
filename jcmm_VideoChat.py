@@ -241,6 +241,8 @@ def reset_conversation():
 with st.sidebar:
     col1, col2 = st.columns(2)
     with col1:
+        if st.button('Load video'):
+            load_video(video_url)
         if st.button("Summary"):
             if st.session_state.transcription_y:
                 summary = get_summary(st.session_state.transcription_y)
