@@ -10,6 +10,7 @@ from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, Trans
 from youtube_transcript_api._errors import NoTranscriptAvailable
 import os
 import re
+import time
 
 # Load environment variables
 # load_dotenv()
@@ -54,8 +55,17 @@ def extract_video_id(url):
     st.error("Invalid video URL")
     return None
 
-# Agragar Log de Depuración
+# Función para mostrar texto gradualmente
+def stream_text(text, container, delay=0.02):
+    displayed_text = ""
+    for char in text:
+        displayed_text += char
+        container.markdown(displayed_text + "▌")
+        time.sleep(delay)
+    container.markdown(displayed_text)
 
+
+# Agragar Log de Depuración
 def get_transcript(video_id):
     try:
         # Agregamos logs para depuración
