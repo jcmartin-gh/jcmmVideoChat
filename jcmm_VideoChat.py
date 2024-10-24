@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 # from langchain.schema import AIMessage, HumanMessage
 # from langchain.chat_models import ChatOpenAI
@@ -10,7 +8,6 @@ from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, Trans
 from youtube_transcript_api._errors import NoTranscriptAvailable
 import os
 import re
-import time
 
 # Load environment variables
 # load_dotenv()
@@ -55,16 +52,8 @@ def extract_video_id(url):
     st.error("Invalid video URL")
     return None
 
-# Función para mostrar texto gradualmente
-def stream_text(text, container, delay=0.02):
-    displayed_text = ""
-    for char in text:
-        displayed_text += char
-        container.markdown(displayed_text + "▌")
-        time.sleep(delay)
-    container.markdown(displayed_text)
-
 # Agragar Log de Depuración
+
 def get_transcript(video_id):
     try:
         # Agregamos logs para depuración
@@ -122,6 +111,8 @@ def get_transcript(video_id):
         st.error(f"Tipo de error: {type(e).__name__}")
     return None
 
+
+
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
     template = """
@@ -135,29 +126,23 @@ def get_response(user_query, chat_history):
     User query:
     {user_query}
     """
+    # Inicialización del modelo de Langchain
     model_name = "gpt-4o-mini"
     model = ChatOpenAI(
         openai_api_key=OPENAI_API_KEY,
         model_name=model_name,
         temperature=0,
         max_tokens=2000,
-        streaming=True  # Habilitar streaming
     )
     prompt = ChatPromptTemplate.from_template(template)
     chain = LLMChain(llm=model, prompt=prompt)
 
     history_lines = [f"{msg['role']}: {msg['content']}" for msg in chat_history if isinstance(msg, dict)]
     chat_history_text = "\n".join(history_lines)
-    
-    # Crear un contenedor vacío para el streaming
-    message_placeholder = st.empty()
     response = chain.run({
         "chat_history": chat_history_text,
         "user_query": user_query,
     })
-    
-    # Mostrar la respuesta gradualmente
-    stream_text(response, message_placeholder)
     return response
 
 # Función para obtener un resumen detallado del video
@@ -244,7 +229,6 @@ def reset_conversation():
     st.session_state['summary'] = ""
 
 # Botones de la barra lateral
-# Modificar la parte donde se maneja el botón de Summary
 with st.sidebar:
     col1, col2 = st.columns(2)
     with col1:
@@ -252,14 +236,14 @@ with st.sidebar:
             load_video(video_url)
         if st.button("Summary"):
             if st.session_state.transcription_y:
-                summary = get_summary(st.session_state.transcription_y)
-                message_placeholder = st.empty()
-                stream_text(summary, message_placeholder)
-                st.session_state['summary'] = summary
+                st.session_state['summary'] = get_summary(st.session_state.transcription_y)
                 st.session_state.chat_history.append({
                     'role': 'assistant',
-                    'content': summary,
+                    'content': st.session_state['summary'],
                 })
+                # Eliminamos estas líneas que causaban la duplicación
+                # st.write("**Resumen del Video:**")
+                # st.write(st.session_state['summary'])
             else:
                 st.sidebar.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
@@ -287,14 +271,14 @@ for message in st.session_state.chat_history:
         with st.chat_message("user"):
             st.write(content)
 
-# Modificar la parte donde se maneja la entrada del usuario
+# Entrada del usuario
 user_query = st.chat_input("Escribe tu mensaje aquí...")
 if user_query:
     st.session_state.chat_history.append({'role': 'user', 'content': user_query})
     with st.chat_message("user"):
         st.markdown(user_query)
-    
+    response = get_response(user_query, st.session_state.chat_history)
+    st.session_state.chat_history.append({'role': 'assistant', 'content': response})
     with st.chat_message("assistant"):
-        response = get_response(user_query, st.session_state.chat_history)
-        st.session_state.chat_history.append({'role': 'assistant', 'content': response})
+        st.write(response)
 
