@@ -43,14 +43,17 @@ with st.sidebar:
 def extract_video_id(url):
     patterns = [
         r'(?:https?://)?(?:www\.)?youtube\.com/watch\?v=([^&]+)',  # URL estándar
-        r'(?:https?://)?youtu\.be/([^?]+)'                           # URL corta
+        r'(?:https?://)?youtu\.be/([^?]+)',                        # URL corta
+        r'(?:https?://)?(?:www\.)?youtube\.com/embed/([^?]+)'      # URL de embed
     ]
+    
     for pattern in patterns:
         match = re.search(pattern, url)
         if match:
-            return match.group(1)
+            return match.group(1).split('?')[0]  # Elimina cualquier parámetro adicional
     st.error("Invalid video URL")
     return None
+
 
 # Función para transcribir el video a partir de su ID
 # def get_transcript(video_id):
@@ -66,42 +69,64 @@ def extract_video_id(url):
 #         st.error(f"Error al obtener la transcripción: {str(e)}")
 #     return None
 
-# Agragar un Log de Depuración
-from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled, NoTranscriptFound
-from youtube_transcript_api._errors import NoTranscriptAvailable
+# Agragar Log de Depuración
 
 def get_transcript(video_id):
     try:
-        # Primero intentamos listar las transcripciones disponibles para el video
+        # Agregamos logs para depuración
+        st.info(f"Intentando obtener transcripción para video ID: {video_id}")
+        
+        # Primero verificamos las transcripciones disponibles
         transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-
-        # Imprimimos o mostramos los idiomas disponibles para mayor información
-        available_transcripts = [t.language for t in transcript_list]
-        st.info(f"Transcripciones disponibles en los siguientes idiomas: {', '.join(available_transcripts)}")
-
-        # Intentamos obtener la transcripción en los idiomas especificados
+        
+        # Mostramos los idiomas disponibles
+        available_transcripts = transcript_list._manually_created_transcripts.keys()
+        st.info(f"Transcripciones manuales disponibles: {', '.join(available_transcripts)}")
+        
+        generated_transcripts = transcript_list._generated_transcripts.keys()
+        if generated_transcripts:
+            st.info(f"Transcripciones generadas disponibles: {', '.join(generated_transcripts)}")
+        
+        # Intentamos obtener la transcripción en orden de preferencia
         transcript = None
         try:
-            transcript = transcript_list.find_transcript(['en', 'es', 'fr', 'de'])
+            # Primero intentamos obtener transcripciones manuales
+            for lang in ['es', 'en', 'fr', 'de']:
+                if lang in available_transcripts:
+                    transcript = transcript_list.find_transcript([lang])
+                    st.success(f"Encontrada transcripción manual en {lang}")
+                    break
+            
+            # Si no hay transcripción manual, intentamos con las generadas
+            if not transcript and generated_transcripts:
+                transcript = transcript_list.find_generated_transcript(list(generated_transcripts))
+                st.success(f"Encontrada transcripción generada")
+        
         except NoTranscriptFound:
-            # Si no se encuentra en los idiomas especificados, intentamos obtener cualquiera disponible
-            transcript = transcript_list.find_generated_transcript([t.language_code for t in transcript_list])
+            st.warning("No se encontró transcripción en los idiomas preferidos")
+            # Intentamos obtener cualquier transcripción disponible
+            all_languages = list(available_transcripts) + list(generated_transcripts)
+            if all_languages:
+                transcript = transcript_list.find_transcript(all_languages)
 
-        # Si encontramos una transcripción, la retornamos en formato de texto concatenado
-        transcript_data = transcript.fetch()
-        transcript_text = "\n".join([entry['text'] for entry in transcript_data])
-        return transcript_text
+        if transcript:
+            transcript_data = transcript.fetch()
+            transcript_text = "\n".join([entry['text'] for entry in transcript_data])
+            return transcript_text
+        else:
+            st.error("No se pudo obtener ninguna transcripción")
+            return None
 
     except TranscriptsDisabled:
         st.error("Los subtítulos están deshabilitados para este video. Intenta con otro.")
     except VideoUnavailable:
         st.error("El video no está disponible. Intenta con otro.")
     except NoTranscriptAvailable:
-        st.warning("No hay transcripción disponible para este video.")
+        st.error("No hay transcripción disponible para este video.")
     except Exception as e:
         st.error(f"Error al obtener la transcripción: {str(e)}")
+        st.error(f"Tipo de error: {type(e).__name__}")
     return None
-
 
 
 
