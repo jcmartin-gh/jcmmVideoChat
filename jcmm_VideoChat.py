@@ -54,21 +54,6 @@ def extract_video_id(url):
     st.error("Invalid video URL")
     return None
 
-
-# Función para transcribir el video a partir de su ID
-# def get_transcript(video_id):
-#     try:
-#         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'es', 'fr', 'de'])
-#         transcript_text = "\n".join([entry['text'] for entry in transcript])
-#         return transcript_text
-#     except TranscriptsDisabled:
-#         st.error("Los subtítulos están deshabilitados para este video. Intenta con otro.")
-#     except VideoUnavailable:
-#         st.error("El video no está disponible. Intenta con otro.")
-#     except Exception as e:
-#         st.error(f"Error al obtener la transcripción: {str(e)}")
-#     return None
-
 # Agragar Log de Depuración
 
 def get_transcript(video_id):
@@ -258,10 +243,11 @@ with st.sidebar:
                     'role': 'assistant',
                     'content': st.session_state['summary'],
                 })
-                st.write("**Resumen del Video:**")
-                st.write(st.session_state['summary'])
+                # Eliminamos estas líneas que causaban la duplicación
+                # st.write("**Resumen del Video:**")
+                # st.write(st.session_state['summary'])
             else:
-                st.warning("No se ha cargado ninguna transcripción aún.")
+                st.sidebar.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
         if st.button("Transcription"):
             if st.session_state.transcription_y:
