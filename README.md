@@ -3,6 +3,7 @@ Aplicación para hacer resumenes de video de youtube y poder hacer pregunta sobr
 Errores:
 
 2024-10-24: No ejecuta bien el enlace a los momentos precisos del resumen.
+
 2024-10-27: Hacer que las formulas matematicas se visualicen bien. (No necesario de momento)
 
 Mejoras:
