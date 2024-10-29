@@ -56,41 +56,62 @@ def extract_video_id(url):
 import requests
 from youtube_transcript_api.formatters import JSONFormatter
 
+from tenacity import retry, stop_after_attempt, wait_fixed
 
+# Decorador para reintentar la función en caso de fallo
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(5))
 def get_transcript(video_id):
     try:
         # Agregamos logs para depuración
         st.info(f"Intentando obtener transcripción para video ID: {video_id}")
 
-        # URL para obtener los subtítulos
-        transcript_url = f"https://www.youtube.com/api/timedtext?lang=en&v={video_id}"
+        # Verificamos las transcripciones disponibles
+        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
 
-        # Realiza la solicitud con un timeout
-        response = requests.get(transcript_url, timeout=20, headers={'User-Agent': 'Mozilla/5.0'})
-        
-        if response.status_code != 200:
-            st.error("No se pudo obtener la transcripción desde YouTube. Intenta con otro video.")
+        # Mostramos los idiomas disponibles
+        available_transcripts = transcript_list._manually_created_transcripts.keys()
+        st.info(f"Transcripciones manuales disponibles: {', '.join(available_transcripts)}")
+
+        generated_transcripts = transcript_list._generated_transcripts.keys()
+        if generated_transcripts:
+            st.info(f"Transcripciones generadas disponibles: {', '.join(generated_transcripts)}")
+
+        # Intentamos obtener la transcripción en orden de preferencia
+        transcript = None
+        try:
+            # Primero intentamos obtener transcripciones manuales
+            for lang in ['es', 'en', 'fr', 'de']:
+                if lang in available_transcripts:
+                    transcript = transcript_list.find_transcript([lang])
+                    st.success(f"Encontrada transcripción manual en {lang}")
+                    break
+
+            # Si no hay transcripción manual, intentamos con las generadas
+            if not transcript and generated_transcripts:
+                transcript = transcript_list.find_generated_transcript(list(generated_transcripts))
+                st.success(f"Encontrada transcripción generada")
+
+        except NoTranscriptFound:
+            st.warning("No se encontró transcripción en los idiomas preferidos")
+            # Intentamos obtener cualquier transcripción disponible
+            all_languages = list(available_transcripts) + list(generated_transcripts)
+            if all_languages:
+                transcript = transcript_list.find_transcript(all_languages)
+
+        if transcript:
+            transcript_data = transcript.fetch()
+            transcript_text = "\n".join([entry['text'] for entry in transcript_data])
+            return transcript_text
+        else:
+            st.error("No se pudo obtener ninguna transcripción")
             return None
-        
-        # Aquí podrías utilizar BeautifulSoup para analizar el HTML si los datos no están en JSON
-        transcript_data = response.text
-        if not transcript_data:
-            st.error("La transcripción está vacía o no se pudo encontrar.")
-            return None
 
-        # Formateamos la transcripción (opcionalmente puedes convertirla en texto plano)
-        formatter = JSONFormatter()
-        transcript_json = formatter.format_transcript(transcript_data)
-
-        # Convertimos el JSON en texto
-        transcript_text = "\n".join([entry['text'] for entry in transcript_json])
-        
-        return transcript_text
-
-    except requests.exceptions.Timeout:
-        st.error("La solicitud para obtener la transcripción excedió el tiempo de espera. Intenta nuevamente.")
-    except requests.exceptions.RequestException as e:
-        st.error(f"Error al obtener la transcripción: {str(e)}")
+    except TranscriptsDisabled:
+        st.error("Los subtítulos están deshabilitados para este video. Intenta con otro.")
+    except VideoUnavailable:
+        st.error("El video no está disponible. Intenta con otro.")
+    except NoTranscriptAvailable:
+        st.error("No hay transcripción disponible para este video.")
     except Exception as e:
         st.error(f"Error al obtener la transcripción: {str(e)}")
         st.error(f"Tipo de error: {type(e).__name__}")
