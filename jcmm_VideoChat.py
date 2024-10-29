@@ -59,7 +59,9 @@ from youtube_transcript_api.formatters import JSONFormatter
 from tenacity import retry, stop_after_attempt, wait_fixed
 
 # Decorador para reintentar la función en caso de fallo
-@retry(stop=stop_after_attempt(3), wait=wait_fixed(5))
+
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(10))
+
 def get_transcript(video_id):
     try:
         # Agregamos logs para depuración
@@ -159,7 +161,7 @@ def get_summary(transcription_text):
     Be sure to include enough detail so that someone who has not seen the video can fully understand the content.
 
     For each important point, provide a link to access that specific part of the video.
-    You can do this by taking the URL of the video from the beginning of the transcription and adding the parameter t=XXs with XX being the seconds from the start of the video.
+    You can do this by taking the URL of the video from the variable 'video_url' and adding the parameter t=XXs with XX being the seconds from the start of the video.
     To calculate the seconds from the beginning, you can calculate that the number of words per minute of video is approximately 170.
 
     This is an Example:
