@@ -60,7 +60,9 @@ def get_transcript(video_id):
         st.info(f"Intentando obtener transcripción para video ID: {video_id}")
         
         # Primero verificamos las transcripciones disponibles
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+        # transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id, timeout=20)
+
         
         # Mostramos los idiomas disponibles
         available_transcripts = transcript_list._manually_created_transcripts.keys()
