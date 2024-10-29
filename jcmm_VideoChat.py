@@ -216,15 +216,24 @@ if 'summary' not in st.session_state:
 if 'transcription_y' not in st.session_state:
     st.session_state.transcription_y = ""
 
+
+import time
+
 # Función para cargar y mostrar el video
 def load_video(video_url):
     video_id = extract_video_id(video_url)
     if video_id:
         st.session_state.video_url = video_url  # Actualizamos la URL del video en el estado de la sesión
-        transcription_y = get_transcript(video_id)
-        if transcription_y:
-            st.session_state.transcription_y = transcription_y
-            st.success("Transcripción cargada con éxito.")
+        attempts = 3  # Intentos antes de fallar definitivamente
+        for attempt in range(attempts):
+            transcription_y = get_transcript(video_id)
+            if transcription_y:
+                st.session_state.transcription_y = transcription_y
+                st.success("Transcripción cargada con éxito.")
+                break
+            else:
+                st.warning(f"Intento {attempt + 1} de {attempts} fallido. Reintentando en 5 segundos...")
+                time.sleep(5)  # Espera 5 segundos antes de reintentar
 
 # Función para reiniciar la conversación
 def reset_conversation():
