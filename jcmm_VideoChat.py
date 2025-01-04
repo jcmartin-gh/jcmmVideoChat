@@ -273,7 +273,7 @@ if st.session_state.video_url:
 # Mostrar el historial de la conversación
 
             
-# Función para mostrar el historial de la conversación con botones de copiar
+# Función para mostrar el historial de la conversación con un botón de copiar
 def display_chat_with_copy_buttons(chat_history):
     for i, message in enumerate(chat_history):
         role = message.get('role', '')
@@ -282,35 +282,55 @@ def display_chat_with_copy_buttons(chat_history):
         if role == 'assistant':
             with st.chat_message("assistant"):
                 st.write(content)
-                # Generar un ID único para cada botón
-                button_id = f"copy_button_{i}"
-                copy_script = f"""
-                <script>
-                function copyToClipboard(text) {{
-                    navigator.clipboard.writeText(text).then(function() {{
-                        console.log('Texto copiado al portapapeles');
-                    }}, function(err) {{
-                        console.error('No se pudo copiar al portapapeles: ', err);
-                    }});
-                }}
-                document.getElementById('{button_id}').addEventListener('click', function() {{
-                    copyToClipboard(`{content.replace('`', '\\`')}`);
-                }});
-                </script>
-                """
-                # Insertar el botón y el script para copiar
-                st.markdown(
-                    f"""
-                    <button id="{button_id}" style="margin-top: 10px; background-color: #4CAF50; color: white; border: none; padding: 8px 16px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px; border-radius: 4px; cursor: pointer;">
-                        Copiar al portapapeles
-                    </button>
-                    {copy_script}
-                    """,
-                    unsafe_allow_html=True,
+
+                # Crear un área de texto no editable para el contenido
+                copy_text_area = f"copy_text_area_{i}"
+                st.text_area(
+                    f"Texto a copiar {i+1}",
+                    content,
+                    key=copy_text_area,
+                    label_visibility="collapsed",
+                    disabled=True,
                 )
-                
-# Mostrar el historial de la conversación con botones de copiar
+
+                # Agregar el botón de copiar con una función JavaScript
+                st.button(
+                    "Copiar al portapapeles",
+                    key=f"copy_button_{i}",
+                    on_click=lambda c=content: st.session_state.update({"clipboard": c}),
+                )
+
+# Código principal para actualizar el historial de chat con botones
+if 'clipboard' not in st.session_state:
+    st.session_state['clipboard'] = ""
+
+# Mostrar el historial de la conversación
 display_chat_with_copy_buttons(st.session_state.chat_history)
+
+# Copiar contenido al portapapeles al presionar el botón
+st.markdown(
+    """
+    <script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('Texto copiado al portapapeles');
+        }, function(err) {
+            console.error('No se pudo copiar: ', err);
+        });
+    }
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const clipboardContent = {{ clipboard_content }};
+        if (clipboardContent !== "") {
+            copyToClipboard(clipboardContent);
+        }
+    });
+    </script>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 # Entrada del usuario
 user_query = st.chat_input("Escribe tu mensaje aquí...")
