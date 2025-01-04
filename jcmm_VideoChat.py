@@ -271,66 +271,15 @@ if st.session_state.video_url:
     st.video(st.session_state.video_url)
 
 # Mostrar el historial de la conversación
-
-            
-# Función para mostrar el historial de la conversación con un botón de copiar
-def display_chat_with_copy_buttons(chat_history):
-    for i, message in enumerate(chat_history):
-        role = message.get('role', '')
-        content = message.get('content', '')
-
-        if role == 'assistant':
-            with st.chat_message("assistant"):
-                st.write(content)
-
-                # Crear un área de texto no editable para el contenido
-                copy_text_area = f"copy_text_area_{i}"
-                st.text_area(
-                    f"Texto a copiar {i+1}",
-                    content,
-                    key=copy_text_area,
-                    label_visibility="collapsed",
-                    disabled=True,
-                )
-
-                # Agregar el botón de copiar con una función JavaScript
-                st.button(
-                    "Copiar al portapapeles",
-                    key=f"copy_button_{i}",
-                    on_click=lambda c=content: st.session_state.update({"clipboard": c}),
-                )
-
-# Código principal para actualizar el historial de chat con botones
-if 'clipboard' not in st.session_state:
-    st.session_state['clipboard'] = ""
-
-# Mostrar el historial de la conversación
-display_chat_with_copy_buttons(st.session_state.chat_history)
-
-# Copiar contenido al portapapeles al presionar el botón
-st.markdown(
-    """
-    <script>
-    function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(function() {
-            alert('Texto copiado al portapapeles');
-        }, function(err) {
-            console.error('No se pudo copiar: ', err);
-        });
-    }
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const clipboardContent = {{ clipboard_content }};
-        if (clipboardContent !== "") {
-            copyToClipboard(clipboardContent);
-        }
-    });
-    </script>
-    """,
-    unsafe_allow_html=True,
-)
-
+for message in st.session_state.chat_history:
+    role = message.get('role', '')
+    content = message.get('content', '')
+    if role == 'assistant':
+        with st.chat_message("assistant"):
+            st.write(content)
+    elif role == 'user':
+        with st.chat_message("user"):
+            st.write(content)
 
 # Entrada del usuario
 user_query = st.chat_input("Escribe tu mensaje aquí...")
