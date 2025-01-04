@@ -164,6 +164,8 @@ def get_summary(transcription_text):
     You can do this by taking the URL of the video from the variable 'video_url' and adding the parameter t=XXs with XX being the seconds from the start of the video.
     To calculate the seconds from the beginning, you can calculate that the number of words per minute of video is approximately 170.
 
+    Use the same language as the transcript_text to generate the summary.
+
     This is an Example:
 
     (((
@@ -269,15 +271,46 @@ if st.session_state.video_url:
     st.video(st.session_state.video_url)
 
 # Mostrar el historial de la conversación
-for message in st.session_state.chat_history:
-    role = message.get('role', '')
-    content = message.get('content', '')
-    if role == 'assistant':
-        with st.chat_message("assistant"):
-            st.write(content)
-    elif role == 'user':
-        with st.chat_message("user"):
-            st.write(content)
+
+            
+# Función para mostrar el historial de la conversación con botones de copiar
+def display_chat_with_copy_buttons(chat_history):
+    for i, message in enumerate(chat_history):
+        role = message.get('role', '')
+        content = message.get('content', '')
+
+        if role == 'assistant':
+            with st.chat_message("assistant"):
+                st.write(content)
+                # Generar un ID único para cada botón
+                button_id = f"copy_button_{i}"
+                copy_script = f"""
+                <script>
+                function copyToClipboard(text) {{
+                    navigator.clipboard.writeText(text).then(function() {{
+                        console.log('Texto copiado al portapapeles');
+                    }}, function(err) {{
+                        console.error('No se pudo copiar al portapapeles: ', err);
+                    }});
+                }}
+                document.getElementById('{button_id}').addEventListener('click', function() {{
+                    copyToClipboard(`{content.replace('`', '\\`')}`);
+                }});
+                </script>
+                """
+                # Insertar el botón y el script para copiar
+                st.markdown(
+                    f"""
+                    <button id="{button_id}" style="margin-top: 10px; background-color: #4CAF50; color: white; border: none; padding: 8px 16px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px; border-radius: 4px; cursor: pointer;">
+                        Copiar al portapapeles
+                    </button>
+                    {copy_script}
+                    """,
+                    unsafe_allow_html=True,
+                )
+                
+# Mostrar el historial de la conversación con botones de copiar
+display_chat_with_copy_buttons(st.session_state.chat_history)
 
 # Entrada del usuario
 user_query = st.chat_input("Escribe tu mensaje aquí...")
