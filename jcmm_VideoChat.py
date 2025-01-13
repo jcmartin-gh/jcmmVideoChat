@@ -234,6 +234,7 @@ def reset_conversation():
     st.session_state.video_url = ""
     st.session_state.transcription_y = ""
     st.session_state['summary'] = ""
+    st.session_state.show_transcription = False
 
 # Botones de la barra lateral
 with st.sidebar:
@@ -268,7 +269,7 @@ if st.session_state.video_url:
     st.video(st.session_state.video_url)
 
 # Mostrar la transcripción en el cuerpo principal. Añadido 2025-01-13
-if st.session_state.get('show_transcription', False):
+if st.session_state.get('show_transcription'):
     st.subheader("Transcripción del Video:")
     st.write(st.session_state.transcription_y)
 
