@@ -63,12 +63,6 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(10))
 
-# Funcion Stream_data. 2025-01-13
-def stream_data(text):
-    for word in text.split(" "):
-        yield word + " "
-        time.sleep(0.02)
-
 def get_transcript(video_id):
     try:
         # Agregamos logs para depuración
@@ -255,10 +249,7 @@ with st.sidebar:
                 st.session_state.chat_history.append({
                     'role': 'assistant',
                     'content': summary,
-                })
-                # 2025-01-13
-                with st.chat_message("assistant"):
-                    st.write_stream(stream_data(summary))           
+                })           
             else:
                 st.sidebar.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
