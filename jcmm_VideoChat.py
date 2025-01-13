@@ -258,8 +258,7 @@ with st.sidebar:
                 })
                 # 2025-01-13
                 with st.chat_message("assistant"):
-                    st.write_stream(stream_data)
-                             
+                    st.write_stream(stream_data(summary))           
             else:
                 st.sidebar.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
