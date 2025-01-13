@@ -247,16 +247,14 @@ with st.sidebar:
                     'role': 'assistant',
                     'content': st.session_state['summary'],
                 })
-                # Eliminamos estas líneas que causaban la duplicación
-                # st.write("**Resumen del Video:**")
-                # st.write(st.session_state['summary'])
             else:
                 st.sidebar.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
         if st.button("Transcription"):
             if st.session_state.transcription_y:
-                st.write("**Transcripción del Video:**")
-                st.write(st.session_state.transcription_y)
+                st.session_state.show_transcription = True #Añadido 2025-01-13
+                #st.write("**Transcripción del Video:**")
+                #st.write(st.session_state.transcription_y)
             else:
                 st.warning("No se ha cargado ninguna transcripción aún.")
         if st.button('New Conversation'):
@@ -265,6 +263,11 @@ with st.sidebar:
 # Mostrar el video si ya está cargado
 if st.session_state.video_url:
     st.video(st.session_state.video_url)
+
+# Mostrar la transcripción en el cuerpo principal. Añadido 2025-01-13
+if st.session_state.get('show_transcription', False):
+    st.subheader("Transcripción del Video:")
+    st.write(st.session_state.transcription_y)
 
 # Mostrar el historial de la conversación
 for message in st.session_state.chat_history:
