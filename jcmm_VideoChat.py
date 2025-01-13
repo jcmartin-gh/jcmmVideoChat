@@ -8,6 +8,7 @@ from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, Trans
 from youtube_transcript_api._errors import NoTranscriptAvailable
 import os
 import re
+import time # Añadido 2025-01-13
 
 # Load environment variables
 # load_dotenv()
@@ -61,6 +62,12 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 # Decorador para reintentar la función en caso de fallo
 
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(10))
+
+# Funcion Stream_data. 2025-01-13
+def stream_data(text):
+    for word in text.split(" "):
+        yield word + " "
+        time.sleep(0.02)
 
 def get_transcript(video_id):
     try:
@@ -242,11 +249,17 @@ with st.sidebar:
             load_video(video_url)
         if st.button("Summary"):
             if st.session_state.transcription_y:
-                st.session_state['summary'] = get_summary(st.session_state.transcription_y)
+                summary = get_summary(st.session_state.transcription_y)
+                st.session_state['summary'] = summary
+                #st.session_state['summary'] = get_summary(st.session_state.transcription_y)
                 st.session_state.chat_history.append({
                     'role': 'assistant',
-                    'content': st.session_state['summary'],
+                    'content': summary,
                 })
+                # 2025-01-13
+                with st.chat_message("assistant"):
+                    st.write_stream(stream_data)
+                             
             else:
                 st.sidebar.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
