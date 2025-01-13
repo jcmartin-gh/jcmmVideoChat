@@ -159,15 +159,11 @@ def get_summary(transcription_text):
     Create a detailed summary of the provided text.
     Provide an extensive and detailed summary, including all important points, topics discussed, people speaking, main ideas, and any relevant facts.
     Be sure to include enough detail so that someone who has not seen the video can fully understand the content.
-
+    Use the same language as the transcript_text to generate the summary.
     For each important point, provide a link to access that specific part of the video.
     You can do this by taking the URL of the video from the variable 'video_url' and adding the parameter t=XXs with XX being the seconds from the start of the video.
     To calculate the seconds from the beginning, you can calculate that the number of words per minute of video is approximately 170.
-
-    Use the same language as the transcript_text to generate the summary.
-
     This is an Example:
-
     (((
     The video features a conversation between Steven from Show It Better and Olly Thomas, a design technology specialist at Bjarke Ingels Group (BIG) in London.
     The discussion revolves around the evolving role of AI in architecture, the future of architectural visualization, and how architects can adapt to these changes.
