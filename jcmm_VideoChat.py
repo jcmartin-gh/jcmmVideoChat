@@ -281,7 +281,14 @@ for message in st.session_state.chat_history:
         with st.chat_message("assistant"):
             st.write(content)
              # Botón para copiar la respuesta al portapapeles. Añadido 26-01-2025
-            copy_button = f"""
+            if role == 'assistant':
+    with st.chat_message("assistant"):
+        # Mostrar el contenido de la respuesta
+        st.write(content)
+
+        # Crear un botón HTML para copiar la respuesta al portapapeles
+        copy_button = f"""
+        <div style="margin-top: 10px;">
             <button onclick="navigator.clipboard.writeText(`{content}`)" 
             style="
                 background-color: #4CAF50; 
@@ -292,13 +299,14 @@ for message in st.session_state.chat_history:
                 text-decoration: none; 
                 display: inline-block; 
                 font-size: 16px; 
-                margin-top: 10px; 
                 cursor: pointer;">
                 Copiar respuesta
             </button>
-            """
-            st.markdown(copy_button, unsafe_allow_html=True)
-            # Botón para copiar la respuesta al portapapeles. Añadido 26-01-2025
+        </div>
+        """
+        # Renderizar el botón en HTML
+        st.markdown(copy_button, unsafe_allow_html=True)
+        # Botón para copiar la respuesta al portapapeles. Añadido 26-01-2025
     elif role == 'user':
         with st.chat_message("user"):
             st.write(content)
