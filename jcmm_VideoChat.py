@@ -280,10 +280,13 @@ for message in st.session_state.chat_history:
     if role == 'assistant':
         with st.chat_message("assistant"):
             st.write(content)
+            # Escapar caracteres especiales en el contenido
+            escaped_content = html.escape(content)
+
             # Crear un botón HTML para copiar la respuesta al portapapeles
             copy_button = f"""
             <div style="margin-top: 10px;">
-                <button onclick="navigator.clipboard.writeText(`{content}`)" 
+                <button onclick="navigator.clipboard.writeText('{escaped_content}')"
                 style="
                     background-color: #4CAF50; 
                     border: none; 
