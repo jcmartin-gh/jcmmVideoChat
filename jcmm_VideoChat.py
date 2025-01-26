@@ -1,4 +1,3 @@
-# pip install pyperclip
 import streamlit as st
 # from langchain.schema import AIMessage, HumanMessage
 # from langchain.chat_models import ChatOpenAI
@@ -10,7 +9,6 @@ from youtube_transcript_api._errors import NoTranscriptAvailable
 import os
 import re
 import time # Añadido 2025-01-13
-import pyperclip
 
 # Load environment variables
 # load_dotenv()
@@ -238,11 +236,6 @@ def reset_conversation():
     st.session_state['summary'] = ""
     st.session_state.show_transcription = False
 
-# Función para copiar texto al portapapeles
-def copy_to_clipboard(text):
-    pyperclip.copy(text)
-    st.success("Texto copiado al portapapeles!", icon="✅")
-
 # Botones de la barra lateral
 with st.sidebar:
     col1, col2 = st.columns(2)
@@ -285,10 +278,8 @@ for message in st.session_state.chat_history:
     role = message.get('role', '')
     content = message.get('content', '')
     if role == 'assistant':
-       with st.chat_message("assistant"):
+        with st.chat_message("assistant"):
             st.write(content)
-            if st.button('Copiar respuesta', key=f"copy_{len(st.session_state.chat_history)}"): # Añadido el botón y un key único
-              copy_to_clipboard(content)
     elif role == 'user':
         with st.chat_message("user"):
             st.write(content)
@@ -303,5 +294,3 @@ if user_query:
     st.session_state.chat_history.append({'role': 'assistant', 'content': response})
     with st.chat_message("assistant"):
         st.write(response)
-        if st.button('Copiar respuesta', key=f"copy_{len(st.session_state.chat_history)}"): # Añadido el botón y un key único
-          copy_to_clipboard(response)
