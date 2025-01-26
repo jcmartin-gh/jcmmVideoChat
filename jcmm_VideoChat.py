@@ -9,7 +9,7 @@ from youtube_transcript_api._errors import NoTranscriptAvailable
 import os
 import re
 import time # Añadido 2025-01-13
-import html # Añadido 2025-01-26 para crear el boton del portapapeles
+import pyperclip
 
 # Load environment variables
 # load_dotenv()
@@ -237,6 +237,11 @@ def reset_conversation():
     st.session_state['summary'] = ""
     st.session_state.show_transcription = False
 
+# Función para copiar texto al portapapeles
+def copy_to_clipboard(text):
+    pyperclip.copy(text)
+    st.success("Texto copiado al portapapeles!", icon="✅")
+
 # Botones de la barra lateral
 with st.sidebar:
     col1, col2 = st.columns(2)
@@ -279,32 +284,10 @@ for message in st.session_state.chat_history:
     role = message.get('role', '')
     content = message.get('content', '')
     if role == 'assistant':
-        with st.chat_message("assistant"):
+       with st.chat_message("assistant"):
             st.write(content)
-            # Escapar caracteres especiales en el contenido
-            escaped_content = html.escape(content)
-
-            # Crear un botón HTML para copiar la respuesta al portapapeles
-            copy_button = f"""
-            <div style="margin-top: 10px;">
-                <button onclick="navigator.clipboard.writeText('{escaped_content}')"
-                style="
-                    background-color: #4CAF50; 
-                    border: none; 
-                    color: white; 
-                    padding: 10px 20px; 
-                    text-align: center; 
-                    text-decoration: none; 
-                    display: inline-block; 
-                    font-size: 16px; 
-                    cursor: pointer;">
-                    Copiar respuesta
-                </button>
-            </div>
-            """
-            # Renderizar el botón en HTML
-            st.markdown(copy_button, unsafe_allow_html=True)
-            # Botón para copiar la respuesta al portapapeles. Añadido 26-01-2025
+            if st.button('Copiar respuesta', key=f"copy_{len(st.session_state.chat_history)}"): # Añadido el botón y un key único
+              copy_to_clipboard(content)
     elif role == 'user':
         with st.chat_message("user"):
             st.write(content)
@@ -319,4 +302,5 @@ if user_query:
     st.session_state.chat_history.append({'role': 'assistant', 'content': response})
     with st.chat_message("assistant"):
         st.write(response)
-
+        if st.button('Copiar respuesta', key=f"copy_{len(st.session_state.chat_history)}"): # Añadido el botón y un key único
+          copy_to_clipboard(response)
