@@ -280,12 +280,6 @@ for message in st.session_state.chat_history:
     if role == 'assistant':
         with st.chat_message("assistant"):
             st.write(content)
-             # Botón para copiar la respuesta al portapapeles. Añadido 26-01-2025
-            if role == 'assistant':
-    with st.chat_message("assistant"):
-        # Mostrar el contenido de la respuesta
-        st.write(content)
-
         # Crear un botón HTML para copiar la respuesta al portapapeles
         copy_button = f"""
         <div style="margin-top: 10px;">
