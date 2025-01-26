@@ -280,6 +280,25 @@ for message in st.session_state.chat_history:
     if role == 'assistant':
         with st.chat_message("assistant"):
             st.write(content)
+             # Botón para copiar la respuesta al portapapeles. Añadido 26-01-2025
+            copy_button = f"""
+            <button onclick="navigator.clipboard.writeText(`{content}`)" 
+            style="
+                background-color: #4CAF50; 
+                border: none; 
+                color: white; 
+                padding: 10px 20px; 
+                text-align: center; 
+                text-decoration: none; 
+                display: inline-block; 
+                font-size: 16px; 
+                margin-top: 10px; 
+                cursor: pointer;">
+                Copiar respuesta
+            </button>
+            """
+            st.markdown(copy_button, unsafe_allow_html=True)
+            # Botón para copiar la respuesta al portapapeles. Añadido 26-01-2025
     elif role == 'user':
         with st.chat_message("user"):
             st.write(content)
