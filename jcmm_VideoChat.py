@@ -1,3 +1,4 @@
+pip install pyperclip
 import streamlit as st
 # from langchain.schema import AIMessage, HumanMessage
 # from langchain.chat_models import ChatOpenAI
