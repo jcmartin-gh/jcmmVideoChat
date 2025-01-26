@@ -9,6 +9,7 @@ from youtube_transcript_api._errors import NoTranscriptAvailable
 import os
 import re
 import time # Añadido 2025-01-13
+import html # Añadido 2025-01-26 para crear el boton del portapapeles
 
 # Load environment variables
 # load_dotenv()
