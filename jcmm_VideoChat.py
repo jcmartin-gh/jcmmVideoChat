@@ -4,8 +4,8 @@ import streamlit as st
 from langchain_community.chat_models import ChatOpenAI  # Actualizado para la versión recomendada de LangChain
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chains import LLMChain
-from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled, NoTranscriptFound
-from youtube_transcript_api._errors import NoTranscriptAvailable
+from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled, NoTranscriptFound, NoTranscriptAvailable
+# from youtube_transcript_api._errors import NoTranscriptAvailable
 import os
 import re
 import time # Añadido 2025-01-13
