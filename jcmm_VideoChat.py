@@ -4,7 +4,8 @@ import streamlit as st
 from langchain_community.chat_models import ChatOpenAI  # Actualizado para la versión recomendada de LangChain
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chains import LLMChain
-from youtube_transcript_api import YouTubeTranscriptApi, VideoUnavailable, TranscriptsDisabled, NoTranscriptFound
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptAvailable, VideoUnavailable
+from tenacity import retry, stop_after_attempt, wait_fixed
 # from youtube_transcript_api._errors import NoTranscriptAvailable
 import os
 import re
@@ -61,65 +62,29 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 
 # Decorador para reintentar la función en caso de fallo
 
-@retry(stop=stop_after_attempt(3), wait=wait_fixed(10))
-
-def get_transcript(video_id):
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(5), reraise=True)
+def get_transcript(video_id, languages=['es', 'en']):
     try:
-        # Agregamos logs para depuración
-        st.info(f"Intentando obtener transcripción para video ID: {video_id}")
+        # Intenta obtener la transcripción directamente (manual o generada)
+        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=languages)
+        transcript_text = "\n".join([entry['text'] for entry in transcript])
+        return transcript_text
 
-        # Verificamos las transcripciones disponibles
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-
-        # Mostramos los idiomas disponibles
-        available_transcripts = transcript_list._manually_created_transcripts.keys()
-        st.info(f"Transcripciones manuales disponibles: {', '.join(available_transcripts)}")
-
-        generated_transcripts = transcript_list._generated_transcripts.keys()
-        if generated_transcripts:
-            st.info(f"Transcripciones generadas disponibles: {', '.join(generated_transcripts)}")
-
-        # Intentamos obtener la transcripción en orden de preferencia
-        transcript = None
-        try:
-            # Primero intentamos obtener transcripciones manuales
-            for lang in ['es', 'en', 'fr', 'de']:
-                if lang in available_transcripts:
-                    transcript = transcript_list.find_transcript([lang])
-                    st.success(f"Encontrada transcripción manual en {lang}")
-                    break
-
-            # Si no hay transcripción manual, intentamos con las generadas
-            if not transcript and generated_transcripts:
-                transcript = transcript_list.find_generated_transcript(list(generated_transcripts))
-                st.success(f"Encontrada transcripción generada")
-
-        except NoTranscriptFound:
-            st.warning("No se encontró transcripción en los idiomas preferidos")
-            # Intentamos obtener cualquier transcripción disponible
-            all_languages = list(available_transcripts) + list(generated_transcripts)
-            if all_languages:
-                transcript = transcript_list.find_transcript(all_languages)
-
-        if transcript:
-            transcript_data = transcript.fetch()
-            transcript_text = "\n".join([entry['text'] for entry in transcript_data])
-            return transcript_text
-        else:
-            st.error("No se pudo obtener ninguna transcripción")
-            return None
+    except NoTranscriptAvailable:
+        st.error("No existe una transcripción en los idiomas especificados.")
+        raise
 
     except TranscriptsDisabled:
-        st.error("Los subtítulos están deshabilitados para este video. Intenta con otro.")
-    except VideoUnavailable:
-        st.error("El video no está disponible. Intenta con otro.")
-    except NoTranscriptAvailable:
-        st.error("No hay transcripción disponible para este video.")
-    except Exception as e:
-        st.error(f"Error al obtener la transcripción: {str(e)}")
-        st.error(f"Tipo de error: {type(e).__name__}")
-    return None
+        st.error("Las transcripciones están deshabilitadas en este video.")
+        raise
 
+    except VideoUnavailable:
+        st.error("El video no está disponible.")
+        raise
+
+    except Exception as e:
+        st.error(f"Error inesperado al obtener transcripción: {str(e)}")
+        raise
 
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
@@ -221,11 +186,14 @@ if 'transcription_y' not in st.session_state:
 def load_video(video_url):
     video_id = extract_video_id(video_url)
     if video_id:
-        st.session_state.video_url = video_url  # Actualizamos la URL del video en el estado de la sesión
-        transcription_y = get_transcript(video_id)
-        if transcription_y:
-            st.session_state.transcription_y = transcription_y
-            st.success("Transcripción cargada con éxito.")
+        st.session_state.video_url = video_url
+        try:
+            transcription_y = get_transcript(video_id)
+            if transcription_y:
+                st.session_state.transcription_y = transcription_y
+                st.success("Transcripción cargada correctamente.")
+        except Exception as e:
+            st.error(f"No se pudo cargar la transcripción: {str(e)}")
 
 
 # Función para reiniciar la conversación
