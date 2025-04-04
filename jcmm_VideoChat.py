@@ -70,7 +70,7 @@ def get_transcript(video_id, languages=['es', 'en']):
         transcript_text = "\n".join([entry['text'] for entry in transcript])
         return transcript_text
 
-    except NoTranscriptAvailable:
+    except NoTranscriptFound:
         st.error("No existe una transcripción en los idiomas especificados.")
         raise
 
