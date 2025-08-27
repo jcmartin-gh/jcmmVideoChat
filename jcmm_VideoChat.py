@@ -178,7 +178,7 @@ def load_video(video_url):
                 st.success("Transcripción cargada correctamente.")
         except Exception as e:
             st.error(f"No se pudo cargar la transcripción: {str(e)}")
-
+            st.success(transcript_list)
 # Función para reiniciar la conversación
 def reset_conversation():
     st.session_state.chat_history = []
