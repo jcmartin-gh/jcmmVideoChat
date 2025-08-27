@@ -61,13 +61,13 @@ from youtube_transcript_api.formatters import JSONFormatter
 from tenacity import retry, stop_after_attempt, wait_fixed
 
 
-# retrieve the available transcripts
-ytt_api = YouTubeTranscriptApi()
-transcript_list = ytt_api.list('video_id')
-st.success(transcript_list)
 # Decorador para reintentar la función en caso de fallo
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(5), reraise=True)
 def fetch_transcript_with_retry(video_id, languages=['es', 'en']):
+    # retrieve the available transcripts
+    ytt_api = YouTubeTranscriptApi()
+    transcript_list = ytt_api.list('video_id')
+    st.success(transcript_list)
     for language in languages:
         try:
             # transcript = YouTubeTranscriptApi().get_transcript(video_id, languages=[language])
