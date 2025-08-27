@@ -63,7 +63,6 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 # Decorador para reintentar la función en caso de fallo
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(5), reraise=True)
 def fetch_transcript_with_retry(video_id, languages=['es', 'en']):
-    youtube_transcript_api video_id --list
     for language in languages:
         try:
             # transcript = YouTubeTranscriptApi().get_transcript(video_id, languages=[language])
