@@ -68,19 +68,7 @@ def fetch_transcript_with_retry(video_id, languages=['es', 'en']):
     ytt_api = YouTubeTranscriptApi()
     transcript_list = ytt_api.list('video_id')
     st.success(transcript_list)
-    for language in languages:
-        try:
-            # transcript = YouTubeTranscriptApi().get_transcript(video_id, languages=[language])
-            transcript = YouTubeTranscriptApi().fetch(video_id, languages=[language])
-            transcript_text = " ".join([entry['text'] for entry in transcript])
-            return transcript_text
-        except NoTranscriptFound:
-            continue  # Intenta con el siguiente idioma
-        except Exception as e:
-            st.error(f"Error inesperado al obtener transcripción: {str(e)}")
-            raise
-    st.error("No existe una transcripción en los idiomas especificados.")
-    raise NoTranscriptFound
+    
 
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
