@@ -61,27 +61,22 @@ from youtube_transcript_api.formatters import JSONFormatter
 from tenacity import retry, stop_after_attempt, wait_fixed
 
 # Decorador para reintentar la función en caso de fallo
-
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(5), reraise=True)
-def get_transcript(video_id, languages=['es', 'en']):
+def fetch_transcript_with_retry(video_id, languages=['es', 'en']):
     try:
         # Intenta obtener la transcripción directamente (manual o generada)
         transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=languages)
-        transcript_text = "\n".join([entry['text'] for entry in transcript])
+        transcript_text = " ".join([entry['text'] for entry in transcript])
         return transcript_text
-
     except NoTranscriptFound:
         st.error("No existe una transcripción en los idiomas especificados.")
         raise
-
     except TranscriptsDisabled:
         st.error("Las transcripciones están deshabilitadas en este video.")
         raise
-
     except VideoUnavailable:
         st.error("El video no está disponible.")
         raise
-
     except Exception as e:
         st.error(f"Error inesperado al obtener transcripción: {str(e)}")
         raise
@@ -188,13 +183,12 @@ def load_video(video_url):
     if video_id:
         st.session_state.video_url = video_url
         try:
-            transcription_y = get_transcript(video_id)
+            transcription_y = fetch_transcript_with_retry(video_id)
             if transcription_y:
                 st.session_state.transcription_y = transcription_y
                 st.success("Transcripción cargada correctamente.")
         except Exception as e:
             st.error(f"No se pudo cargar la transcripción: {str(e)}")
-
 
 # Función para reiniciar la conversación
 def reset_conversation():
