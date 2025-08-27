@@ -63,24 +63,18 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 # Decorador para reintentar la función en caso de fallo
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(5), reraise=True)
 def fetch_transcript_with_retry(video_id, languages=['es', 'en']):
-    try:
-        # Intenta obtener la transcripción de manera más robusta
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-        transcript = transcript_list.find_transcript(languages).fetch()
-        transcript_text = " ".join([entry['text'] for entry in transcript])
-        return transcript_text
-    except NoTranscriptFound:
-        st.error("No existe una transcripción en los idiomas especificados.")
-        raise
-    except TranscriptsDisabled:
-        st.error("Las transcripciones están deshabilitadas en este video.")
-        raise
-    except VideoUnavailable:
-        st.error("El video no está disponible.")
-        raise
-    except Exception as e:
-        st.error(f"Error inesperado al obtener transcripción: {str(e)}")
-        raise
+    for language in languages:
+        try:
+            transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=[language])
+            transcript_text = " ".join([entry['text'] for entry in transcript])
+            return transcript_text
+        except NoTranscriptFound:
+            continue  # Intenta con el siguiente idioma
+        except Exception as e:
+            st.error(f"Error inesperado al obtener transcripción: {str(e)}")
+            raise
+    st.error("No existe una transcripción en los idiomas especificados.")
+    raise NoTranscriptFound
 
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
