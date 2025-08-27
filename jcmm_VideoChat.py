@@ -67,9 +67,7 @@ def fetch_transcript_with_retry(video_id, languages=['es', 'en']):
     # retrieve the available transcripts
     ytt_api = YouTubeTranscriptApi()
     transcript_list = ytt_api.list('video_id')
-    st.success(transcript_list)
     
-
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
     template = """
