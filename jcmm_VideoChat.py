@@ -65,8 +65,8 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 def fetch_transcript_with_retry(video_id, languages=['es', 'en']):
     for language in languages:
         try:
-            transcript = YouTubeTranscriptApi().get_transcript(video_id, languages=[language])
-            # transcript = YouTubeTranscriptApi().fetch(video_id, languages=[language])
+            # transcript = YouTubeTranscriptApi().get_transcript(video_id, languages=[language])
+            transcript = YouTubeTranscriptApi().fetch(video_id, languages=[language])
             transcript_text = " ".join([entry['text'] for entry in transcript])
             return transcript_text
         except NoTranscriptFound:
