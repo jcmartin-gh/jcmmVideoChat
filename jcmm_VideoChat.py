@@ -76,7 +76,7 @@ def fetch_transcript_with_retry(video_id, languages=['es', 'en']):
             st.error(f"Error inesperado al obtener transcripción: {str(e)}")
             raise
         st.error("No existe una transcripción en los idiomas especificados.")
-    raise NoTranscriptFound
+        raise NoTranscriptFound
     
 # Función para obtener una respuesta del chatbot
 def get_response(user_query, chat_history):
