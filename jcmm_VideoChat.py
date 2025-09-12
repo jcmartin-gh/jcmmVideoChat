@@ -1,3 +1,15 @@
+"""
+PATCH v3 (2025-09-12)
+- Soluciona error: NoTranscriptFound.__init__ missing required positional arguments...
+  Causa: en versiones antiguas de youtube-transcript-api, NoTranscriptFound
+  no admite inicialización con string. Evitamos instanciarlo manualmente.
+- Estrategia: nunca lanzamos NoTranscriptFound nosotros; sólo lo capturamos si
+  lo lanza la librería. Para nuestra condición "no hay transcripción" usamos una
+  excepción propia (NoTranscriptAvailable) y la tratamos en la UI.
+- Mantiene compatibilidad con objetos tipo FetchedTranscriptSnippet
+  (no subscriptables) y con listas de dicts.
+"""
+
 import streamlit as st
 from langchain_community.chat_models import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
@@ -11,15 +23,15 @@ from youtube_transcript_api import (
 from tenacity import retry, stop_after_attempt, wait_fixed
 import re
 
-# --- CONFIG ---
-st.set_page_config(page_title="VideoChat bot", page_icon="")
+# ---------------------- CONFIG ----------------------
+st.set_page_config(page_title="VideoChat bot", page_icon="🎬")
 st.subheader("jcmm VideoChat")
 st.title("YouTube Video Content Chatbot")
 st.markdown("With this app you can audit a Youtube video:")
 st.markdown("1. a summary of the video,")
 st.markdown("2. the topics that are discussed in the video,")
 
-# --- SIDEBAR ---
+# ---------------------- SIDEBAR ----------------------
 with st.sidebar:
     st.sidebar.subheader("User Autentication")
     st.sidebar.button("Login:")
@@ -30,8 +42,13 @@ with st.sidebar:
 
     video_url = st.sidebar.text_input("Youtube video URL")
 
+# ---------------------- HELPERS ----------------------
+class NoTranscriptAvailable(Exception):
+    """Excepción interna para indicar que no existe transcripción disponible.
+    No depende de la versión de youtube-transcript-api.
+    """
 
-# --- HELPERS ---
+
 def extract_video_id(url: str | None) -> str | None:
     if not url:
         return None
@@ -49,7 +66,7 @@ def extract_video_id(url: str | None) -> str | None:
 
 
 def _snippets_to_text(snippets) -> str:
-    """Convierte una lista de dicts o de objetos con atributo .text en un único string."""
+    """Convierte lista de dicts o lista de objetos con atributo .text en un string."""
     parts: list[str] = []
     for s in snippets:
         if isinstance(s, dict):
@@ -59,29 +76,36 @@ def _snippets_to_text(snippets) -> str:
     return " ".join(parts).strip()
 
 
-# --- TRANSCRIPCIÓN (robusta para librerías antiguas y nuevas) ---
-@retry(stop=stop_after_attempt(3), wait=wait_fixed(5), reraise=True)
+# ---------------------- TRANSCRIPCIÓN ----------------------
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(3), reraise=True)
 def fetch_transcript_with_retry(video_id: str, languages: list[str] | None = None) -> str:
+    """Obtiene la transcripción de YouTube de forma compatible con versiones.
+
+    1) Intento con get_transcript(video_id, languages=...)
+    2) Reintentos con varios conjuntos de idiomas usando get_transcript
+    3) Si la librería tiene list_transcripts, se usa como mejora (sin romper si no existe)
+    4) Si no hay transcripción, lanzamos NoTranscriptAvailable (excepción propia)
+    """
     languages = languages or ["es", "es-ES", "es-419", "en", "en-US"]
 
-    # Camino 1: API clásica (siempre existe). Devuelve lista de dicts.
+    # Camino 1: API clásica (existe en todas las versiones).
     try:
         snippets = YouTubeTranscriptApi.get_transcript(video_id, languages=languages)
         return _snippets_to_text(snippets)
     except (TranscriptsDisabled, VideoUnavailable):
         raise
     except NoTranscriptFound:
-        pass  # probaremos otros idiomas / fallback
-    except Exception as e:
-        # Cualquier fallo extraño: seguimos con fallback
+        pass  # probaremos fallback
+    except Exception:
+        # Cualquier fallo extraño -> probamos fallback
         pass
 
-    # Reintentos con variantes de idioma usando únicamente get_transcript (compatible con versiones antiguas)
+    # Camino 2: sólo get_transcript con variantes de idioma (compatible con versiones antiguas)
     fallback_lang_sets = [
         ["es", "es-ES", "es-419"],
         ["en", "en-US"],
-        ["fr", "pt", "de"],  # por si el vídeo está en otro idioma
-        None,  # dejar que decida la librería por defecto
+        ["fr", "pt", "de"],
+        None,  # sin preferencia (que decida la lib)
     ]
     for langset in fallback_lang_sets:
         try:
@@ -97,32 +121,33 @@ def fetch_transcript_with_retry(video_id: str, languages: list[str] | None = Non
         except Exception:
             continue
 
-    # Camino 2 (opcional): si la versión instalada soporta list_transcripts, úsala.
+    # Camino 3: si existe list_transcripts en esta instalación, lo usamos (sin depender de él)
     if hasattr(YouTubeTranscriptApi, "list_transcripts"):
         try:
             transcripts = YouTubeTranscriptApi.list_transcripts(video_id)
+            preferred_sets = [languages, ["es", "es-ES", "es-419"], ["en", "en-US"]]
             t = None
-            # buscar en orden de preferencia
-            for langset in [languages, ["es", "es-ES", "es-419"], ["en", "en-US"]]:
+            for langset in preferred_sets:
                 try:
                     t = transcripts.find_transcript(langset)
-                    break
+                    if t:
+                        break
                 except Exception:
                     continue
-            if not t:
-                raise NoTranscriptFound("No transcript matching preferred languages.")
-            snippets = t.fetch()
-            return _snippets_to_text(snippets)
-        except (NoTranscriptFound, TranscriptsDisabled, VideoUnavailable):
+            if t:
+                snippets = t.fetch()
+                return _snippets_to_text(snippets)
+        except (TranscriptsDisabled, VideoUnavailable):
             raise
-        except Exception as e:
-            raise RuntimeError(f"Unexpected transcript fetch error (list_transcripts): {e}")
+        except Exception:
+            # Ignoramos errores aquí para no romper en versiones mixtas
+            pass
 
-    # Si llegamos aquí, no hay transcripción
-    raise NoTranscriptFound("No transcript available in the tried languages.")
+    # Si llegamos aquí, no hay transcripción disponible
+    raise NoTranscriptAvailable("No transcript available in the tried languages.")
 
 
-# --- LLM UTILS ---
+# ---------------------- LLM UTILS ----------------------
 def get_response(user_query: str, chat_history: list[dict]) -> str:
     template = """
     You are a helpful assistant. Answer the following questions considering only the history of the conversation
@@ -187,7 +212,7 @@ def get_summary(transcription_text: str, video_url_value: str) -> str:
     return response
 
 
-# --- SESSION STATE ---
+# ---------------------- SESSION STATE ----------------------
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 if "video_url" not in st.session_state:
@@ -200,7 +225,7 @@ if "show_transcription" not in st.session_state:
     st.session_state.show_transcription = False
 
 
-# --- ACTIONS ---
+# ---------------------- ACTIONS ----------------------
 def load_video(url: str | None):
     vid = extract_video_id(url)
     if not vid:
@@ -213,7 +238,10 @@ def load_video(url: str | None):
             st.success("Transcripción cargada correctamente.")
         else:
             st.warning("No se obtuvo texto de transcripción.")
+    except NoTranscriptAvailable:
+        st.error("No existe una transcripción disponible para este vídeo en los idiomas probados.")
     except NoTranscriptFound:
+        # Por si la librería lanza esta excepción (cualquier versión)
         st.error("No existe una transcripción en los idiomas especificados.")
     except TranscriptsDisabled:
         st.error("El autor del video ha deshabilitado las transcripciones.")
@@ -231,7 +259,7 @@ def reset_conversation():
     st.session_state.show_transcription = False
 
 
-# --- SIDEBAR BUTTONS ---
+# ---------------------- SIDEBAR BUTTONS ----------------------
 with st.sidebar:
     col1, col2 = st.columns(2)
     with col1:
@@ -256,7 +284,7 @@ with st.sidebar:
         if st.button("New Conversation"):
             reset_conversation()
 
-# --- MAIN UI ---
+# ---------------------- MAIN UI ----------------------
 if st.session_state.video_url:
     st.video(st.session_state.video_url)
 
@@ -274,7 +302,7 @@ for message in st.session_state.chat_history:
         with st.chat_message("user"):
             st.write(content)
 
-# --- CHAT INPUT ---
+# ---------------------- CHAT INPUT ----------------------
 user_query = st.chat_input("Escribe tu mensaje aquí...")
 if user_query:
     st.session_state.chat_history.append({"role": "user", "content": user_query})
