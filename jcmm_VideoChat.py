@@ -1,7 +1,5 @@
 import streamlit as st
-# from langchain.schema import AIMessage, HumanMessage
-# from langchain.chat_models import ChatOpenAI
-from langchain_community.chat_models import ChatOpenAI  # Mantengo este import para compatibilidad de tu entorno
+from langchain_community.chat_models import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chains import LLMChain
 from youtube_transcript_api import (
@@ -11,9 +9,7 @@ from youtube_transcript_api import (
     NoTranscriptFound,
 )
 from tenacity import retry, stop_after_attempt, wait_fixed
-import os
 import re
-import time  # Añadido 2025-01-13
 
 # --- CONFIG ---
 st.set_page_config(page_title="VideoChat bot", page_icon="")
@@ -40,9 +36,9 @@ def extract_video_id(url: str | None) -> str | None:
     if not url:
         return None
     patterns = [
-        r"(?:https?://)?(?:www\.)?youtube\.com/watch\?v=([^&]+)",  # URL estándar
-        r"(?:https?://)?youtu\.be/([^?]+)",  # URL corta
-        r"(?:https?://)?(?:www\.)?youtube\.com/embed/([^?]+)",  # URL de embed
+        r"(?:https?://)?(?:www\.)?youtube\.com/watch\?v=([^&]+)",
+        r"(?:https?://)?youtu\.be/([^?]+)",
+        r"(?:https?://)?(?:www\.)?youtube\.com/embed/([^?]+)",
     ]
     for pattern in patterns:
         match = re.search(pattern, url)
@@ -53,77 +49,77 @@ def extract_video_id(url: str | None) -> str | None:
 
 
 def _snippets_to_text(snippets) -> str:
-    """Convierte una lista de *dicts* o *FetchedTranscriptSnippet* en texto plano.
-
-    En versiones recientes de youtube-transcript-api, Transcript.fetch() puede
-    devolver objetos FetchedTranscriptSnippet (no subscriptables). Este helper
-    se asegura de soportar ambos formatos.
-    """
+    """Convierte una lista de dicts o de objetos con atributo .text en un único string."""
     parts: list[str] = []
     for s in snippets:
-        # Formato clásico (lista de dicts)
         if isinstance(s, dict):
             parts.append(s.get("text", ""))
         else:
-            # Formato nuevo (objetos con atributos)
-            text = getattr(s, "text", "")
-            parts.append(text)
+            parts.append(getattr(s, "text", ""))
     return " ".join(parts).strip()
 
 
-# Decorador para reintentar la función en caso de fallo
+# --- TRANSCRIPCIÓN (robusta para librerías antiguas y nuevas) ---
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(5), reraise=True)
 def fetch_transcript_with_retry(video_id: str, languages: list[str] | None = None) -> str:
-    """Obtiene la transcripción con fallback compatible entre versiones.
+    languages = languages or ["es", "es-ES", "es-419", "en", "en-US"]
 
-    1) Intenta el camino clásico: get_transcript(video_id, languages)
-       -> devuelve lista de dicts.
-    2) Si falla, usa list_transcripts().find_transcript(languages).fetch()
-       -> en versiones nuevas puede devolver objetos FetchedTranscriptSnippet,
-          que convertimos a texto con _snippets_to_text.
-    """
-    languages = languages or ["es", "en"]
-
-    # Camino 1: clásico y más estable
+    # Camino 1: API clásica (siempre existe). Devuelve lista de dicts.
     try:
         snippets = YouTubeTranscriptApi.get_transcript(video_id, languages=languages)
         return _snippets_to_text(snippets)
+    except (TranscriptsDisabled, VideoUnavailable):
+        raise
     except NoTranscriptFound:
-        # Pasamos al camino 2 (fallback)
-        pass
-    except (TranscriptsDisabled, VideoUnavailable) as e:
-        # Errores definitivos
-        raise e
-    except Exception:
-        # Cualquier otro error inesperado -> probamos el camino 2
+        pass  # probaremos otros idiomas / fallback
+    except Exception as e:
+        # Cualquier fallo extraño: seguimos con fallback
         pass
 
-    # Camino 2: API de alto nivel con objetos Transcript
-    try:
-        transcripts = YouTubeTranscriptApi.list_transcripts(video_id)
-        # Intento directo con todas las lenguas preferidas
+    # Reintentos con variantes de idioma usando únicamente get_transcript (compatible con versiones antiguas)
+    fallback_lang_sets = [
+        ["es", "es-ES", "es-419"],
+        ["en", "en-US"],
+        ["fr", "pt", "de"],  # por si el vídeo está en otro idioma
+        None,  # dejar que decida la librería por defecto
+    ]
+    for langset in fallback_lang_sets:
         try:
-            t = transcripts.find_transcript(languages)
+            if langset is None:
+                snippets = YouTubeTranscriptApi.get_transcript(video_id)
+            else:
+                snippets = YouTubeTranscriptApi.get_transcript(video_id, languages=langset)
+            return _snippets_to_text(snippets)
+        except NoTranscriptFound:
+            continue
+        except (TranscriptsDisabled, VideoUnavailable):
+            raise
         except Exception:
-            # Búsqueda individual por si alguna coincide
+            continue
+
+    # Camino 2 (opcional): si la versión instalada soporta list_transcripts, úsala.
+    if hasattr(YouTubeTranscriptApi, "list_transcripts"):
+        try:
+            transcripts = YouTubeTranscriptApi.list_transcripts(video_id)
             t = None
-            for lang in languages:
+            # buscar en orden de preferencia
+            for langset in [languages, ["es", "es-ES", "es-419"], ["en", "en-US"]]:
                 try:
-                    t = transcripts.find_transcript([lang])
-                    if t:
-                        break
+                    t = transcripts.find_transcript(langset)
+                    break
                 except Exception:
                     continue
-        if not t:
-            raise NoTranscriptFound("No transcript matching preferred languages.")
+            if not t:
+                raise NoTranscriptFound("No transcript matching preferred languages.")
+            snippets = t.fetch()
+            return _snippets_to_text(snippets)
+        except (NoTranscriptFound, TranscriptsDisabled, VideoUnavailable):
+            raise
+        except Exception as e:
+            raise RuntimeError(f"Unexpected transcript fetch error (list_transcripts): {e}")
 
-        snippets = t.fetch()  # dicts o FetchedTranscriptSnippet (según versión)
-        return _snippets_to_text(snippets)
-    except (NoTranscriptFound, TranscriptsDisabled, VideoUnavailable):
-        raise
-    except Exception as e:
-        # Propagamos para que tenacity haga reintentos y Streamlit muestre el error
-        raise RuntimeError(f"Unexpected transcript fetch error: {e}")
+    # Si llegamos aquí, no hay transcripción
+    raise NoTranscriptFound("No transcript available in the tried languages.")
 
 
 # --- LLM UTILS ---
