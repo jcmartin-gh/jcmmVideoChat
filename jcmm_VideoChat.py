@@ -116,8 +116,8 @@ def load_video(url: str | None):
             st.success("Transcripción cargada correctamente.")
         else:
             st.warning("No se obtuvo texto de transcripción.")
-    except NoTranscriptAvailable:
-        st.error("No existe una transcripción disponible para este vídeo en los idiomas probados.")
+    except NoTranscriptAvailable as e:
+        st.error(f"No existe una transcripción disponible para este vídeo en los idiomas probados. Detalle: {e}")
     except TranscriptsDisabled:
         st.error("El autor del video ha deshabilitado las transcripciones.")
     except VideoUnavailable:
@@ -178,4 +178,5 @@ if user_query:
     response = get_response(user_query, st.session_state.chat_history)
     st.session_state.chat_history.append({"role": "assistant", "content": response})
     with st.chat_message("assistant"):
+
         st.write(response)
