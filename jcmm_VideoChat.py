@@ -32,14 +32,22 @@ TRANS_DIR.mkdir(parents=True, exist_ok=True)  # garantiza carpeta
 # ---------------------- CATÁLOGO L35PILLS ----------------------
 # Si la URL está vacía, la app intentará leerla del .txt (primera línea que contenga http).
 L35PILLS_VIDEOS: List[Dict[str, str]] = [
-    {"title": "8º L35 Pills Cómo usar la nueva plantilla corporativa de L35", "url": ""},
-    {"title": "7º L35 Pills IA aplicada a imágenes y videos", "url": ""},
-    {"title": "6º L35 Pills Desarrollo de detalles 2D en Revit", "url": ""},
-    {"title": "5º L35 Pills Representación Gráfica de planos y vistas BIM en fase Schematics", "url": ""},
-    {"title": "4º L35 Pills Base de datos de modelos BIM y su explotación", "url": ""},
-    {"title": "3º L35 PILLS Planos de venta y comercialización", "url": ""},
-    {"title": "2º L35 PILLS Concursos y primeras fases de proyectos con Revit", "url": ""},
-    {"title": "1º L35 PILLS Introducción a la Metodología BIM", "url": ""},
+    {"title": "8º L35 Pills Cómo usar la nueva plantilla corporativa de L35", 
+     "url": "https://youtu.be/y9tRN5acyBU?si=PbplUr5HTRjTXC4Z"},
+    {"title": "7º L35 Pills IA aplicada a imágenes y videos",
+     "url": "https://youtu.be/jCKR4N7Okds?si=Bkm97Hps-2MTg5cg"},
+    {"title": "6º L35 Pills Desarrollo de detalles 2D en Revit",
+     "url": "https://youtu.be/XRJEpRo84d0?si=uNrXbVciyQNU1viA"},
+    {"title": "5º L35 Pills Representación Gráfica de planos y vistas BIM en fase Schematics",
+     "url": "https://youtu.be/SimcsTSWrag?si=rbAIQta_NOJjQOzM"},
+    {"title": "4º L35 Pills Base de datos de modelos BIM y su explotación",
+     "url": "https://youtu.be/ghCI19r6BiU?si=ckPs9R26_P0wZQ0m"},
+    {"title": "3º L35 PILLS Planos de venta y comercialización",
+     "url": "https://youtu.be/CkcuOtJDobU?si=liHPHm50Y_r6-08o"},
+    {"title": "2º L35 PILLS Concursos y primeras fases de proyectos con Revit",
+     "url": "https://youtu.be/H4SGUxgcG7g?si=akhbrIMSkDXlvHMl"},
+    {"title": "1º L35 PILLS Introducción a la Metodología BIM",
+     "url": "https://youtu.be/bUxAw8AmZXo?si=kd7PAU8G7m-uIy0K"},
 ]
 
 # ---------------------- UTILIDADES ----------------------
@@ -151,7 +159,7 @@ def load_video_from_url(url: str | None):
     try:
         transcription_y = get_transcript_text(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
         ss.transcription_y = transcription_y or ""
-        ss.show_transcription = True if ss.transcription_y else False
+        ss.show_transcription = False if ss.transcription_y else False
         if ss.transcription_y:
             st.sidebar.success("Transcripción cargada (API YouTube).")
         else:
@@ -177,7 +185,7 @@ def load_video_from_catalog(item: Dict):
     ss.video_title = title
     ss.video_url = url
     ss.transcription_y = txt
-    ss.show_transcription = True  # mostrar de inmediato
+    ss.show_transcription = False  # No mostrar de inmediato
     if path_used:
         st.sidebar.success(f"Transcripción local cargada: {path_used.name}")
     if not ss.video_url:
@@ -231,7 +239,7 @@ with st.sidebar:
                 if thumb:
                     st.image(thumb, use_column_width=True)
                 st.caption(item["title"])
-                if st.button("Usar este vídeo", key=f"use_{i}"):
+                if st.button("Load this video", key=f"use_{i}"):
                     load_video_from_catalog(item)
 
 # ---------------------- MAIN ----------------------
