@@ -1,0 +1,279 @@
+https://youtu.be/jCKR4N7Okds?si=Bkm97Hps-2MTg5cg
+Título: 7º L35 Pills - IA aplicada a imágenes y vídeos
+Transcripción del Video:
+[0:00:00 - 0:04:00]
+Bueno, comenzamos. Os explico un poco cuál ha sido nuestra experiencia con la IA, a la hora de
+generar... Bueno, yo soy Iván, perdona que me precipito y me presento. Soy Iván, de L35 Madrid.
+Trabajo haciendo renders, vídeos y bueno más temas de renders y vídeos de vez en cuando nos toca
+hacerlos. Entonces, qué mejor momento que enseñaros cómo hemos realizado el proyecto del estadio de
+Gran Canaria, que nos han asignado y hemos ganado y entonces vamos a ver cómo con una aplicación que
+se llama Runway hemos realizado una serie de clips que han servido para generar un vídeo, crear un
+vídeo además de otras secuencias que están no generadas con IA, sino de manera tradicional como es
+el 3D Max, After Effects, Premiere, en fin, una serie de aplicaciones y editores de vídeo que nos
+sirven para generar esta película. Lo primero que hice fue buscar a través de ChabGPT, le pedí que
+me buscara pues las aplicaciones más punteras que había en el mercado, que son estas que veis en
+pantalla. A ver, se ve bien o amplio ahí, mejor verdad. Sora, Runway, Picalabs, Sintesia y bueno
+otras dos que tampoco eran tan populares. La que más he oído hablar de ella era Runway, que es estar
+aquí y la verdad que funciona bastante bien. Lo único que no tiene una calidad de resolución muy
+alta de momento y más adelante pues como es muy reciente toda esta tecnología da calidad pero no
+resolución, con lo cual es un pequeño problema adiado y a mi juicio que aún falta por desarrollar,
+porque de momento lo que puedes hacer es rescalar el vídeo y pasarlo a 4k de lo que hace es un
+rescalado, estira el vídeo con lo cual rompe un poco la resolución y es un poco falso. Entonces os
+enseño, este es el interface de Runway que se accede a través de una web con lo cual todo lo que se
+genera es online, no necesitas una máquina con unas tarjetas de vídeo muy potentes ni tampoco
+necesitas un ordenador muy rápido, con lo cual esto facilita mucho a la hora de generar vídeos
+porque no depende de tener una máquina potente y esto pues facilita que todos los usuarios o todos
+los que vayamos a usar esta aplicación no necesitemos una máquina muy potente o una tarjeta gráfica.
+Voy a pasar rápidamente un poco explicaros cómo fue el proyecto de Gran Canaria y luego volvemos al
+interface de Runway para ver cómo funciona que es muy sencillito utilizar. El vídeo Gran Canaria, el
+vídeo Gran Canaria lo dividimos en cinco bloques lema, contexto, plan de negocio, proceso
+constructivo y cierre. No todo está generado con IA sino que algunas zonas, algunas partes como el
+plan de negocio que son una secuencia de clips que en la manera tradicional nos iba a llevar
+muchísimo tiempo y va a ser muy complejo encontrar secuencias de vídeos relacionados con los
+apartados del plan de negocio y Runway nos facilitó hacer estos clips de una manera muy rápida y muy
+eficaz, dándola la calidad suficiente. Entonces, por ejemplo, la parte del contexto, aquí no se
+intervino la IA para nada, es un trabajo que realizó Robert desde Barcelona, lo hizo muy bien. La
+verdad que es un sistema de After Effects y Premiere que lo que
+
+[0:04:00 - 0:08:00]
+hizo muy bien. La verdad que es un sistema de After Effects y Premiere que lo que permite es, como
+habéis visto en el vídeo, rellizar unos tracks, unas líneas que van animándose y esto ayuda a
+entender el contexto del proyecto en su parcela, en su área. A continuación os enseño unos renders
+que hicimos aquí en Madrid y esto significa que cuanto más calidad les saques al trabajo que vas a
+realizar con Runway, mejores resultados vas a obtener. En este caso, los renders de Rob, que son de
+muy alta calidad, son Premium, el resultado de Runway es fantástico, la verdad que no necesitas
+mucha resolución pero ya la calidad de la imagen en sí te da un resultado muy bueno, no como las
+imágenes realizadas con SketchUp o imágenes realizadas con otras aplicaciones. El plan de negocio,
+como veis, aquí tenemos un montón de imágenes que eran los apartados del plan de negocio y mediante
+una secuencia de unos segundos. Ah, perdón, mediante unas imágenes que se fueron realizando en
+SketchUp, lo pasamos a través de Runway y nos generó una secuencia animada de clips de vídeo y esto
+nos facilitó a la hora de generar los contenidos de estos apartados y de una manera muy rápida,
+además, porque esto lo decíamos con el tiempo muy justo, segundo. Bueno, volviendo al tema, el plan
+de negocio, que eran muchas secuencias, hacerlo de manera tradicional, nos iba a suponer, como os he
+dicho, mucho tiempo en rescatar vídeos de YouTube o de Reels o de contenidos en redes sociales y era
+bastante tedioso. Entonces Runway nos facilitó a la hora de generar estas imágenes, algunas de
+SketchUp, otras son renders también, nos ayudó mucho Runway a generar clips de película para montar
+una línea de tiempo y además rellenar tiempo en la película, nos pelan un mínimo de cinco a siete
+minutos. Esta parte del proceso constructivo, aquí tampoco hay guía, en la anterior sin ésta no,
+porque es un trabajo muy, digamos, muy esquemático, como veis, si podéis apreciar en pantalla, se ve
+una especie de maqueta que va girando y va explicando las diferentes actuaciones que se realizan en
+el proyecto de la reforma de este proyecto. Es una reforma, no es un proyecto de cero. Entonces, de
+esta manera explicaba muy bien y a mí personalmente me gusta mucho porque queda un resultado muy
+definido, con muy alta resolución, aquí puedes trabajar la resolución que quieras, porque lo haces a
+través de V-Rai, 3D Max, Rino, que es lo que exporta las geometrías, muy parecidas SketchUp, pero
+muchísimo más potente, Rino sin duda, es mejor programa para modelado, y luego con el motor de caos
+vantaz, que es un motor de render para video, muy rápido, bueno, relativamente rápido y con una
+calidad que puedas setear a mayor resolución que la queda propio Runway. El resultado, la verdad,
+que era bastante bueno y aquí explicaba muy bien, esto lo rescate del concurso de Santiago Bernabéu,
+funcionó muy bien este apartado para explicar, bueno, pues, la intervención que se iba a realizar en
+el proyecto y a mí personalmente me gustó
+
+[0:08:00 - 0:12:00]
+intervención que se iba a realizar en el proyecto y a mí personalmente me gustó mucho este apartado.
+Y luego, por último, el video, a medida que lo íbamos realizando, pues nos pedíamos cierre y esto de
+aquí es un render bastante básico en donde usamos la IA de Photoshop para terminar una
+postproducción, pues, bastante más compleja del resultado del render. Este es un render, como veis
+en pantalla, bueno, no es tan básico, quiero decir, o sea, tiene su tríngulis, pero lo que nos ayudó
+mucho es la IA de Photoshop para completar la postproducción, que luego, si nos da tiempo, os
+explico cómo funciona porque es relativamente fácil de aplicar a imágenes, como veis en pantalla.
+Bueno, vamos a asaltar a Runway, que es la aplicación web, decirme si lo veis bien en pantalla, se
+ve bien, sí, perfecto, como veis, se accede a través de una aplicación web y esto, pues, facilita
+mucho a los usuarios para no tener que depender de una máquina potente, una tarjeta gráfica de altas
+prestaciones para generar vídeos, como pasaría tradicionalmente en el sistema tradicional, necesitas
+una buena máquina para renderizar los vídeos o para evitarlos, incluso para montarlos. Lo principal
+que vemos en la pantalla es dos opciones, que es una que es generar imágenes, que se me ha olvidado
+comentarlos antes, que también algunas imágenes que hemos realizado en el proyecto de Gran Canaria
+están realizadas desde, por ejemplo, estas de aquí nos permite realizar imágenes sin copyright, sin
+derechos de autor, con lo cual esto pues está muy bien porque no tenemos que depender de esos
+registros. Volvemos a la plataforma, bueno, pinchando en generar imagen, lo que haríamos es mediante
+un prompt, unas indicaciones de lo que queremos y nos generaría una imagen. Después de generar la
+imagen os voy a poner un ejemplo, a ver si lo encuentro por aquí, este. Yo le pedí a la IA que me
+pusiera gente corriendo en un parque, por ejemplo, a ver no está relacionado con la arquitectura,
+pero esto no sirve para a mejor generar contenidos de vídeo para hacer un para poner un contexto o
+algo que nos pida el propio vídeo. Entonces me genera cuatro imágenes, tengo una opción de hacer
+unas variables sobre la imagen que elijo o llevarla directamente, utilizarla, sería como si me
+importas una imagen de mi servidor o de mi carpeta mía y la traería aquí, esta parte de aquí de la
+izquierda, donde yo agregaría o arrastraría cualquier imagen en mí en mis carpetas, pero en este
+caso ha generado esta imagen. A la hora de generar los vídeos tenemos varios motores, como veis aquí
+en la parte inferior izquierda, los últimos son estos dos, gen 4 anteriormente lo que hemos
+realizado en el Estadio Anganaria es con gen 3, gen 3 alfa turbo, es más rápido y gen alfa nos da
+una calidad mejor, tarda más, pero nos da mejor calidad, no resolución, calidad y la diferencia que
+hay entre el 3 y el 4, que el 3 salió este el año pasado y el 4 ha salido recientemente y este
+verano saldrá 5, esto va a una velocidad vertiginosa, la verdad, todas estas tecnologías están dando
+un desarrollo muy rápido a la hora de ir evolucionando cada una de ellas, espero que pronto nos den
+una resolución mayor, porque así no tenemos que
+
+[0:12:00 - 0:16:00]
+espero que pronto nos den una resolución mayor, porque así no tenemos que andar reescalando ni
+haciendo algunos ajustes con esto, con After Effects que con After Effects si le puedes dar un
+poquito más de calidad los resultados que te da con la baja resolución que estamos obteniendo, con
+lo cual bueno procederíamos a usar esta imagen y con el motor alfa turbo que es rápido y nos da un
+resultado más o menos bueno aquí podéis observar que son dos mutantes, esto es personal con lo cual
+no está muy bien definido y con esto lo que os quiero decir es que si vas afinando el prompt vas
+corrigiendo los resultados a medida que vas generando las imágenes vas mejorando los resultados
+siempre y cuando vayas afinando el prompt, sin embargo si yo le cambio el tipo de motor que estoy
+utilizando por ejemplo el alfa que no es que sea más rápido sino que da un poquito más de calidad el
+resultado no es del todo el que yo deseo porque como veis va a acabar la lenta son dos personas
+deformes y la verdad que esto es lo que no queremos, ¿qué hacemos con esto? simplemente con decirles
+cualquiera diría ponme las personas que no estén giradas nunca hay que usar prompts negativos
+siempre hay que intentar llevar a la inteligencia artificial con sentencias positivas en este caso
+como veis en el prompt que hice posteriormente es make people running a park in one direction
+entonces efectivamente la IA ya corrigió estos dos seres y los puso más o menos esto tampoco es que
+sean exactos y perfectos y de esta manera lo que quiero decir es que podéis digamos llevar a la IA
+hasta vuestras necesidades siempre y cuando utilicéis sentencias positivas nunca negativas no pidáis
+que no haga esto no haga lo otro sino siempre intentar corregir el prompt con sentencias positivas
+es muy sensible la inteligencia artificial la verdad que me da cuenta que es bastante sensible y hay
+que andar muy muy fino a la hora de escribir prompts yo recomiendo utilizar chapgpt para definir las
+imágenes y para que os dé unos prompts más más precisos a la hora de de pedirle que el que tanto
+generar una imagen como generar un vídeo pues os haga caso y os obtengáis los resultados deseados
+bueno esto es un ejemplo muy sencillo tengo otros que he realizado estos días que os vea enseñar la
+continuación como puede ser el de la estación de vigo uno que este no es perdón un segundito es este
+otro en esta parte de la derecha arriba donde tengo el rato no sé si lo podéis ver se van generando
+las diferentes resultados de los vídeos mediante el prompt que vas afinando y puedes hacer infinitas
+esto siempre generamos muchísimas muchísimos vídeos y te veinte seguro que uno te encaja para lo que
+lo que necesitas a veces incluso en dos ya tienes el resultado deseado en este caso vamos a ver esta
+estación de vigo ésta es en la parte del atrio del intercambiador del del acceso a las vías y del
+supermercado y bueno como veis nos ha hecho un efecto de dynamic motion que se utiliza bastante en
+en estos vídeos y perdón os voy a poner la anterior que es me pasado que es este el primero este es
+el que hace la lla sin ningún prompt sin ninguna sentencia sin ningún orden en la propia lla
+interpreta la imagen la ley y te ofrece este resultado a lo mismo as de espacios verdad sí claro el
+a través del teams se ve un
+
+[0:16:00 - 0:20:00]
+a lo mismo as de espacios verdad sí claro el a través del teams se ve un poco relantizado se va como
+congelando la imagen lo veo mi compañero y se ve un poco a trompicones pero bueno yo os dejaré estos
+vídeos en una carpeta y los podréis ver el local con lo cual podréis apreciar el resultado más de
+una manera más fidedina esto es un resultado que te da la propia lla sin ningún prompt como veis
+aquí es simplemente colgar la imagen y decirle qué haces como como interpretas esta imagen y qué me
+puedes ofrecer vale me parece muy bien me gusta la imagen pero quiero que le ponga más movimiento
+entonces ya escribimos un prompt en inglés además tiene que ser donde le pido que pues que parezca
+un entorno en la gente está ocupada cogiendo los móviles moviéndose de un a otro y el resultado es
+un poco más loco se se ve la gente demasiado rápida demasiado demasiado variante pero bueno como son
+secuencias de 10 segundos lo máximo que te puedes sacar siempre podemos luego en post producción
+relantizar estos vídeos o el propio runway tiene una opción de acciones en donde la semana pasada
+había dos opciones y esta semana ya tengo más de dos o sea tengo varias quiero decir con esto que va
+evolucionando cada semana es una tecnología que van incorporando cosas que puedas hacer uso de ellas
+en la propia página y no depender de un editor de vídeo para por ejemplo bajarle la velocidad en
+este caso les le pedí que a través de unos ajustes de vídeo pues ponerlo de un sentido invertido la
+velocidad que tenga cierto efecto de cámara en mano y el resultado que me dio fue este que no lo sé
+si apreceréis bien pero está un 75 por ciento más lento del vídeo anterior me parecía que estaba
+bien y lo que hice después en este segundo vídeo es pasarlo a 4k que es esta opción de aquí en el
+anterior lo que haces es una pescale hace una resolución la la interpola no no es que de una
+resolución 4k real sino lo que va a hacer es escalarla y me va a servir para incorporarlo por lo
+menos a un vídeo de 1080 líneas normalmente lo que saca el máximo son 1280 píxeles pero con esta
+opción de upscale me va a dar un resultado más o menos aceptable para lo que lo que le estoy
+pidiendo al vídeo al vídeo completo más cosas que os puedo enseñar por ejemplo en el dashboard que
+es esta parte inicial de la página tenemos todas las sesiones y de diferentes trabajos que hemos
+sido realizando en el estudio en otros concursos por ejemplo el de marsella en el del olympic de
+marsella en el de cuál fue el otro el de turquía el del estadio gran canaria y bueno estoy valorando
+si esta tecnología todavía bueno de momento nos gana concurso gran canaria y no sé los los próximos
+que están en el aire pero ojalá que bueno pues que salgan ganadores y ver si si este tipo de de
+contenidos nos es útil para realizar estos estas piezas gráficas nuestros vídeos os voy a enseñar
+uno que tenía por aquí a ver si lo tengo el de este no es el de soto grande es una un proyecto que
+estamos haciendo en la en el soto grande la fase 3 y había una cosa muy interesante estos son cuatro
+generaciones donde está no lo tengo ubicado bueno voy a aprovechar para enseñaros otro que es como
+veis podéis hacer formatos verticales para piezas de reels de redes sociales esto también
+
+[0:20:00 - 0:24:00]
+hacer formatos verticales para piezas de reels de redes sociales esto también lo permite hacer el
+propio rango y puedes trabajar un formato vertical o en bueno otros formatos o veis en horizontal
+esto es un vídeo generado con el gen 4 estaba haciendo las pruebas y la verdad que la diferencia
+entre el gen 3 y el gen 4 está bastante bien o sea el cambio es abismal es tremendo esto va a una
+velocidad vertiginosa a ver si encuentro tenía que tener por aquí no lo ubico bueno voy a enseñar
+otros como por ejemplo el de turquía este es uno que hicimos hace un mes o así más o menos como veis
+en la parte de la derecha tengo un montón de generaciones que luego me puedo descargar la que más me
+sirva para contar mi proyecto y quiero decir que son tenemos limitadas generaciones para para hacer
+vídeos esto nos permite hacer todas las que queramos para encontrar la que más encaje a nuestra a
+nuestro vídeo esto parte de una imagen echa en en escape estos calidad en escape pero rango me me lo
+bueno pues lo interpretan como si fuera un render y luego ya depende de la calidad de los trabajos
+pues rango y te va a dar unos resultados u otros y no sé si me dejo algo más si si consideráis algún
+tipo tenéis algún tipo de duda o algún tipo de pregunta que os pueda resolver adelante soy todo
+vuestro para que preguntéis yo por mí hombre robert estás ahí no te digo estás mudo ahora ahora
+bueno yo quería hacer un comentario y también una pregunta muy bien bueno que ya sabemos que hemos
+estado aquí un poco utilizando yo si considero que los rendes animados a nivel de edición te dan
+muchísimas posibilidades la verdad porque no lo mismo ditas con imágenes fija que poder darle cierto
+movimiento aunque sea de manera discreta y eso luego en el montaje lo hace muchísimo más dinámico
+así que al menos de ese punto de vista de montaje para mí es un filón la verdad muy bien y luego
+como de cara al futuro yo creo que podría ver una parte que no sé si esto se está haciendo o a lo
+mejor conoce mal respecto que muchas veces cuando quieras crear movimientos de cámara que te van a
+hacer una parte en el que en este caso inteligencia artificial se inventa un poco quizá sería
+interesante que se pudieran en vez de hacer como solamente con un prompt o con un render poder meter
+dos render como el punto de inicio y el punto de final donde ya no sé de aquí inventar la parte que
+no se ve y que te pueda crear ese movimiento no sé si eso sí es algo que con los nervios me he
+saltado pero hay una opción si veis en pantalla en 4 no lo tiene todavía pero lo incorporarán en
+anteriores modelos en alfa turbo tienes una opción aquí si no sé si ves mi ratón en la parte de la
+izquierda de cámara esto para qué sirve esto se ve quizás resuelva tu duda robert si yo por ejemplo
+me traigo una imagen lo que puedo hacer es ciertos movimientos de cámara muy sutiles también porque
+si no la ia se vuelve un poco loca y hace cosas muy muy muy vastas y muy deformes si veis veis un
+frame ahí en la pantalla blanco alrededor de la imagen esto me va a permitir hacer un zoom in puedo
+mover los planos de la cámara los puedo mover hacia delante o hacia atrás lo que va a hacer aquí en
+este caso es un zoom hacia atrás sin exagerar mucho los valores porque ya os digo ya las imágenes
+
+[0:24:00 - 0:28:00]
+zoom hacia atrás sin exagerar mucho los valores porque ya os digo ya las imágenes empiezan a
+deformarse demasiado no sólo puedo hacer un zoom in sino que además puedo hacer un paneo como veis
+en los manejadores de la parte inferior puedo panear y también puedo oscilar el plano de la cámara
+para que a la vez que haga un zoom vaya a un punto concreto de la imagen y termine ahí el el tiro de
+los bueno en este caso 10 segundos tenemos opción de hacer 10 o 5 segundos como veis aquí está la
+máxima resolución que nos da y lo que haría sería un pequeño recorrido vamos a darle a generar a ver
+si nos lo hace relativamente rápido y a mejor creo que de esta manera robert he contestado una parte
+de tu duda pero creo que me habías dicho algo más en una segunda parte en la pregunta no recuerdo
+cuál era bueno realmente me parece bueno si perdona no me parece que es brutal la verdad o sea
+porque muchas veces cuando está intentando describir el movimiento de cámara hay interpretación y
+esto realmente te da total control efectivamente bueno como todas las sías cuanto más sabes más le
+sacas quiero decir que si yo tuviera una jerga director de cine y supiera estos estos movimientos de
+cámara como lo haría un director de cine que si un paneo si un trabelín de izquierda a derecha y tal
+y cual todas las sentencias las puedes usar y pérselas a la lla que que te las represente en la
+imagen y a veces a ciertas a veces no a veces la ella se comporta al 100% y otra vez es no lo hace
+tan tan preciso como uno desea pero bueno es cuestión de ir probando y probando y al final el
+resultado se acerca a lo tradicional no es exacto al tradicional pero obtienes muchos resultados y
+en muy poco tiempo con lo cual la gran mayoría de estos resultados lo más seguro es que te sirva
+alguno veis este es el lo que le pedido es que me haga un zoom in en esta imagen y tienda ir hacia
+la izquierda de la imagen veis no me ha basculado mucho no no me ha girado mucho sino que se ha
+quedado un poco paralelo al al plano inicial no ha hecho un giro pero bueno es siempre ir probando a
+bueno mira es que lo he dejado lo he dejado muy en el centro si lo hubiera llevado más a la
+izquierda tal vez me hubiera girado hacia la izquierda de la imagen y hubiera generado un efecto
+diferente marcel que tal hola como estas perdona y la pregunta va a ser ignorante pero me puedes
+decir en qué formato tenés que tenés la imagen y cuánto tiempo tardas en meterla en esto en rango y
+en 4 lo que sea en cuánto tiempo la podés tener con una cierta animación para enterar nada mira la
+imagen formato es la imagen formato jpg hd cualquier formato hd en proporción hd siempre es mejor
+1280 1080 1920 y quién puede hacer esto en el escacho aquí es el último que dar a mí a mí sólo a mí
+sólo a mí que es que es solo a mí porque no a ver lo puede hacer cualquiera aquí tenemos una bueno
+esto tienes que hablar con fran porque tú una pequeña debate sobre si esto va a través de usuarios a
+los que invita si nos cobran dos tarifas porque esto es de pago la verdad no se me ha olvidado
+deciros estos de pago y entonces no sé hasta qué punto se pueden invitar miembros si podemos usar el
+mismo perfil varios a la vez es algo que no sé muy bien como al tema de la facturación pero vamos
+cualquiera puede acceder a través del usuario del 35 que tenemos y bueno
+
+[0:28:00 - 0:31:50]
+cualquiera puede acceder a través del usuario del 35 que tenemos y bueno intentar encontrar lo que
+uno busca con los clips sobre las imágenes el generador de imágenes es muy potente el generador de
+vídeo también y bueno marcel puedes hacer uso con los formatos más convencionales no necesitas un
+formato específico ni ni especialmente en concreto para para jpg peneje si mañana si mañana tengo
+una presentación a un consejo de dirección y tengo un jpg estático de hoy a mañana lo puedo tener
+animado con una cosa comercial que se mueva la gente coche etcétera no no no no no si si a obres a
+ver como siempre nos organizamos la agenda y se realiza los trabajos si es una urgencia porque
+tienes algo que hacer si estaba en una caricatura de que no es mañana creo que es pasado vale si es
+bueno menos mal cuando digo en 24 horas si lo que te va a llevar más tiempo es a generar esa imagen
+inicial que entiendo que la hay si ya las tienes si ya las tienes como todo a ver detrás de esto hay
+un trabajo enorme de todos vosotros de todo el equipo de desarrollar estos proyectos nos hacen de la
+noche a la mañana y las imágenes se generan de la noche a la mañana de los proyectos tienen un gran
+bagaje anterior y un un labor tremenda de mucha gente luego hablamos te mando una cosa y vale
+fenomenal cuando quieras marcel bueno ya para terminar sólo deciros que bueno estamos en una época
+en la que todas esas tecnologías nos están dando una opción a desarrollar nuevas maneras de trabajar
+y la verdad que hay que aprovechar estas estas tecnologías que nos ofrecen porque realmente los
+resultados son muy buenos muchos en muy poco tiempo y os invito a que investiguéis yo he encontrado
+esto para lo que ya me dedico que es la parte visual imágenes y presentaciones pero yo os invito a
+que busquéis para el tema de beam o de autocad que hay un montón he visto algunas y deberíais de
+investigar probarlas bajaros una demostración usarla y si veis que os viene bien para no para
+quitaros el trabajo para quitaros de trabajar porque volumen de trabajo y los resultados son muy
+buenos la verdad que es una época una estamos una etapa en la que las tecnologías están ofreciendo
+unas herramientas alucinantes os anima a todos a que aquí investiguéis con la lla no les tengáis
+miedo es es es muy útil es es fascinante la verdad a nosotros nos ha venido muy bien el tema este
+para vídeos así que ahí lo dejo alguna pregunta más nadie pues ya no se hemos pasado de tiempo hemos
+sido perfecto y van muchísimas gracias y sobre todo como decías que esto es un esfuerzo que has
+hecho tú también en de transmitirlo a todos los demás así que bueno nos vemos en los próximos píl y
+si os animáis como como dice van a aprender nuevos programas también nos podéis proponer de
+compartirlos con todos los demás para que muchísimas gracias muchas gracias bueno y igualmente chao
+chao chao muchas gracias y adiós gracias y van a vosotros gracias gracias y van a reivang
+

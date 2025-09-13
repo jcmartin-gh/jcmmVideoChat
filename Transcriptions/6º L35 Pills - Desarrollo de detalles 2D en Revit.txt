@@ -1,0 +1,308 @@
+https://youtu.be/XRJEpRo84d0?si=uNrXbVciyQNU1viA
+Título: 6º L35 Pills - Desarrollo de detalles 2D en Revit
+Transcripción del Video:
+[0:00:00 - 0:04:00]
+Bienvenidos todos a la siguiente píldora, el tema de la píldora bien que hemos definido hoy que es
+el desarrollo de detalles que os di directamente en Revit. ¿Por qué directamente en Revit? Porque
+habitualmente y en general, hasta ahora, en casi todos los proyectos pidimos los detalles en cart y
+lo incluimos en una otra forma dentro de Revit. Pero en algunos proyectos ahora que exterior hemos
+definido algunos ejemplares que vamos, tenemos hecho este paso de desarrollar los detalles
+directamente dentro de Revit. El concepto es también poco reflejado en el protocolo bin de
+Inglaterra. La idea o el concepto es que detallamos con elementos modelados entre 3D que sufrienten
+bien y precisos definidos, y por encima de estos elementos modelados han habido elementos 2D que han
+habido la información que falta para tener un detalle. Lo importante es el concepto, o sea porque lo
+importante que os damos es que la geometría de los elementos modelados tienen que estar por
+responder a la dimensión real de los elementos constructivos y además su posición en el modelo tiene
+que ser correcta para. Y definimos uno de los proyectos que miramos en Revit, es el sumixto de
+metatiqua en Inglaterra. Un proyecto que hemos desarrollado en fase de Schematics. En este caso,
+Schematics pareció a un proyecto básico, básico avanzado. La misión de N33 era de desarrollar todas
+las páginas, y todas las mismas, juntos con el básico, y toda la parte de un tipo era también para
+la arquitectura local de Yashaboy. Y ahora vamos a preparar la foto, porque creo que... ¿Qué es
+esto? ¡Claro responsable! Entonces, como he dicho, es un proyecto de un sumixto con varios plantas
+de sótano, varios plantas de centro comercial con ortos, con modos, etcétera, y por encima afloran
+restos de ofertinas y un hotel. Aquí había alguna fase que todavía no está en fase de Schematics.
+Pues como he dicho, nosotros desarrollamos toda la parte de exterior con una fachada y todos los
+modos, etcétera, y el pesatismo. Y uno de los detalles, algunos de los modos están conectados con
+los puentes, y uno de los detalles es esto. Siempre hay que decir que desde el principio del
+proyecto hemos presentado a nuestro propietario, a nuestro cliente un dossier. El dossier,
+finalmente, la producción de la in-design. Entonces, aquí tomamos la decisión que todos los detalles
+que hemos desarrollado, y toda la información, hacemos dentro de él y se exportan a través de JPP,
+como tú. Bueno, a través de JPP, un diseño de in-design. Y realmente, un diseño de in-design tiene
+solo la tabatura y algunos textos de la tabatura. Si nos centramos en este concepto, y vivimos uno
+de los detalles de esta sección que estemos con analizando toda la información de los textos, pero
+de trasmobase, están los elementos 3D modelados. Aquí se ve un poco mejor. Y si usamos a través de
+la sección la herramienta de pistas de amados, o por auslíndez, determinados de cuadro o el mando
+
+[0:04:00 - 0:08:00]
+determinados de cuadro o el mando o la metanáfrica, y por encima, ahora, vamos a añadir usando los
+herramientas, los D, la anotación de los D, de la edad. Uno de los herramientas son, por ejemplo,
+las líneas de detalle que se añaden en la uva por encima, o las reglones de nada que construyen como
+las damas, las hachas en autogad, o añadimos también cosas, botas de elevación, y añadimos también
+etiquetas. La información de las etiquetas, es los textos, nosotros hemos ingruido en los elementos
+3D modernados, decidimos en este proyecto utilizando el parámetro L35 comets por el español
+documental, incluimos este texto que corresponde a esta etiqueta, aplicamos la etiqueta y la
+etiqueta y la etiqueta nos separa la información directamente del elemento 3D modernado. Como
+indicimos, están todos preparados en justo el formato dentro de recte, esto exportamos a JPG, y lo
+insertamos en la plantilla de InDesign y InDesign proporciona solo la acabatura con la empalétex,
+con la fecha, con el subutipus, y etc. Otro detalle, eran las flonas de aseos en los ordinarios 3D,
+y ahí nos gustaría que nos llenamos en el mürme de los lavabos. Esa es una sección que a la base,
+otra vez, es una familia, un modelo 3D, y por encima se alivia toda la información con los elementos
+2D. Esto es el modelo 3D, la familia, y después, al final, el detalle controla la información
+análvida, incluso si os creéis en las todas sus texturas, están modelados, pero alguna información
+en los análvidos en 2D, como por ejemplo las tarmas y algunos textos de etiquetas. Y después
+exportamos esto también otra vez a la plantilla, a la plantilla de InDesign, que figura el 2D, que
+aquí hemos anadido esto bien en todo el edad, pero aquí hemos anadido una de estas señoras y unos
+ejemplos de material además con su prolificación. Y por terminar mi parte, hemos también en este
+proyecto desarrollado una escanera de carbacol. Está muy reconveniente, pero como es, esto es
+directamente el modelo, y en los detalles hemos anadido la información necesaria. Y con esto, a mi
+parte soy el plano determinado, otra vez en InDesign, exportarlo, otra vez este reglamento de la
+información en Kotapg y anadimos solo unos ejemplos de nuestra y la tabátula. Y con esto, paso ahora
+a ti la palabra. Muchas gracias. Gracias Enrique, voy a coger el vídeo de la pantalla. A ver, y
+vuelvo donde lo habéis dejado. ¿Veis mi pantalla? Vale. Yo simplemente voy a completar con otros
+ejemplos todo lo que ha comentado Enrique de cómo se creerían los detalles directamente en Revit. Os
+voy a mostrar dos ejemplos de dos proyectos en los que hemos desarrollado este tipo de detalles en
+Revit. Uno de estos proyectos es el proyecto de Pix Studio.
+
+[0:08:00 - 0:12:00]
+es el proyecto de Pix Studio. Es el proyecto de Pix en el que se han construido bueno, si van a
+construir el proyecto consiste en unos estudios de cine con unas zonas de figurantes de actores.
+Sería esto y dentro lo que os voy a enseñar ahora es un poco cómo se han producido los diferentes
+detalles a diferentes escalas. He cogido voluntariamente diferentes escalas para mostraros un poco
+cómo se va completando con elementos 2D y el elemento 3D. Por ejemplo, aquí tenemos un detalle a
+escala 1.50 de la zona de acceso. Todo lo que vemos de escala 1.50 viene casi todo podría deciros el
+70-80% está modelado. Aquí simplemente en este tipo de detalles hemos completado por ejemplo con
+unos aislantes con unas líneas de impermeabilización con algún sombreado con la estructura del falso
+techo. Lo demás viene todo del modelo 3D. Lo más importante para poder hacer correctamente un
+detalle en Revit directamente es que el modelo 3D sea coherente en forma y en geometría con lo que
+vamos a representar en el detalle. No me refiero con esto a dibujar los tornillos o a dibujar cada
+pieza sino si el muro final de fachada tiene que tener 40 cm luego nosotros vamos a venir a
+aplicarle las juntas podemos aplicarle una aislante dentro una capa interior pero tiene que tener su
+posición y su espesor correcto en el modelo. ¿Por qué os digo esto? Porque aunque PIX es un ejemplo
+de resultado final cuando empezamos a hacer los detalles no siempre era el caso y no quiere decir
+que bien tenemos todo el modelo 3D automáticamente. Si esta base de modelado no se ha hecho
+correctamente los detalles evidentemente vamos a pasar mucho tiempo ocultando el modelo 3D y
+redibujando por encima. Entonces en este ejemplo está casi todo modelado simplemente se han ido
+poniendo cotas, etiquetas anotaciones para describir un poquito más lo que era cada acabado de muro
+de puerta, de falso techo de cotas del modelo. Si pasamos al siguiente todavía en el proyecto de PIX
+ahora os he sacado una presentación, un ejemplo de presentación que viene de Revit directamente en
+el que se pasa de un extracto de fachada a escala 150 a una sección a escala 150 en la que se ha ido
+completando con ciertas cosas a pequeños detalles con vistas de llamada dentro de Revit en los que
+aquí se ha desarrollado a escala 120 voy a pasar la siguiente presentación porque he sacado uno de
+estos ejemplos si nos pagamos a mirar estos ejemplos sería uno de estos detalles tipo de la cubierta
+con el parapeto de arriba, esto es lo que obtendríamos del modelo 3D como veis esto no es lo que
+obteníamos al principio tuvimos que retocar el modelo 3D en coherencia con lo que realmente se iba a
+hacer lo que quiero decir aquí es que cuanto más base tengamos más nos va a facilitar para hacer el
+detalle una vez que tenemos la base evidentemente la vamos a completar con elementos de detalle por
+ejemplo las fijaciones del falso techo por ejemplo el aislante por ejemplo estos acabados de la
+cubierta todos estos elementos que vemos aquí son elementos o familias o tipos de línea, familias 2D
+o elementos 2D que nos permiten completar los detalles quería insistir en que este color de los
+briso ley
+
+[0:12:00 - 0:16:00]
+de los briso ley que se pusieron en el proyecto que lo tenemos en el modelo este color del forjado
+todo lo que podamos configurar anteriormente respecto a los materiales de los elementos todo esto lo
+tendremos ganado para el detalle posteriormente aquí hemos rellenado con las etiquetas de notas
+clave creo que se llaman español en francés son las notas de identificación que reconocen
+automáticamente o no según lo que elijamos el elemento que quiero decir si este briso ley ya lo
+hemos identificado en el proyecto con que va a ser el f8 que a su vez va a tener una leyenda que
+está aquí en el detalle de manera para poner etiquetas a los objetos 2D tienen que ser familias de
+elementos de detalle 2D esto os voy a insistir porque en una línea o en un sombreado que hagamos en
+Revit no se le puede aplicar una etiqueta en cambio a una familia 2D como puede ser esta cubertín
+como puede ser esta pieza a estos elementos como son familias o estas piezas se le pueden aplicar
+etiquetas he querido sacar aquí un extracto de cómo se ha formado este detalle todo lo que
+encontramos para completar detalles la técnica sería ponemos el elemento 3D que tenemos hacemos una
+vista de detalle, una sección lo que necesitemos según la escala y venimos a completar por encima
+con elementos de anotación todo lo que se encuentra en este menú por un lado cotas por otro lado
+líneas, sombreados las familias 2D que os comento son estas los componentes de detalle tenemos la
+opción de aislamiento que viene por defecto en Revit con esto se traza una línea y podemos gestionar
+en sus propiedades el ancho y el espesor de las curvas de típicas del grafismo de aislamiento no nos
+tenemos nosotros que poner a dibujar las curvas que viene ya hecha luego tenemos por aquí los textos
+y las anotaciones tenemos este tipo de anotaciones y nosotros hemos utilizado las notas clave o las
+notas de identificación y están aquí si vamos poco a poco en el 1, esto sería un elemento de
+detalle, una familia pero no una familia individual sino una familia de componente de detalle
+repetido esto por los que no los conocéis aquí en esta flechita es bastante útil quería mostraros un
+ejemplo rápido sería perdón esto sería aquí el componente de detalle tengo aquí algunos componentes
+de detalle con una línea se va repitiendo el mismo elemento lo que es bastante práctico para
+gestionar cosas que se repiten de manera longitudinal luego tenemos la línea de aislante se ve poco
+en el powerpoint pero hemos representado la línea de impermeabilización para esto utilizamos líneas
+líneas de detalle que hemos gestionado con un espesor, con un espaciado entre los trazos y se van
+dibujando como líneas el componente de detalle o individual o repetido de la misma manera este es un
+componente de detalle individual aquí por ejemplo hemos tenido que hacer un conjunto de elementos de
+detalle un pequeño sombreado dos familias de detalle pequeñas formas, las fijaciones como este
+elemento se repetía bueno pues hemos creado un grupo de detalle en este caso que hemos repetido
+durante toda la vertical de nuestro detalle no se me olvida nada aparte de una vez que tenemos todo
+esto evidentemente pasamos a etiquetarlos en este proyecto y en otro que os voy a mostrar hemos
+elegido no poner los textos aquí porque si no en la presentación se iba a ver demasiado junto
+
+[0:16:00 - 0:20:00]
+se iba a ver demasiado junto y demasiada información sino simplemente unos códigos que nos traen
+luego a la leyenda automática esto sería la leyenda automática que podemos generar la base de la
+leyenda, perdonad no es la leyenda de Revit sino la base que podemos generar utilizando estas notas
+clave las notas clave se aplican o a los objetos que están modelados o como os decía a las familias
+del elemento 2D esto lo que nos permite es que podemos modificarlo en Excel podemos exportarlo a
+Revit y podemos encontrarlo en Revit para aplicarlo a estos elementos si mañana decidimos que el
+KGLASS este que tiene el código S02 cambie de tamaño bueno pues lo modificamos aquí en la leyenda se
+recarga y todo lo que estaba etiquetado con S02 me va a actualizar el texto actualizado incluida la
+leyenda todo esto se actualiza a la sola y no tendremos problema está todo centralizado por eso os
+insisto que cuanto más podamos utilizar en los detalles estos componentes de detalle de familia
+mejor nos va a facilitar el trabajo respecto a la creación de etiquetas y de leyendas ahora os voy a
+mostrar otro proyecto es un poquito lo mismo para que veáis otros tipos del proyecto de Troyes este
+proyecto nos encontramos la base estaba mucho mejor definida es decir cuando hacíamos una sección el
+3D correspondía bastante a lo que necesitábamos detallar esto es el pilar más importante que todo
+esté construido en su geometría, su forma en sus dimensiones para que por encima podamos vestirlo
+con el detalle este es el proyecto para que os hagáis una idea de Troyes Troyes en francés es una
+extensión de un centro comercial existente en el que nosotros hemos venido a crear extensiones y
+renovaciones de cubiertas y algunas extensiones en la parte en la parte central como veis tenemos
+este tipo de cubiertas en el proyecto y este es el ejemplo que os he sacado una lámina que se
+compuso directamente en Revit con el mismo proceso en el 3D de fondo venimos a completar con
+elementos de detalle por encima nosotros evidentemente no nos hemos modelado estas tejas con esta
+forma y con estos apoyos esto es una cubierta en la que encima hemos puesto en detalle este tipo de
+elementos si paso para hacer la misma comparación que hemos hecho con los otros proyectos partimos
+del elemento 3D y lo completamos a veces no solo tenemos que completarlo como con las tejas sino que
+hay cosas que nos molestan porque la geometría no es correcta por ejemplo o no se han hecho milas
+uniones bueno pues pensar que podemos completar y podemos también poner sombre he perdido mi ratón
+podemos también poner sombreados blancos o máscaras que nos oculten ciertas partes del proyecto y
+limpiar ese fondo para poder dibujar por encima es un poco lo mismo aquí se utilizaron componentes
+de detalle repetido aquí también se utilizaron componentes de detalle repetido bueno se fueron
+creando con las líneas de las teníamos aquí se añadió un componente de detalle también esto se fue
+definiendo y todo esto una vez más lo fuimos etiquetando con las etiquetas semiautomáticas de las
+notas clave digo semiautomáticas porque por ejemplo un rectángulo o este ipn no queremos definirlo
+siempre igual yo puedo aplicarle una etiqueta automática
+
+[0:20:00 - 0:24:00]
+yo puedo aplicarle una etiqueta automática a un objeto o una etiqueta manual de decirle bueno pues
+este ipn ahora va a se etiquetar o este rectángulo ahora va a se etiquetar el 2.3a pero a lo mejor
+en otro detalle uso el mismo rectángulo que es la misma familia de componente 2d y va a etiquetar el
+2.5 porque al final es un rectángulo y se van utilizando las etiquetas que luego nos generarán este
+tipo de leyendas estas leyendas son inteligentes desde el punto de vista que todas las etiquetas que
+aparezcan en la presentación podemos configurarlo pero todas las etiquetas si nos conviene así que
+aparecen en la presentación aparecen en la leyenda si aquí yo no tengo ninguna etiqueta aplicada a
+ningún suelo por ejemplo no me va a aparecer en la leyenda bueno y con esto yo por mi parte he
+terminado con dos de los ejemplos y simplemente quería hacer una recapitulación de un recapitulativo
+de consejos de cómo gestionar estos detalles en Revit o que tener en cuenta lo primero y más
+importante que he insistido en Rik y yo es tener el modelo 3d como base correcto o lo más cercano a
+lo que se va a construir en cuanto a espesores, posición, forma dimensiones etc yo recomiendo cuando
+hagáis detalles en Revit que trabajemos siempre con los espesores de línea aquí reales ¿por qué os
+digo esto? porque cuando creamos detalles vamos a jugar realmente con los espesores de línea de
+impermeabilización que un pequeño tornillo que una línea más gorda que queramos hacer si no lo
+tenemos esto activado o desactivado con los espesores reales no vamos a ver los espesores que
+estamos generando esto es uno de los consejos yo creo que debería retener si volvemos por otro lado
+crear al máximo plantillas de vista esto siempre de manera general para generar este tipo de base
+del elemento 3d quiero decir si tenéis algo modelado que os molesta y os va a molestar siempre bueno
+pues quitarlo de la plantilla de vista si yo quiero que en mis detalles todos mis muros aparezcan en
+gris bueno pues hagamos una plantilla de vista en la que ya tenga esa base de color gris esto me
+lleva a comentaros como ya he insistido que todos los colores y texturas están gestionados al máximo
+sabemos que no es posible siempre pero al máximo desde el material directamente lo que nos permite
+que en una sección a 150, a 120 o a 110 esto ya parezca relleno que utilicemos el máximo posible de
+estas familias 2d componentes de detalle simplemente por la diferencia que se pueden etiquetar las
+líneas y los sombreados de base no se pueden etiquetar con estas notas clave los componentes sí que
+existen los componentes de detalles repetidos que aunque están ahí escondidos existen y son muy
+útiles y que utilicemos el máximo de notas clave y de etiquetas automáticas para unificar la
+descripción de los detalles Quería por último mostraros que en la biblioteca de base aparte de todos
+los detalles que ya hemos empezado a desarrollar nosotros de los que podéis ir copiando elementos,
+familias, líneas cosas que necesitemos aparte de eso la biblioteca de autodesc de base viene con un
+montón de familias de elementos de detalle 2d que podemos simplemente buscando elementos de detalle
+que podemos empezar a utilizar o utilizar como base para modificarla a partir de aquí si necesitamos
+e ir rellenando nuestros detalles esto está accesible en todos los rébit que tenemos instalados y
+con esto por mi parte yo he terminado, no sé si tenéis algún comentario o alguna pregunta
+
+[0:24:00 - 0:28:00]
+o alguna pregunta Henry Calomas, ¿tu que añadir? Bueno, primero muchas gracias por tu parte de la
+presentación y que queremos nosotros animarnos a hacer este paso de pasar, de hacer los detalles
+directamente en baby y intentar evitar crear los detalles en política con todas las posibilidades y
+herramientas extraño os hemos enseñado porque están dentro del propio programa de baby accesible y
+utilizados Yo tengo una pregunta ¿Habéis comprobado cuánto se incrementa el modelo insertando en un
+proyecto de ejecución en el que tenga 300 planos? ¿Cuánto se incrementa el peso del modelo haciendo
+esto que estáis haciendo? Metiendo los detalles en 2d es una pregunta porque al final el modelo de
+documentación que siempre se trabaja mucho al final para rematar los planos sabéis que cuanto más
+personas haya trabajando en un modelo de documentación más lento va cuanto más información le metas
+de 2d o sea de 2d sin que sea vinculado más lento va y hoy en día cuando el 90% del estudio creo que
+maneja mucho mejor el AutoCAD a lo mejor hay que empezar por hacer unos detalles estupendos y
+saberlos meter en REBI desde AutoCAD con una serie de pautas más que dibujar el detalle en REBI yo
+lo digo porque hay que analizarlo porque estamos hablando si tiene 12 planos no pasa nada pero si
+tiene 300 planos ya de por si el hecho de tener los planos montados en REBI con un montón de vista
+eso pesa mucho metiendo detalles todavía más yo personalmente no lo he analizado porque no he tenido
+el problema hemos hecho en PIX y en Troyes estos dos ejemplos todos los detalles al final al
+principio se empezaron a dibujar en AutoCAD luego los metimos a REBI y no he tenido el problema de
+peso de archivo lo hemos hecho está ahí el archivo sigue funcionando bien y cuanto planos tienes lo
+que si no lo tengo abierto ahora te lo puedo decir pero no os curiosidad yo te digo tengo un
+proyecto en el que tengo 200 planos y ahora yo trabajo sola y bien en el momento que estábamos
+trabajando tres personas en ese archivo o sea para sincronizar llevaba su tiempo para tal o sea al
+final es tiempo que pierdes igual en ese caso podemos plantearnos separarlo yo quiero hablaros de un
+ejemplo concreto que hemos tenido en un proyecto aquí los detalles se desarrollaron en CAD y se
+metieron en REBI porque queríamos sacar todas las presentaciones y unificarlo todo en REBI no nos
+dimos cuenta de un problema de un detalle que no se había actualizado hasta la ejecución en la obra
+porque el detalle estaba metido en CAD no se movía nosotros el ejemplo concreto era teníamos una
+fachada y bueno en su momento pues se pusieron cuatro puertas en esta fachada cada X teníamos unos
+detalles sacados una lámina de detalles en las que esta fachada con sus puertas y el espacio entre
+las puertas se había dibujado en CAD toda la lámina de detalles se había dibujado en CAD el proyecto
+evolucionó cuando nos dimos cuenta que esta lámina no se había cambiado en CAD hasta aquí bueno
+estando en la obra dijimos pero qué raro ya no tenemos un metro de espacio entre la puerta central y
+el pilar a la derecha no me acuerdo exactamente qué era dijimos esto no puede ser yo prefiero poner
+el modelo de base que sé que lo estoy evolucionando y me voy a dar cuenta que hay un error que dejar
+algo estancado que no sé si lo he cambiado si lo he cambiado si he evolucionado o no he evolucionado
+y que nos puede llevar error
+
+[0:28:00 - 0:32:00]
+y que nos puede llevar error lo que pasa es que cambiar un detalle en REVI es bastante más lento
+cambiarlo con otro caje en obra el problema fue no te digo que no el problema fue que no nos dimos
+cuenta si habían evolucionado las cosas si si y no vimos sacamos las 60 láminas que se iban
+actualizando y no vimos que ese detalle porque no nos tocaba gráficamente porque no había ningún
+fallo para mi los detalles son a unos 5 a unos 10, a unos 20 no se tienen constructiva no ha de
+alzados ni nada yo estoy hablando de detalles constructivos realmente que son los que evolucionan en
+obra no te estoy diciendo el alzado los alzados a unos 50, a unos 90, a unos 15 de hecho yo tengo
+planos montados a unos 50 y no he utilizado ni el aislamiento que has dicho ni en 2D simplemente he
+utilizado los sombreados y he cambiado los espesores de los muros y el nivel de detalle y poner las
+notas para mi los detalles son escalados una sección constructiva eso es lo que pesa realmente una
+sección constructiva si cambia te cambia en obra entonces lo vas a hacer en AutoCAD es mucho más
+rápido se lo vas a dar al tío rápidamente y puede ser que en el proyecto no se actualice no lo sé yo
+te estoy hablando concretamente de algo que estoy viviendo ahora perdón yo quería hacer un
+comentario yo creo que aquí no está en discusión si los detalles hacen en AutoCAD o en REBI no
+existe los detalles hay que hacerlos en REBI desgraciadamente igual que cuando pasamos del dibujo a
+mano AutoCAD nos costaba mucho hacer los detalles en AutoCAD porque era un coñazo porque no teníamos
+bloques repetidos pues ahora va a pasar lo mismo vamos a pasar una temporada unos años en los que
+hacer detalles en REBI nos va a costar bastante trabajo porque no tenemos una base de datos
+suficientemente amplia como la que tenemos en AutoCAD tenemos miles y miles de detalles y en REBI no
+el REBI solo decenas yo creo que la discusión no es si hacemos detalles en AutoCAD o en REBI hay que
+hacerlos en REBI ahora no quiere decir que mañana nos pongamos todos como locos hacer detalles en
+REBI habrá que ir paso a paso pero habrá que ver los procedimientos mejores pero que realmente hay
+que hacerlo en REBI creo que esa discusión ya no existe concha perdóname, no estoy discutiendo si
+hay que hacerlo o no el final es hacerlo en REBI lo que intento decir es que hoy en día cuando
+cuatro personas manejan REBI solamente es un error empezar porque hay que hacerlo en REBI lo que
+intento decir es que hay que hacerlo poco a poco porque la evolución si tú eres un proyecto ahora
+mismo uno está modelando y necesitas alguien que te ayude lo vas a hacer en CAD entonces seamos
+realistas y empecemos a implementar las cosas en el orden que tiene que hacer no dentro de 10 años
+vamos a hacerlo todos en REBI si, pero lo que hay que hacer es decir, vamos a intentar empezar a
+hacer este tipo de detalles y poco a poco implantándolo, no es vamos a hacerlo en REBI y
+indistintamente en este voy a hacer uno en REBI y uno en CAD dependiendo del equipo que tenga los
+tendrás que hacer en CAD de una determinada manera y no te estoy diciendo que en la documentación no
+lo metas en REBI porque a mi me gusta tener toda la documentación junta simplemente es decir hay que
+analizar cuánto pesa porque a lo mejor en un futuro por los planos de detalles hay que hacerlo en
+otro modelo porque pesan un montón simplemente es un pensamiento o sea decir esto es, no es otra
+cosa pues eso es lo que estoy diciendo como lo vamos implantando o sea, eso es entonces como veo que
+cada vez en REBI hay menos procedimiento en lo que se necesita un procedimiento de trabajo que es
+estáis enseñando muchísimas cosas pero no estoy poniendo un procedimiento de trabajo y es lo que se
+debería hacer
+
+[0:32:00 - 0:34:03]
+y es lo que se debería hacer entonces con los recursos que se tienen bueno pues es que hemos llegado
+a las 10 y media es lo que intento transmitir quiero decir que está muy bien los detalles 2D y está
+muy bien pero primero hay que ver los recursos que se tienen porque si no es imposible Contra, yo sí
+voy a añadir un comentario estos dos proyectos que yo por mi parte de lo que conozco que es el
+desarrollo en París y hemos sido capaces con un procedimiento de decir se integran familias, se van
+creando este tipo de líneas de hacer los detalles o sea, genial o sea, de verdad es ser que eso me
+parece fantástico y cuando se comparte a ver, cuando tú dices vamos a implementarlo y que en París
+lo hacéis muy bien pero no sé si en Barcelona lo hace o en Madrid no se hace entonces es decir, a lo
+mejor hay que hacer un procedimiento de cómo actuar en eso porque está muy bien en función del
+equipo ¿Dónde encuentro tus dibujos y los quiero utilizar para un proyecto mío? ¿Qué hace? ¿Dónde
+está esa comunicación? Porque yo no la tengo y no la tenemos los cinco personas que trabajamos aquí
+en Madrid para mí eso es lo importante el importante es la comunicación de dónde encontrar los
+recursos pero un poco como ya estas sesiones son muy útiles para poner todo lo que los positivos que
+hacemos en la mesa y los pequeños problemas que queremos arreglando así que con ya has puesto la
+atención también en un punto que igual tenemos que desarrollar en las próximas sesiones pero bueno
+ahí estamos y cada año más es un paso para llegar a este punto final así que bueno, muchas gracias a
+Esther, muchas gracias a Hendrik aparte de conocer más sobre detalles constructivos también hemos
+visto y repasado algunos proyectos interesantes del despacho que si os parece cerramos aquí la
+grabación y quien quiere la puede volver a ver en otro momento gracias muchas gracias gracias Esther
+gracias
+

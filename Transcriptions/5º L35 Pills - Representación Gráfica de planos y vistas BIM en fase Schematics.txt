@@ -1,0 +1,292 @@
+https://youtu.be/SimcsTSWrag?si=rbAIQta_NOJjQOzM
+5º L35 Pills - Representación Gráfica de planos y vistas BIM en fase Schematics
+Transcripción del Video:
+[0:00:00 - 0:04:00]
+Para los ingresos, empezamos bienvenido a la primera píldura de este año. El título de esta píldura
+es representación gráfica de vistas y planos con Revit en proyectos pin. Y nos va a instalar a
+Irvartier, Carlota Martín y Diego Feo, nuestros compañeros aquí en Madrid. Y se trata de lo
+siguiente que nos van a enseñar. Vamos a enseñar cómo preparamos la presentación de las vistas y
+después cómo maquetamos los planos en Revit para proyectos pin. Entonces paso ahora para Diego y
+Carlota. Y primero vamos a compartir la pantalla y después vamos al PowerPoint. Buenos días a todos.
+Voy a comenzar yo contando un poco el proyecto y cómo hemos planteado la primera parte de la píldura
+acerca de cómo hemos hecho la gestión de los planos o las herramientas en la reposición al Revit. El
+proyecto que vemos ahora en pantalla es un club deportivo con las zonas deportivas exteriores como
+podemos ver. Es un edificio que es la sede del club y que tiene todo el equipamiento que ofrecen a
+sus insondos o visitantes y también una mezquita secuada dentro de la misma parcera. Aquí podemos
+ver lo que espería el plano en el que contamos nuestros edificios. Es un plano de arquitectura y en
+el que podemos ver claramente hay varias zonas marcadas que son las que después vamos a representar
+a escala 1C. Este plano está a escala 250 y esas zonas las podemos tener muy controladas gracias a
+una herramienta proporcional Revit que es la caza de referencia que es un elemento 3D que podemos
+limitar en planta y también en su elevación para definir el perímetro que va a tener una vista
+cuando aparezca representada. En este otro ejemplo, BEMUPS, todas las especies de referencia que
+luego los van a posibilitar ver en este caso los planos de detalle a 1.50 de diferentes zonas del
+proyecto con más definición. En esta vista se puede una apreciada para toda esa barana de líneas que
+tenemos ahí representadas en rojo. Son las páginas de referencia que nos permiten generar todos los
+planos de detalle que es el paquete A5 como podemos ver en el nombre de la vista. Es muy importante
+tener un buen orden a la hora de tener la aventura en todos los eventos y todas las vistas en las
+que trabajamos porque al final se van a generar mucha documentación y si no hay manera de entender
+lo que no está haciendo. En ese caso ya no se indica que son los planos A5, que son los planos de
+detalle y solo para generar esos planos como vemos en las propiedades son necesarias 20 cazas de
+referencia diferentes. En este otro plano podemos ver también cómo representamos los alzados también
+con sus cazas de referencia. En la vista anterior había un total de 68 en todo el proyecto. Sabéis
+muy bien la magnitud de la necesidad de usar ese tipo de recursos y de la importancia de tenerlos
+muy bien ordenados y clasificados. Aquí como todas estas cazas tienen un perímetro muy controlado de
+algunas dimensiones, siempre iguales.
+
+[0:04:00 - 0:08:00]
+de algunas dimensiones, siempre iguales. Estamos permitidos como vemos aquí poder montar los planos
+con vistas siempre de lo mismo tamaño y distribuirlas de la manera que nos conviendan nosotros.
+También podemos ver en este plano que en el margen izquierdo que se ponemos de la llamada fila-guía
+que nos hace las veces de punto de referencia para el hoy ubicando nuestras vistas y que visualmente
+todas queden montadas de la misma manera. Al mismo tiempo decidimos que en la parte de abajo del
+plano disponer de una banda por nuestras imágenes de referencia en el que tenemos un código alfa
+numérico que luego tenemos etiquetado en cada una de las vistas una breve descripción del material y
+también un código enumérico que hace referencia a la partida de las mediciones que luego podríamos
+extraer del proyecto de cada uno de estos materiales. Y también una peculiaridad que usamos en este
+proyecto a diferencia de si os acordáis de la píldora de los planos de venta en el mono que nos
+indica qué setriones estamos contando o qué alzado en este caso, lo hacemos por ejemplar de manera
+que en cada uno de los planos podremos ver visualmente, aparte de en prácticamente qué es lo que
+estamos contando y en este caso por ejemplo vemos que es alzado norte por lo cual tenemos la
+seguridad de que está coordinado con aquello en el que en el plan lo estamos contando. Bueno, y
+ahora me paso acá una nota para que os pueda pasar allá en este montaje y como lo hemos referenciado
+en todas las listas como conseguimos tener una documentación con un nivel de calidad racial acorde a
+lo que se espera en una base de esquematis en el que se trata un dosier y por un modo de aumentación
+que hay que hacer. Vale, pues para conseguir esta representación de las listas hemos trabajado con
+materiales, es decir que a cada momento que vamos modelando y vamos asignando un material por su
+convierte. La configuración de estos materiales lo hemos definido en estas pestañitas que teníamos
+la pestaña de identidad en el que podemos definir no una descripción y otros campos. En la ventana
+de gráficos, en el que podemos elegir cómo es la representación gráfica de este material en las
+listas y que está relacionado con los estilos de visualización. Por favor digo esto porque
+dependiendo de lo que rellenemos se va a mostrar en los estilos. Bueno, entonces por ejemplo, todo
+lo que rellenemos en la zona de casa de un superficie y patrón de corte se va a reflejar en los
+estilos de estructural america, linea multa, sombreado y colores polientes. Mientras que lo que
+rellenemos en esta pantalla sombreada como su nombre indica se representará solamente en los estilos
+de sombreado y colores polientes. ¿Por qué hemos hecho así? Porque en este caso queríamos tener un
+patrón de series centrales a listas y un sombreado en el que nosotros pudiéramos en que listas no
+vemos y en cuáles son. Entonces todo esto lo controlamos utilizando los estilos de visualización de
+nombres. Y luego tenemos una última pestañita que es donde tenemos los parámetros que definen lo que
+es la realidad del material en el que podemos también añadir como una imagen, una dignidad. Y esto,
+lo que estamos trabajando aquí se verá únicamente en el estilo de visualización ramizco. Entonces,
+bueno, un poco con esta base tenemos aquí un ejemplo de una planta, como que está dentro de una
+planta de arquitectura cuya representación es por material y, además, dentro de la plantilla hemos
+modificado las categorías de modelos que tienen tiempo que podemos modificar el grafismo
+
+[0:08:00 - 0:12:00]
+que tienen tiempo que podemos modificar el grafismo de todos los elementos que pertenecen a una
+misma categoría. Aquí nos interesa lo que es que todos los nudos utilicen un corte de composición
+que utilicen, pues, aquí en la sección vemos un sombranito gris y es arbitrarle a todos los nudos.
+Aquí queríamos, en la termomilia, que es lo de labado. Utilizan una prioridad en superficie brancica
+y, en el caso mundial, también tienen una finalización. Todo esto que afecta alimentos moderados lo
+trabajamos en las vistas de arquitectura. Estas vistas posteriormente las vinculamos al modelo de
+documentación donde se exportan directamente los planos y un poco lo que es la documentación final.
+Entonces, antes de montar visualización en la actual vinculada, el nombre de la vista final tenemos
+un 50. Esto no está indicando la escala que estamos trabajando y es muy importante porque la
+intervención que hacemos en las plantillas es por escala. Como podemos ver aquí, que es la plantilla
+de documentación, la escala que estamos trabajando es la del 50. Esto es muy importante porque lo
+que van a tener como entrar las vistas a la que aplicamos la misma plantilla es que vamos a estar
+trabajando a esta escala. Por hecho, por lo que podéis ver a la izquierda de la plantilla que
+tenemos muchas vistas hay de los distintos paquetes y en todas las finales estamos indicando la
+escala. Lo que tanto es algo bastante importante. Y bueno, como aquí podemos ver la vista y ya
+estamos trabajando en el modelo de documentación donde hemos apostado algunas anotaciones, jotas y
+acciones y además podéis ver el marco en el izquierdo todo lo que es aquí el contexto. Como tenemos
+una aplicada, una caja de referencia que es a las que ha aplicado el río anteriormente pero que
+hayamos centrado la atención solamente en el área en el que estábamos trabajando pues con una región
+de relleno de color blanca, y aquí darle un poquito de transparencia pues conseguimos un efecto con
+medicina. Luego aquí tenemos otra lista que ha representado el mismo espacio pero estamos contando
+el plano de acabados. Entonces, aquí ya no nos sirve que por ejemplo como teníamos antes todos los
+nubes estén representados en límites estamos con un mayor nivel de definición para distribuir todos
+los tipos. Entonces, para esto ya en toda la plantilla recurrimos a los filtros. Como veis, cuando
+tenemos muchísimos test en los filtros tienen prioridad tanto sobre las categorías de modelo
+funcionales y los materiales. Un poquillo paréntesis que me gustaría abrir aquí con respecto a los
+filtros es que, como veis, acabamos teniendo muchísimos filtros y es muy importante mantener el
+control y una buena gestión de los filtros porque puede ser que nos ha pasado en algún momento en el
+que hay, por ejemplo, una plantilla que haga poner un filtro y seguir un filtro para controlar que
+resulta que a lo mejor ese filtro ya está creado nosotros estamos aplicando filtros sino que es
+obviamente y al final acá hemos tenido una lista de 300 filtros donde al final es bastante
+complicado trabajar y luego también es importante aplicar los filtros, porque al mejor tú lo quieres
+aplicar en una vista tuya pero allá alguien que está trabajando con este filtro o hay una vista de
+qué es la configuración a lo mejor le hagas facilidad y la visualidad pide que es muy útil entonces
+es importante trabajar con esos filtros temas como la plantilla tenemos unas vistas que son unos
+saltados los que ya no se trabajan los que trabajan en los modelos de arquitectura, pues vinculado
+en la vista el modelo de documentación y la plantilla del modelo de documentación como volvemos a
+ver estamos trabajando en una escala 100 y al igual que anterior 20 las plantillas a la izquierda
+están diferenciadas por escala entonces ¿qué pasa aquí? que tenemos estos para la zona y lo que es
+la tensión y la escala como visto tiene ese ese cazú a la derecha
+
+[0:12:00 - 0:16:00]
+ese cazú a la derecha y esto es porque lo tenemos fuera de la vista o sea, pero fuera de la
+plantilla ¿qué quiere decir esto? que estos parámetros nos vamos a manipular vista a vista, es
+porque nos interesa que en cada vista tengamos una configuración por ejemplo en el caso de asombras
+dependiendo de la flexión de los tipos de sombras tenemos unas sombras ambientales que son una
+especie como de difuminado que crean un poco de ambiente y que no están entendiendo la profundidad
+de los planos si lo usamos las sombras arrojadas en toda la vida que las controlamos en el apartado
+de iluminación aquí ves la aparición ingresadito y esto es porque en el apartado de iluminación sí
+que lo tenemos metido dentro de la plantilla esto es porque tenemos que decidir entre vistas
+aplicamos sombras en los tipos de sombras pero si queremos que todas las sombras que estén aplicadas
+se vean de la misma forma entonces por eso lo mantenemos esto dentro de la plantilla bueno, lo voy a
+decir en el apartado de iluminación nos podemos controlar la flexión de las sombras y bueno, sabemos
+que el que es un modelo que está feo de reverenciado es simplemente convencible pues un día y una
+hora podemos utilizarles de las sombras en este caso no lo hemos hecho pero por un momento interés
+al crear como lo tiene un aspecto específico luego tenemos la triunfación lejana que es lo que nos
+da esta triunfidad en el apartado el lanzado de arriba en el terminal este se ve como de la misma
+forma que el resto del lanzado pero la siguiente se ve como con un degradado eso es porque hemos
+aplicado una triunfidad para el revés de su modelo o sea su modelo 3D entonces entienden la creación
+y las disparajas cayendo los alimentos y entendemos que es lo que es cerca y que es lo que es peor
+entonces aplicando este parante nos podemos crear simplemente porque también añadimos un sonido como
+unos colores con un mando enterrado luego tenemos unas secciones las que como veis no hablan las
+sombras como lo tenemos por el lanzado de las sombras aquí es un sentido que no les ponemos esto por
+que ha sido que a la hora de aplicar las sombras no entienden lo que es interior y este en este caso
+no es los distintos que os gustan el plan que se diferencian entonces que pasa en otro proyecto que
+sí que utilizamos y que sí que queríamos principalmente que en la zona exterior tuviese unas sombras
+y en la zona anterior no utilizamos la técnica de aplicar esta lista como en este caso también
+teníamos las sombras por la de la plantilla simplemente nos las pusimos recordamos lo que teníamos a
+cara de la vista y simplemente lo pusimos en fino entonces con esto quiero decir un poco que antes
+lo que tiene muchísimos recursos y a lo mejor para conseguir algo concreto que nosotros queremos
+simplemente pensando un poco o con la clave entre nuestra década pues podemos conseguir el resultado
+que tenemos y bueno nada simplemente para acabar un poco la importante de las plantillas es por que
+en este caso esta plantilla fue aplicada a guarizalistas simplemente con trabajar bien en una
+plantilla y dejarlo todo todo ordenado y todo bien hecho podemos seleccionar 40 vistas y simplemente
+con un click es una de las que tenemos 40 plantas y ya bien representadas y bueno aquí cualquiera
+podemos ver todas las plantillas que teníamos es verdad que las teníamos agrupados por paquetes y
+por escalas pero al final del proyecto así un comentario no es pues de que al final hemos tenido
+muchas vistas en eso también un poco el objetivo sobre que nada a ver cómo podemos trabajar con esto
+porque al final ya pues tenemos plantillas y nada
+
+[0:16:00 - 0:20:00]
+y nada bueno con esto es todo importante muchas gracias Diego y Carlota yo creo que esta pido enseña
+muy bien y nos habéis presentado muy bien como generar representaciones cláficas en Revit y como
+podemos conseguir este grafismo para salir de la documentación o los dossiers que presentamos a
+nuestros clientes directamente de Revit sin recurrir a alguna post producción en otro programa no sé
+si alguno de vosotros tenéis alguna pregunta yo tengo una pregunta porque últimamente sobre todo en
+la fosa de comunicación final del proyecto tenemos un problemillas que claro ya como el equipo está
+desgregando y ya se ha terminado el trabajar sobre el proyecto y entonces muchas veces sobre el
+equipo de comunicación tenemos que hacer esta post producción de los planos para prensa que entonces
+es un plano super limpio blanco y negro muy elegante que ahora como tenemos la suerte de haber
+podido organizarlo con equipos pero habría manera desde Revit una plantilla de comunicación para
+cada proyecto que se hagan en Revit una vez esté finalizado de poder sacarlo de la misma manera
+digamos para todos los proyectos y así tener unas plantas una sección y un alzado por ejemplo muy
+limpios para web, para redes sociales para toda publicación futura y hacerlo de una manera casi
+automática no sé si podamos es que debemos hacerlo porque es muy pesado que nos alcinitaría tanto la
+amiga porque si tenemos muy claro como queremos ensalda representada o algo es hacer una plantilla
+que funciona muy bien y aplicar en todos los proyectos entonces siempre va a salir como esperamos
+ensalda por supuesto es muy bonito perfecto pues os pasamos perdonadme un momento que yo he tenido
+esta conversación con Gaya creo que hemos tenido este problema fue yo la que le di la idea que
+teníamos que plantearlo creo que nosotros tenemos teniendo en cuenta cómo evolucionar los proyectos
+era martirico, era un proyecto de ejecución teníamos que sacar unas plantas teníamos un montón de
+detalles Gaya quería unas plantas super blanquitas al final acabamos en CAD porque ya estaban muy
+evolucionadas realmente yo le dije que ahora tengo que cambiar muchas cosas y no tengo tiempo
+realmente es digamos para que todos los que trabajan en Bing lo que Gaya quiere y cuando tienes un
+proyecto de ejecución son las plantas digamos que hacemos para el básico de los muros básicos que
+solamente aparezca el muro en negro y poco más y eso hay que trabajarlo mucho porque Revis cuando le
+empiezas a meter información empieza a crear muchas capitas lo digo para no tener que trabajar lo
+tengamos en mente y ya nada más gracias Gaya por sacarlo más una cosa fundamental los humanos lo
+ideal es que tendamos a trabajar todo de la misma manera que todas las cosas se llaman igual siempre
+que todos los proyectos estén gestionados enteramente en la misma manera pues potencia todavía más
+ese control y esa capacidad de trabajar sobre todo todos en todos los proyectos y sacar el
+documentación que nos guste de la misma calidad de todos los series aquí les enviamos los planos
+entonces hola este tema último que has sacado es que es fundamental pero lo que nos es como lo
+hacemos porque yo tengo la sensación de que a ver no que inventemos la pólvora para cada proyecto
+pero que no se aprovecha
+
+[0:20:00 - 0:24:00]
+no se aprovecha realmente el baja ya tenemos unos cuantos proyectos en Revit y me da la sensación de
+que en cada en cada uno pues se va no se si mejorando pero inventando cosas cuando lo que tenemos
+que tener es una especie de es que no se como se llama se llama plantilla o se llama documento no se
+como pero algo que nos sirva a todos y después hay un tema que ahí estabais comentando ahí que
+también me pilla como no controlo estos temas el tema de las escalas también es muy importante el
+tema de la visualización para las escalas que no se que no se si es posible generar esa especie de
+plantilla inicial para poder hacer todos los proyectos no iguales pero si con los mismos o grafismos
+similares independientemente de cada esto tenga también sus pequeñas variaciones porque yo que sé
+porque hay que presentarlo de una manera de otro cliente o lo que sea pero tener una especie de de
+nexo común en el inicio no ahora que ya lo que dice José Ángel perdóname Diego no se si sabéis que
+Revit tiene una serie de escalas o sea 100, 100, 300, 400, 100, 10, 50 no se que tú le puedes dar el
+grosor de línea a cada una de esas escalas pero cuando tú le das la 150 que no existe no sabes si te
+va a coger las líneas de la 100 o las líneas 200 puede ser que en un proyecto te coja las de 150,
+las de 100 y en otro de 200 lo que intento decir es que hay que utilizar intentar utilizar las
+escalas que por defecto vienen en Revit porque si no la visualización es bastante difícil
+controlarla es cierto creo nada Matiego, ya puedes contestar no teniendo en cuenta esto y
+contestando a José Ángel agradezco hacer mucho mejor en cada proyecto se nos nota que estamos más
+seguros de lo que hacemos tomando mejores decisiones somos más eficientes, hablamos menos pero
+bueno, esto nos queda mucho volverante todo el tema de que hemos estado hablando de que cualquier
+persona debería sentirse igual de cómoda trabajando en cualquier proyecto que sería no ideal porque
+todos estén montados y gestionados es un objetivo que tenemos que tener a alcanzar y eso al final
+implica que se atenderá un control de lo que hacemos en la documentación en orden y aprovechar
+muchos los recursos que vayamos en plan estar de cero la vez, eso por supuesto yo Diego tengo tu
+trabajas en Madrid yo trabajo en Madrid, tu trabajas en BIN yo trabajo en BIN y no trabajamos
+iguales o sea que ni siquiera ni siquiera reutilizamos lo que hacemos cada uno pero no sería genial
+sería genial pero no trabajamos iguales y eso lo hemos comentado muchas veces tú a veces utilizas
+alguna cosa que yo te digo pero no no utilizamos iguales no sé si es porque tú haces solo esquematic
+en BIN pero no se trabaja igual es totalmente de acuerdo este tipo de proyecto que hemos contado
+aquí ahora somos conscientes de que quizá no sea la norma del tipo de proyecto o el objetivo que
+tenemos en todo el caso por supuesto que cada proyecto que haga el objetivo, o sea, dependiendo del
+cliente también de lo que espere de nosotros, pues podemos enfocar nuestras puertas en unas puertas
+u otras pero al final todos son proyectos y creo que la base y el germen de todo debería ser
+bastante común pero creo que no sería difícil que no se entendiese no sería nada difícil pero sabes
+que no lo es que no trabajamos igual de todos los proyectos que hago en BIN trabajo igual
+
+[0:24:00 - 0:28:00]
+que hago en BIN trabajo igual y reutilizo lo que hago pero podemos empezar con esta plantilla de
+comunicación y entonces ya serán pasos para tener una unidad por lo menos las puertas en externa y
+luego partir de allí cuando veamos que funciona nos va a encantar y nos animamos cuando sacamos otra
+vez en arquitectura viva perfecto creo que también la idea es que el punto de partida es algo común
+y ya sabemos que normalmente cada proyecto tiene sus características específicas y eso también puede
+permitir perfectamente aunque la base es uno común después se puede encarar proyecto modificar lo
+que necesitamos para este proyecto con los criterios y características específicas yo a ver, Gendry
+en esto estoy un poco un poco como una cosa es lo que necesita cada proyecto y en el desarrollo de
+cada proyecto y aquí creo que todos sabemos hacer un proyecto de ejecución y sabemos que cada
+proyecto tiene su aquel yo que he trabajado muchísimos años en CAD he trabajado independiente como
+sea el proyecto igual mejorando de día a día y hay mucha gente que ha trabajado en distintos
+proyectos y trabajamos iguales en VIN por mucho que tú digas trabajamos igual y estoy hablando de
+Madrid no hablo de Barcelona ni de París estoy hablando en Madrid creo que hay tres equipos
+distintos de VIN y eso es un error porque quizás simplemente nos enfocamos cuando hay que hacer un
+básico se enfoca para un básico y no se piensa más allá quizás en los proyectos que he trabajado
+como iban a tener más recorrido se ha pensado más allá y se ha pensado desde el inicio y nos ha
+pensado a cambiar pero hay otros simplemente voy a entregar el básico hago esto luego vuelvo a
+empezar porque tengo que hacer el de ejecución vuelvo a empezar y eso es un error da igual que eso
+era un esquemático que sea un básico que sea una ejecución el sistema de trabajo debería ser el
+mismo y no me refiero a nomenclatura ni casos especiales que es el proyecto deberíamos tener la
+misma plantilla si yo saco un plano debería ser exactamente igual visualmente al que saca Diego
+Arriba al que saca Marta al que saca José Carlos y ahora mismo no es así ahora mismo cada uno hemos
+cogido nuestro criterio y hemos seguido para adelante lo que mejor nos viene yo te digo yo utilizo
+muchos dinamos que no se utilizan en el estudio que yo me lo he hecho ya partiendo de otra cosa no
+pasa nada pero se automatizan las nomenclatura de planos es totalmente distinto el que utilizas tú
+el que utiliza cada uno cuando no deberías ser así si tuviéramos un sistema de planos sabes que
+Marta y yo generamos ya hace mucho tiempo y cuando estaba aquí Laura para luego un dinamo que
+generaba te generaba todas las vistas como no tienes el mismo sistema de utilización de nomenclatura
+de planos solamente se puede utilizar cuando tiene los planos nombrados así lo que intento decir
+nosotros mismos no utilizamos muchísimos recursos lo que vamos a utilizar simplemente porque no
+trabajamos igual si utilizamos los mismos recursos los mismos de varias distintas soy consciente de
+eso a vos y te doy yo a ti porque y contigo hablo que tú sí que lo de los planos por lo menos lo has
+utilizado pero no con el resto de la gente y eso es una pérdida de tiempo muy muy grande y creo que
+es lo que hay que ser conscientes en el bin es que podíamos utilizar un montón de recursos
+simplemente hablando con nuestros compañeros volviendo al melón que abrigaya de la plantilla de
+comunicación que creo sí sería útil
+
+[0:28:00 - 0:31:07]
+que creo sí sería útil y estaría bien pero no sirve de nada lo que realmente hay que hacer es que el
+cuando se está haciendo un proyecto se identifique cuál es la documentación publicable de ese
+proyecto y se ocupe alguien de generar los documentos que pueden que son sustentibles de publicados
+pasa con las plantas pasa con secciones pasa con una perspectiva o un dibujo a mano pasa con unas
+imágenes cada vez que te piden una documentación para una publicación y esto lo cuenta Gaya seguro
+mejor dices o para una presentación dices oye voy a coger este render que es el que a mí me gusta y
+cuando pasa por socio de turnos este no me gusta vamos a coger mejor este otro render y pasa a otro
+socio dice el que hay que poner es este otro y esto es porque no se genera o no se preocupa de
+generar una documentación para publicar y creo que eso en la línea de lo que dice Gaya es importante
+hacerlo para Revit para la documentación técnica pero es una labor que tenemos que integrar en el
+proceso de trabajo de todos los proyectos me parece muy interesante Diego lo que propones por
+nuestra parte si que podríamos establecer ahora estamos revisando este manual de estilo que tenemos
+y podríamos dedicar una página de este manual de estilo a describir la documentación que necesitamos
+por cada proyecto en línea general para lo que están aquí conectados siempre necesitaremos tres
+renders que desean explicativos del proyecto o imágenes de un reportaje plantas tipo un lanzado tipo
+o dos y una sección más la verdad es que nos va muy bien tenemos una carpeta donde lo recogemos así
+que esto es también cuando tengáis un croque del proyecto un diagrama interesante del proceso esto
+también os lo podéis enviar y entonces los vamos recogiendo pero es un poco como en la uni cuando
+hagas la presentación final como no vais a enseñarlo todo por ejemplo no siempre la sección
+transversa nos interesa o hay otros detalles que son más interesantes pero sí que podemos preparar
+un pequeño protocolo en este principio lo que necesitamos es interesante saber que vosotros definéis
+estas representaciones con los ejemplos y nosotros intentamos incorporarlo en la parte que toca a
+Revit los renders por ejemplo habitualmente no saben de Revit pero los típicos planos etcétera pues
+lo vamos a intentar incorporar perfecto muy bien si queréis un comentario más si no damos para
+finalizar esta sección de visión y creo que es muy interesante todo muchas gracias gracias a todos
+gracias a vosotros
+

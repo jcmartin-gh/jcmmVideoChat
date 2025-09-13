@@ -1,0 +1,236 @@
+https://youtu.be/ghCI19r6BiU?si=ckPs9R26_P0wZQ0m
+Título: 4º L35 Pills - Base de datos de modelos BIM y su explotación
+Transcripción del Video:
+[0:00:00 - 0:04:00]
+Muy buenas días a todos. Hoy también tenemos un Apildo Rabin y el tema de Apildo Rabin hoy es base
+de datos de los modelos PIM, su uso dentro de los modelos y su explotación por parte nuestra y
+también por parte de nuestros clientes. ¿Solo funciona? Vamos a ver. Entonces, como sabemos y
+también os comentamos anteriormente, los modelos PIM se deben entender como una grande base de
+datos, que por un lado están los datos geométricos, que son los elementos 3D que componen el modelo
+y por otro lado están la información, que son los datos no geométricos, que son como mínimo igual de
+importante o incluso para los clientes algunas veces también más importante todavía. Para esto hemos
+preparado hoy y queremos hablar hoy de los datos no geométricos y para esto hemos preparado tres
+ejemplos. Uno de los primeros ejemplos es nuestro cliente, Aida Soms y su gestión de la superficie
+útiles y construidas. Esto a raíz del ejemplo del proyecto de Corez en Alcalá y Nárez, también
+podríamos utilizar perfectamente también el proyecto de Neo que está a punto ahora de terminar,
+también para Aida Soms. Como veis, es el proyecto, una parcela con un bloque pequeño y un bloque
+grande que termina escalonándose a una torre. Unos imágenes y ahora que Aida Soms como cliente
+tienen un alto desarrollo de BIM, de archivos, de plantillas, etc. y nos proporciona este material a
+nosotros. Dentro de la plantilla que nos proporcionan, ya están preconfigurados en caso de Aida Soms
+los 12 parámetros que se usan para la clasificación de las habitaciones y las áreas. Y nosotros
+debemos introducir cada uno de estos datos, entonces como Diego en la última píldora os comento al
+ejemplo de Arecaón, esto es una tarea muy laborosa, creando cada uno de las habitaciones introducir
+12 datos en cada uno. En caso de acobes, aproximadamente son 2.500 habitaciones. Entonces, ¿qué
+hacemos nosotros? Nosotros creamos nuestro propio parámetro que es un código único. Este código
+introducimos en las habitaciones y las áreas, habitaciones por superficie útil y áreas por la
+superficie construida. Este dato o este código tenemos en una tabla de Excel y ahí rellenamos en el
+Excel que es mucho más cómodo los 12 parámetros que nos requiere a Aida Soms. Una vez terminado este
+trabajo, pues a través de un daño, lo volcramos al modelo de, o a los modelos de BIM, de Reddit.
+Dentro también de estos modelos están ya por parte de Aida Soms preparados dos tardas. Uno es que se
+llama BIM Groups, que es para las habitaciones y la superficie útil. Y otro es para las áreas que
+son las superficies construidas. Hacemos primero nosotros una comprobación que no queda ninguna
+celda, ningún campo libre, que está todo los datos reinados. Probamos también que todos los datos
+son correctos. Y una vez esto, lo exportamos a dos archivos TXT y lo incluimos también a una tabla
+Excel que nos proporciona también el cliente. En la hoja de BIM Groups, pues incluimos la
+información de las habitaciones. Y en la otra hoja, la de BIM áreas, incluimos las áreas como
+superficie construidas. Qué explotación ahora Aida Soms hace?
+
+[0:04:00 - 0:08:00]
+Qué explotación ahora Aida Soms hace? El primero que hace es comprobar la correcta introducción por
+parte de nuestra de los datos a través de un programa que se llama Solivri, que tiene un programado
+y comprobar que todos los datos están completos y correctos. Una vez esto, Aida Soms pasa estos
+resumidos de los superficies construidos a otra tabla Excel interna donde hay ratios. Entonces
+tienen desde la primera entrega nuestra tiene una estimación de los costes de la promoción y
+controla los costes. Esto se repite en cada uno de las entregas. Pero Aida Soms hace otro uso más de
+esta tabla que proporciamos nosotros, que la origen es el modelo BIM. Ellos tienen un programa
+interno que se llama promoción y esta programa interna de promoción gestiona todos los procesos de
+la venta de los pisos. Empezando de preparar toda la documentación para vender, después se regana
+directamente de la aplicación de promoción los contratos compraventa y además también después las
+escrituras. Pero insiste un poco que la origen de la información está en los modelos y que nosotros
+complementamos los datos requeridos por parte de Aida Soms. Esto es más o menos el tema de Aida
+Soms. El segundo proyecto que queremos presentar es el proyecto del schematic design del clubhouse
+en Shikeside City, en Cairo, en Ixicto, Parasote. Como veis, este proyecto consiste en un clubhouse,
+no sé si se ve aquí mi cursor, que es el clubhouse. Después, toda la parte del landscape, lo decimos
+de la organización de la parcela, que son las pistas de deportivos, las piscinas y aquí en el sur,
+una zona de una mezquita. También en este proyecto lo hicimos mucho hincapié y desarrollamos mucho
+la presentación de las pistas y las pistas que después colocamos en los planos. Esto en el año que
+viene vamos a hacer una píldora especial sobre cómo hemos desarrollado esta presentación y grafismo
+dentro de este proyecto, como lo hemos conseguido. Pasamos otros ejemplos del grafismo y pasamos al
+primer tema. La misión en este proyecto era hacer la arquitectura de los edificios, hacer el
+landscape, al nivel del schematic design y también el interiorismo. Este interiorismo hicimos juntos
+con nuestro equipo de interiorismos, con María, con Ángeles y Clara, y dentro de Revit, hemos creado
+lotes o grupos de planos de los diferentes aspectos de interiorismos. Aquí tenemos un ejemplo, el
+ejemplo del interiorismo del mobiliario, también os enseño después otro ejemplo, y el objetivo era
+tener a un lado. La planta etiquetada cada uno de los móviles con una etiqueta y esta etiqueta
+después corresponde a tarlas de planificación con toda la información necesaria para el cliente. Y
+al final la última columna como veis hemos incorporado siempre una imagen de referencia que es otro
+dato y se puede incorporar. Y os quiero explicar cómo lo hicimos, cómo se hace esto. Tenemos por un
+lado la familia, la familia de, en este caso, de un sillón. Esta familia tiene varios datos, por
+una, la primera fila arriba veis directamente el dato de la imagen, pero también lleva directamente
+el código en inglés eséntrico y en español es el código de montaje que corresponde a la partida
+dentro del presupuesto,
+
+[0:08:00 - 0:12:00]
+pero también lleva directamente el código en inglés eséntrico y en español es el código de montaje
+que corresponde a la partida dentro del presupuesto, o en este caso de especificaciones en inglés,
+que también lleva automáticamente la descripción corta de la propia partida. Y nosotros creamos
+otros tres propios parámetros para incluir los datos de un código que usamos, también después para
+relacionar, vamos para crear estas tablas para identificar claramente el objeto. Y una localización
+para filmar, y por cada zona podemos presentar las tablas como queremos y con la información que
+corresponde a este plano y una pequeña descripción. Si entramos ahora en la familia que se hace es
+dentro de la familia incluir aquí en estos tres puntos que salen, pues la ruta donde tenemos
+guardado el imagen de referencia. Una vez incluido el imagen de referencia dentro de la familia,
+aquí vemos a la izquierda el imagen. Una vez incluido el imagen en la familia, pues esto se lleva
+automáticamente a Revit y lo podemos visualizar en la tabla de planificación. Voy a hacer un pequeño
+paréntesis porque sale aquí en el título mobiliario 2.5D. Importante de este principio necesitamos
+saber cómo queremos utilizar y qué es el objetivo del uso de nuestros elementos 3D, nuestras
+familias y los objetos que colocamos en nuestro proyecto. Si queremos hacer una visualización con
+una ferimetría perfecta, las familias 2.5D no sirven. Pero si el objetivo es el caso de Solic, el
+schematic design de Clubhouse, nosotros tenemos el objetivo colocar bien los objetos identificados
+bien el planeta y computarlos, medirlos para después pasar las mediciones al presupuesto. Entonces,
+en este caso nos sirven estas familias 2.5D y como podéis imaginar, el peso de estas familias es
+mucho más ligero. Entonces, una familia 2.5D compone por un lado la ocupación del propio objeto en
+el espacio que es normalmente una extorsión de superímetro, como veis aquí en este imagen. Después
+una representación detallada en dos de plantas y si queremos añadimos también una alfada frontal y
+uno lateral. Estos tipos de familias somos 2.5D y claramente son más ligeras que las familias que
+tienen un desarrollo geométrico mucho más avanzado. Insisto que siempre tenemos que tener claro que
+es el objetivo cómo queremos usar las familias, el momento que queremos visualizarlos en 3D, en
+rendas, etcétera, estas familias no valen. Vale, entonces, conseguimos este objetivo que tenemos
+aquí el plano, como hemos comentado, con la planta, con las etiquetas, y las tablas, eso es una
+tabla de planificación, donde tenemos el propio código dentro del plano, el código de montaje que
+corresponda a la partida de nuestro presupuesto, una pequeña descripción y la imagen. Y todo esto
+lleva siempre el mismo código para tener coherencia en cada uno de los campos de información.
+Insisto, otra vez, en el A076 que corresponde y se repite en cada uno de estos campos.
+
+[0:12:00 - 0:16:00]
+y se repite en cada uno de estos campos. Para terminar este tema, otro ejemplo de este tipo de
+heteronismo era la zona de restauración, por ejemplo, que tenemos una planta acotada, después una
+planta donde etiquetamos los acabados con sus tablas y liendas de acabados, y también la zona de
+sanitarios, donde otra vez usamos la misma herramienta de las imágenes referentes en la tabla de
+planificación para los sanitarios y los accesorios de la zona de aceos. Lo mismo con un plano de
+textures, representando los acabados en liendas, y las tablas de planificación identificando y hacer
+referencia a las tipologías de ventilación que hemos puesto y los elementos de protección contra
+incendios. Me gustaría pasar al segundo tema del club pause, que era que uno de los otros objetivos
+era hacer mediciones y, por supuesto, o mejor, especificaciones en inglés, la palabra specs for
+specification, que no es un presupuesto en el sentido español muy detallado, va más a gran rango.
+Para empezar el proyecto, nos sentamos directamente en este caso con José María Sanz, con Xema, que
+era que va a medir el proyecto, y decidimos hacer el mismo el siguiente flujo de trabajo. Xema
+empezó a hacer la estructura del presupuesto dentro de presto, que es dividido por capítulos, de las
+partidas y la disculpción corta. Una vez tenía un borrador, pues él exporta esto a través de presto
+a un catálogo de revés. Cuando se exporta este catálogo de revés, tengo que decidir qué de los dos
+campos o de los dos parámetros preparados por defecto en revés uso. ¿Puedo usar el código montaje o
+la nota clara? Nosotros decidimos utilizar el código montaje. Y, en esta exportación, se exporta un
+archivo TXT y, como veis, en la columna izquierda está el código de la partida y en la columna
+derecha la discripción corta y, además, la unidad en qué se va a medir, metros lineales, metros
+cuadrados, por unidades, etcétera, etcétera. Este archivo TXT, ahora, tenemos que vincular en
+nuestro modelo a través del código montaje o, como trabajamos, como el proyecto está en inglés,
+preferemos nosotros trabajar directamente con el interfaz de revés en inglés. Entonces, en inglés es
+assembly code. Una vez vinculado este TXT a todos los modelos que queremos midir, esto es la
+vinculación de este archivo TXT, pues seleccionamos un elemento. En este caso, es un elemento de
+acabar el revistimiento de números. Lleva el código y el código de montaje automáticamente también
+en forma gris. No se puede trocar si lleva también la discripción corta de este precio. Y esto nos
+garantiza también una transinibilidad entre los elementos dentro de revés con las partidas del
+presupuesto. Y esto hace de la siguiente forma. Aquí, si clicamos aquí a la derecha, pues nos parece
+esta ventana donde nosotros elegimos aquí partida corresponde el elemento. En este caso, es el
+404011 que será un acabado de estupor de lín en color de terraplata.
+
+[0:16:00 - 0:20:00]
+en color de terraplata. Una vez terminado este trabajo, pues lo comprobamos primero creando tablas
+de planificación dentro de revés con todos los parámetros que nos interesa comprobarlo y después se
+exporta esta información a través de un plugin que viene del desarrollador de presto, que se llama
+Costit. A través de Costit se exporta esto desde revés, las mediciones hacia presto. Y en presto
+volvemos a la coherencia del código, la discripción corta con la unidad de medida y también ya
+tenemos la discripción larga de toda la partida. Pues aquí en este proyecto sujo como siempre que
+pasa en nuestros proyectos. En principio el cliente nos dice que las mediciones y las
+especificaciones de los aspectos hacemos para el proyecto completo y un par de semanas antes de la
+entrega pues el cliente cambia la opinión y quiere que separamos las mediciones del clubhouse de la
+miscita muy posiblemente es un hipotético por contratar esto en obras diferentes con construcciones
+diferentes o construyendo en fases diferentes. ¿Por qué hacemos? Si hubiésemos sabido este principio
+muy posiblemente hubiésemos creado un propio modelo solo para la miscita pero como dos semanas antes
+de la entrega ya no es viable esto aprovechamos otra posibilidad que tiene red junto con presto y es
+crear es la casualidad en este caso el proyecto aprovechando que no hay conexión entre clubhouse y
+miscita creando una área grande que recoge todos los elementos del clubhouse y otra área grande que
+recoge todos los elementos dentro dentro de la miscita si seleccionamos ahora la miscita pues en el
+propio nombre de la área ponemos en el caso en inglés mosca que es la miscita y aprovechamos
+aprovechamos que cuando exportamos otras con coste esta información activamos dentro de presto la
+columna espacios y esto permite que directamente las mediciones están separados por los espacios o
+por las áreas que hemos aplicado en este caso clubhouse y la mosca esto nos ha dado bastante
+fácilmente separar las mediciones en dos mediciones para un lado por el clubhouse y por otro lado
+por la mosca lo que quiero decir es siempre cuando suben estos momentos pocos tensos hay que buscar
+una solución bastante accesible para hacerlo y aprovechar otra vez las capacidades de bil con resto
+en este caso de los datos y filtrar los datos pues el ultimo proyecto algo mas leve el tema el
+proyecto es mas grande por supuesto que pero el tema de sacar mediciones directamente a tablas de
+excel el proyecto es el proyecto de también un schematic design petatipo en telariff israel y
+nuestra misión esto trabajamos juntos con nuestros arquitectos locales y a xar para nuestra misión
+era detallar y hacer todas las fachadas de todo el completo interro del molde, del botel de la zona
+de ocio de los tres torres y también hacer el landscape la urbanización la parte exterior que
+conecta con la afera y la parte interior de todo este complejo
+
+[0:20:00 - 0:24:00]
+de todo este complejo y la misión era por parte del cliente requerido sacar las mediciones de la
+fachada y también el landscape hacer tablas de excel entregar estos tablas de excel al cliente junto
+con el doce necesitamos también coherencia entre las tablas de excel y el doce eso es el proyecto,
+veis aquí algunos rendes del proyecto un render interior de las zonas interiores en el molde vamos
+vamos a centrarnos en el tema de las fachadas, en este ejemplo es la fachada de una de los torres
+seleccionamos el elemento y otra vez creamos nuestros propios parámetros, uno de los parámetros
+hemos llamado eléctricos en inglés es bill of quantity o take of quantity significa exportación de
+las cantidades y por otro lado tenemos eléctricos la localización de los elementos dentro de la
+fachada esto era importante para poder generar tablas de planificación y exportarle a eso según su
+localización en el proyecto y según el uso que tiene la unidad o el edificio pues incluimos esta
+información creamos estas tablas esta es una tabla mas crinérica pero después nos separamos y
+filtramos por cada uno de las localizaciones que tenemos por un lado en la categoría la localización
+el tipo de elemento con su código la medición y esto exportamos a una tabla de excel y entregamos al
+cliente y insistimos en la coherencia de estos del código que es corriente con el dossier porque
+entregamos los excel puntos con el dossier aquí para terminar hoy la píldora pues es un ejemplo
+tengo un par de ejemplos que es por ejemplo una fachada de del molde y se fijamos en el código ff08
+que es el gfr panel pues esta información es la misma que tiene el código dentro del modelo y es la
+trascidimilad y la coherencia garantizada lo mismo os enseño para la torre en este caso la torre de
+los cristales curvados en las jadines que teníamos el ff04 el ff04 está también aquí en el modelo
+que es este elemento ondulado y para terminar también estos paneles que son los paneles ufff f como?
+no voy a ver en el modelo que es el fs18 que eran también paneles de gfrc para terminar con esto
+hemos visto ahora la importancia de los datos para requerirlo en el caso del cliente por temas
+superficiales construidas y su explicación que hacen los clientes hemos visto el tema de las
+familias que incluimos como datos las imágenes de referencias la introducción de los curios de
+montajes y sus discusiones cortas de la medición y por supuesto y también el take of quantity o el
+POC que hicimos nosotros en petatigma para terminar en recomendaciones
+
+[0:24:00 - 0:28:00]
+en recomendaciones realmente el uso de los datos no realmente es casi infinito las posibilidades
+pero siempre debemos sólo introducir los datos requeridos por el cliente o por nosotros y los datos
+necesarios pues muchas gracias y si tenéis algunas preguntas o comentarios que queréis hacer voy a
+dejar de compartir yo sé que es un poco la parte menos atractiva o como también una vez un amigo mío
+en una ponencia diferente la parte un poco menos sexy pero para decir la introducción de los datos
+no geométricos y la información es igual de importante o incluso es más importante que la propia
+geometría si, Henry yo sólo puedo compartir todo lo que has dicho que me parece estupendo y yo creo
+que ha reflejado muy bien el trabajo que hemos hecho en esos otros proyectos todo el equipo, están
+ahí Diego y Carlota y sabéis lo que ha costado todo esto pero también un poco que sirva para quitar
+esa imagen de que Revit es un Sketchableisto y que encima cuesta un montón de toda la información
+modelarla que ya es en una fase muy avanzada de ejecución porque tienes que tener todo pensado o sea
+no, estamos viendo que usando y sobre todo las familias 2.5D ayuda muchísimo porque con un sipe
+círculo tú ya decides cómo se refaja en el plano y cuánto contenido de información detrás hay para
+sacar la medición que es lo importante en estas fases previas y unas descripciones para hacer una
+licitación por ejemplo o un primer contacto con el proyecto en desarrollo entonces no hay que tener
+todo pensado y todo desarrollado un nivel de ejecución para poder empezar a hacer estos modelos en
+3D y ayudan en muchísimas cosas ya no sólo contenido base datos que es fundamental también la
+coherencia de toda la información que se emite porque sabes que está coordinada, estará bien o
+estará mal pero está coordinada y yo creo que eso es un punto importante a tener en cuenta a la hora
+de avanzar en un proyecto y pasar de las primeras fases no esperar hasta tener un proyecto de
+ejecución para empezar a volcar esa información en un modelo o que lo pide el cliente muchas veces
+nos interesa tenerlo antes y no compararlo por ejemplo con SketchUp que sí que es una herramienta
+muy útil pero también tenemos que entender las limitaciones que tiene o sea no es un SketchUp listo
+que es un poco la idea que tenemos a priori no se opináis vosotros que no controláis más el tema si
+tú lo compras claro con SketchUp SketchUp al menos desde mi punto de vista no es un programa BIM
+entonces es un programa moderado 3D pero le falta el I de información que estemos hoy hablando
+entonces yo creo que son dos mundos diferentes con diferentes objetivos y creo decir el más completo
+es claramente el BIM porque nos permite modelar en 3D y la inclusión de datos de información que
+después pudimos usar y explotar completamente de acuerdo gente gracias y para también quiero
+mencionar algo que mencionaste el equipo en el caso de AERASOMS
+
+[0:28:00 - 0:29:03]
+en el caso de AERASOMS quiero dar también la gracia del equipo de AERASOMS que ha desarrollado los
+dos proyectos de Neo y Corez y ha hecho este trabajo de incluir estos datos que vimos en el primer
+género gracias a ti Hendrik perdón algo, si no nada que gracias a ti que también has estado ayudando
+en los dos proyectos de la metodología BIM y las codificaciones vale gracias algo tenéis alguna
+pregunta más o si no o comentario si no podremos cerrar la sesión para hoy vale pues os deseo todos
+un buen fin de semana muchas gracias gracias Hendrik gracias Hendrik gracias
+
