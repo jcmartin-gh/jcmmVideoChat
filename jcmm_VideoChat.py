@@ -237,7 +237,7 @@ with st.sidebar:
             with col:
                 thumb = youtube_thumb(item.get("url", ""))
                 if thumb:
-                    st.image(thumb, use_container_width=True)
+                    st.image(thumb, width='content')
                 st.caption(item["title"])
                 if st.button("Load this video", key=f"use_{i}"):
                     load_video_from_catalog(item)
