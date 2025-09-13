@@ -4,10 +4,10 @@ langchain-community>=0.3.3
 langchain_core>=0.3.10
 langchain_openai>=0.2.2
 # python-dotenv
-youtube-transcript-api>=0.6.2
+# youtube-transcript-api>=0.6.2
 # youtube-transcript-api>=0.6.2,<1.0.0
 # youtube-transcript-api>=1.2.2
-# youtube-transcript-api
+youtube-transcript-api==1.2.2
 pydantic>=2.9.2
 openai>=1.52.0
 certifi>=2023.7.22  # Para asegurar la configuración SSL adecuada
