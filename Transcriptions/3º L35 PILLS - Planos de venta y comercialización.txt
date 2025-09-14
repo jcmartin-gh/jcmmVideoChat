@@ -1,4 +1,260 @@
 https://youtu.be/CkcuOtJDobU?si=liHPHm50Y_r6-08o
 Título: 3º L35 PILLS - Planos de venta y comercialización
 Transcripción del Video:
-venga vale buenos días a todos hoy tenemos  otra píldora bim en las píldoras bim que   tenemos preparado para este año y el tema de la  píldora bim hoy es dedicando a los planos de venta   en viviendas y en los planos comerciales para  centros comerciales esta píldora va a impartir   por un lado Ángel Reylen desde Barcelona y  Diego Fierro aquí desde Madrid si quieres   Yo entiendo que empiezas tú primero. sí sí  habíamos quedado en esto sí qué tal Buenos   días a todos chicos a ver yo voy a comentar  un poco los los planos de comercialización   vale que hacemos en centros comerciales porque  lo que nos dedicamos más en en Barcelona y en   París vale Y me voy a centrar un poco más en las  claves que tenemos que tener en cuenta en revit   para que en general los planos puedan salir  bien en temas de visualización un poco Vale   entonces voy a pasar y vamos a empezar son tres  diapositivas porque tenemos poco tiempo y he he   dividido como en tres partes vale la primera es  es el modelo y aquí tenemos dos temas importantes   que tenemos que tener en cuenta a la hora de de  modelar primero eh el proyecto vale el modelo o   lo o lo que vayamos construyendo en revit debería  tener cierto carácter constructivo evidentemente   asociado a la fase de proyecto donde estemos vale  si estamos haciendo un concurso Pues evidentemente   será muy simple vale Pero a lo que me quiero  referir con esto es a que no hayan elementos   volando que no hayan elementos solapados unos con  otros vale recordar que todo lo que hagáis en el   modelo después se representa en los planos vale  Y por el otro la la otra parte importante es que   el proyecto vale tiene que construirse en revit  tal cual como no los estamos imaginando a qué   me refiero con esto y es que cuando modelamos  un sketchup que Real no es un sketchup vale   muchas veces necesitamos levantar un muro porque  tenemos que representar algo y lo levantamos a   Ojo donde sea en cualquier sitio da igual porque  al final es una representación en TR lo que vamos   a ver pero en rev esto no nos vale recordar que  todo lo que modemos en el 3D después se ve igual   en el plano si yo quiero una fachada por ejemplo  esta fachada a 50 cm del Pilar se ve mi Mouse Ay   me ha ido se ve mi Mouse en la pantalla Sí sí vale  vale si esta fachada yo la quiero 50 cm del Pilar   pues es necesario poner esa fachada a 50 cm en el  pilar vale esto en cualquier fase de proyecto Vale   y mantener el mismo criterio un poco en todo el el  el modelo vale Voy a pasar al siguiente punto y el   siguiente punto sería configurar los materiales  que es una de las cosas más importantes vale eh   normalmente los que trabajan en 3D configuran  siempre los materiales por qué porque están   habituados en sketchup a poner una textura para  la representación del modelo Pero qué pasa que en   rev necesitamos tener la representación realista  vale Pero además necesitamos una representación   en sombreado que parte de la realista y  necesitamos una representación en proyección   y en corte para qué Para cuando el modelo lo lo  cortemos o en cualquier sentido lo veamos en en   alzado vale los materiales ya nos estén dando la  representación que nosotros necesitamos vale esto   es una cosa super importante porque si hacemos  Esto vale Tendremos una representación del plano   entre un 60 y un 70 por de serie o sea cuando  hagas una sección ya te va a salir bien vale Y   por último tendríamos la creación realmente de  planos vale lo primero es que el plano de revit   Cuando uno hace una sección o un plano en planta  el plano sale mudo el plano no dice nada el plano   lo que va a hacer revit lo que te va a hacer es  cortar un modelo y te va a poner las cosas como   las has modelado vale pero a esos planos después  ha que darle una serie de intenciones vale por   ejemplo en este caso es un plano de falos techo de  un proyecto esto es chirol de un centro comercial   que está entregado Vale y aquí se aplicaron  filtros para definir los tipos de falso techos   que teníamos se aplicaron etiquetas a los falso  techos se aplicaron cotas se aplicaron niveles se   explicó toda la información que era necesaria vale  para que ese plano comunicara lo que necesitábamos   comunicar el plano Solo tal cual como sale del  modelo cuando cortamos ese no nos vale porque   es un plano mudo Vale entonces siempre tenemos  que tener en cuenta Eso aparte de esto siempre   deberíamos aplicarle plantilla de Vista a los  planos vale porque en las plantillas de vista hay   una serie de configuraciones que ya están dadas  son los grosores de línea que debemos seguir Los   criterios que tenemos en l35 los mismos que se  hacían en Cat vale los filtros también Vienen   aplicados en esa en en en las en las plantillas de  vista las modificaciones gráficas que le vayamos   haciendo al modelo para poder conseguir que se vea  como queremos Vale entonces estas tres claves yo   creo que son las más importantes para que los  modelos se nos empie para que los planos se   nos empiecen a ver bien a partir de los modelos  vale Yo aquí he terminado y dejo Diego porque   tenemos muy poquito tiempo y es necesario que  Diego tenga más tiempo que yo Después al final   vemos preguntas vale dejo de compartir Diego  venga Muy bien gracias Ángel Buenos días voy a compartir la planta Ahora sí Ahora ya sí vale Vale pues yo os voy a contar eh Cómo  llegamos a hacer los planos de venta en   un proyecto Málaga para el cliente a elca  en el que tenemos varias tipologías de de   usos y hemos basado el este trabajo en una  correcta gestión del modelo de superficies entonces empezamos por el cliente nos facilitó  una lista de tipos de espacios según el uso eh   Para poder clasificarnos en el en el modelo  Entonces nosotros cuando tenemos el módulo de   superficies a cada una de las habitaciones que  vamos creando en revit le tenemos que asociar un   parámetro que viene en este desplegable  que son todos los que venían descritos   en la parte anterior en el momento en el que  le añadimos uno de esos parámetros que serían   los que tenemos en esta columna automáticamente  se le atribuyen todos estos datos a esas a esas   habitaciones lo mismo pasaría con las áreas que  las vamos a utilizar para sacar las superficies   construidas aquí elegiríamos el tipo de área  del que estamos hablando y automáticamente se   le atribuiría todos estos atributos en este caso  en las áreas incluso unos coeficientes e usados   para calcular las las superficies de venta o las  o la edificabilidad Bueno una vez que tenemos eh   identificado el uso de todas las habitaciones y de  todas las áreas Tenemos que pasar a Ubicar dónde   están en el proyecto entonces también tenemos esta  serie de parámetros que nos indican en este caso   pues la ubicación de nuestra vivienda dentro  del edificio según el portal escalera planta   o la puerta en esa planta tanto en las en las  superficies construidas como en cada una de las   habitaciones que nos van a indicar las superficies  útiles que va a contener cada vivienda bueno el   proceso para para ir eh apuntando tod todas estas  datos de ubicación pasaría por seleccionar una a   una cada una de las áreas o de las habitaciones e  ir añadiéndole Pues en qué planta está la puerta   el portal etcétera entonces esto es una labor  sumamente tediosa para evitar tener que ir   haciendo el mismo trabajo una y otra vez en este  caso teníamos 344 viviendas sea imaginaos lo que   es esto optamos por hacer una tabla de Excel en  la que los datos que están en azul los añadimos   nosotros que son la identificación de la vivienda  según el criterio que hemos visto ahora de   parámetros el número de habitaciones que tiene el  modelo de vivienda según Los criterios del cliente   y el uso que tiene cada uno de esos espacios  bueno nosotros es o sea concatenando todos estos   parámetros conseguimos generar un código único  por cada una de las habitaciones del proyecto   que es la identificación de la vivienda en la  que estamos y el uso que tiene y gracias a este   parámetro conseguimos relacionar esta tabla de  Excel con revit rellenando en las habitaciones   de redit solamente este parámetro y a través  de damo amos todo el resto de cosas como hemos   visto aquí entonces todos estos datos están  insertados a través de Dynamo una vez que ya   tenemos todo todas las habitaciones y las áreas  identificadas convenientemente ya podemos pasar   a hacer los planes de venta por vivienda en este  caso todos los parámetros que hemos incluido nos   sirven tanto para las anotaciones que nos  van a indicar el uso y la superficie que   tiene cada uno de los espacios como hacer una  tabla de planificación por vivienda que nos va   a ir sumando en tiempo real siempre actualizado  las superficies destinadas a cada una de ellas   tanto las zonas exteriores como las exteriores  eh o sea las interiores como las exteriores o la   superficie construida eh También podemos indicar  en en cada uno de estos planos mediante el esquema   monitor en la ubicación que tiene cada una  de las viviendas dentro de la planta porque   la estrategia que seguimos es la de  trabajar con una única planta de de   todo el proyecto trabajamos siempre con  todas las viviendas de una planta y luego   vamos haciendo tantas tantas vistas como  unidades de vivienda tenemos en este en esta planta este es como se vería directamente el plano  en revit la la visualización o el grafismo que   estamos observando aquí eh como ha comentado Ángel  se basa en una plantilla de vista en la que bueno   con unos cambios en una única plantilla podemos  hacer grandes cambios en todas las vistas o en   todos los planos del proyecto y esto Una vez  que lo pasamos a PDF este sería el resultado   que obtendríamos para que se vea que la calidad  gráfica que podemos sacar de revit Más allá de que   el cliente pueda tener unas eh directrices u otras  es es correcta en este edificio eh aparte de tener   eh viviendas también teníamos Eh pues otros usos  como pueden ser oficinas que Aquí vemos que está   resuelto un un plano de venta de una oficina de  la misma manera que teníamos el de viviendas con   sus tablas de planificación para las superficies  con su esquema monitor para ubicarla dentro del   proyecto y sus eh anotaciones relacionadas con  los parámetros que tendría eh Esa esta oficina lo   mismo pasaría en este caso con local comercial  y bueno Más allá de todos los de lo que es la   documentación gráfica que estamos acostumbrados  a ver todos esos datos que previamente hemos   introducido los podemos exportar con unas tablas  que ya vienen definidas en este caso por nuestro   cliente para conseguir sacar un listado Útil para  ellos y un y un resumen de todo lo que implica el   proyecto si me dejáis un momento os enseño un  vídeo de lo que podemos hacer con con estos   datos Entonces esta es la tabla que habíamos  visto al principio en la que el cliente puo   quitar tenemos que ubicar el el proyecto donde  están esas esos documentos exportados vemos que   todo está vacío vale es un documento todavía  por rellenar y siguiendo ahora sus propias instrucciones si nos vamos a la página  de inicio del del Excel ya ya nos está   avisando aquí en las instrucciones de  que esto tarda un poquito le damos ahí   al botón de actualizar todo y ahora  os podría dejar todo el vídeo puesto   durante un buen rato porque dura como 10  minutos llega un momento en el que termina Y si vemos pues ya tenemos un listado de todas  las habitaciones y todas las áreas con las que   habíamos estado trabajando previamente y en cada  una de las pestañas Pues nos va a a decir pues   por ejemplo aquí estamos viendo por unidad  vivienda todas las áreas o habitaciones que   están relacionadas con ella antes veíamos  todo el estado eh desglosado de ellas aquí   tenemos las superficies por usos y plantas e las  zonas descubiertas del proyecto como pueden ser   terrazos u otros usos la edificabilidad  bueno y por cada uso pues realmente todo   aquello que pueda sernos necesario desde el  punto de vista de codificación superficies El   aquí tenemos por ejemplo todos los trasteros  que también estaban incluidos en el proyecto incluso las plazas de aparcamiento al final es que si tuviéramos que  hacer esto sin contar con con las herramientas   que nos proporciona redis sería algo como  ya conocemos otros proyectos muy complejo   de gestionar y y ese es el documento final  además que nos pide nuestro cliente si si si   realmente cuando le damos a ejecutar  la orden aquí todo sale correcto nos   podemos dar por satisfechos en cuanto a que  hemos hecho una buena gestión de toda las superficies ya está aquí si  tenéis alguna duda acerca   de este proceso queréis mencionar lo que queráis alguna duda o pregunta a Ángel  a Diego sobre los procesos y   las posibilidades que tenemos en que nos proporciona todo el mundo lo tiene  clarísimo ha sido buenísima hasta lle las dudas surgen cuando pones a trabajar  as que ahí que te lán preguntas Recuerdo cuando   cuando hicimos este proyecto que era continuamente  hablando entre nosotros con el cliente solicitando   información sea parece muy sencillo que lo  cuentas pero lleva un periodo de aprendizaje   de adapta Per la verdad es que al final una  ve que lo tienes interiorizado es sencillo de comprender otra cosa que ahora mismo por  eemplo y otros están ahora mismo entregando   otro proyecto de acción aquí en Madrid que  son ya vamos en fase de ya está terminado   y hablamos de 455 viviendas correcto Sí y  el cliente pide varios planos de cada unao   de las viviendas y la importancia que  quiero subrayar es el tema del uso de   la plantilla de vista bien configurado porque  cualquier cambio sobre esta plantilla de vista   se aplica a 454 otras viviendas entonces la  plantilla de vista es una herramienta para hacer   cambios masivos sobre el grafismo que vamos que  queremos que salga igual en todos estos tipos de planos Sí bueno Habla habla me he perdido la de  Diego porque me han llamado O sea que lo siento   Diego pero una una cosa que quiero decir sobre lo  que ha dicho gendri Ahora la plantilla de vista   Lo importante es saber a la escala que van a  salir los planos o sea porque no es lo mismo   una plantilla de vista para unos planos que  salgan a 1.00 que para unos planos que salgan   a 11 y luego hay que tener en cuenta que revit  entiende que una serie de escalas él tiene por   defecto una serie de escalas que aunque nosotros  pongamos la escala 150 revis no entiende que el   grosor de las plumillas vamos a llamarle resor de  plumillas sea 150 sino que él hace pa lo que le   da la gana o se acerca 200 se acerca 100 lo que  intento decir es que cuanto mejor utilicemos las   plantillas con las escalas que viene revit mejor  nos saldrá el grafismo sin tener que utilizar un   montón de filtros ni un montón de cosas y y creo  que es una de las cosas más importantes que hay de   revit porque Bueno creo que esta conversación La  tuve un día con Ángel sí lo hemos hablado varias   veces la tuve ya con Ángel y creo que que que  en el fondo es eso o sea intentar utilizar no   utilizar la escala 150 250 creo la de 300 no sé si  la tiene pero tiene o sea por curiosidad vuestra   he creo no creo que creo que no tiene o sea y sale  bastante o sea yo lo he probado y y unas veces te   sale bien bien el grafismo y otras veces te sale  mal porque no siempre eh digamos hace lo mismo   nada Esto es para que seamos conscientes de ello  tiene como unas escalas predefinidas como dices   y es bueno eh eh usar las que trae asociarse ahí  puedo hacer yo solo una punta acción como yo como   sabéis aprendí la arquitectura en en Alemania y  parcir tambén al espacio ang sajón yo aprendí las   escalas 1 75 1 150 aquí en España en Alemania y en  Inglaterra estas escalas ni existen Entonces los   proyecto se deba a hacer con escalas estándar como  Concha dice pero no y es porque lo tiene revit no   porque en Cat lo hacemos O sea quiero decir que en  la gran mayoría de nosotros que hemos trabajado en   Cat sabemos que podemos poner cualquier escala  y independientemente el cat lo que te permite es   que tengas e más digamos dibujes con más líneas o  menos o le ponges los grosores que quieras pero el   revit No esas escalas no funcionan bien entonces  es simplemente el tener en cuenta cuando se maneja   revit O se monta un plano en revit el intentar  que las escalas sean por defecto las que viene las   que trae las que trae revis simplemente eh o sea  realmente las plantillas deberían estar asociadas   a las escalas no a planos de comercialización  o demás sino a escalas porque en el caso que he   contado yo Concha la el propio cliente Nos daba  una plantilla de cómo querían que se mostrasen   gráficamente ese tipo de planos pero es cierto que  es mejor hacerlo de la manera que tú dices porque   al final las cosas sean de monar de una manera o  de otra según la escala en la que est dibujo eso   es vale Yo quería puntualizar una cosa de lo que  ha comentado Diego y es darle la importancia al   tratamiento de los datos que ha hecho dentro del  modelo o sea tener en cuenta que todo lo que han   hecho ellos y todas esas tablas que se han renado  han partido de los datos que están dentro de las   habitaciones de revit vale si hay un dato mal  en las habitaciones de revit es imposible que   la tabla después se salga bien vale Uy me llama  Perdón entonces es muy importante mantener la   coherencia de los datos dentro de revit vale Y  asegurarnos de que la información que metemos   dentro de cualquier elemento de revit no solo de  las habitaciones vale de cualquier elemento de   revit sea correcto y evidentemente esto nos trae  un problema que es que cuando empiezan los cambios   de proyecto porque siempre hay modificaciones  de proyecto y variantes de proyecto y un montón   de cosas pues requiere que a cada variante y a  cada modificación de proyecto pues revisemos si   los datos siguen siendo correctos vale porque  muchas veces hacemos el archivo de superficie   ponemos la superficie y nos olvidamos pues no es  así el archivo de superficies es un archivo vivo   que va a ir cambiando y los datos que están  dentro de ese archivo de superficie Pues lo   mismo y lo mismo pasa con con con los muros con  Los pilares con yo que sé con los suelos con lo   que vayamos ir haciendo toda la información que  está dentro para un tipo de solución es algo y   para otro tipo de solución hay que revisarla Y  adaptarla a lo que se necesite vale Pero siempre   siempre parte de la base de datos de revit  si empezamos a Modificar el Excel manualmente   eso es morirnos o si cogemos el txt que sale de  revit y lo modificamos manualmente porque nos   parece que es más rápido es posible que sea más  rápido para ese momento pero cuando venga otra   persona atrás y tenga que machacar ese txt Para  volver a exportar todo todo la información todo   lo que se ha cambiado Se ha perdido Vale entonces  las modificaciones siempre tien que ser en la   raíz que es el modelo de rev vale me gustaría es  que ahora que estabas contando eso eh con con el   último proyecto que tengo que hacer unas oficinas  y que tiene hemos sacado la superficie Bueno del   modelo y demás eh Hay revit Porta buo yo lo he  hecho con Dynamo vale No lo he hecho con tequ   ni nada entonces revis exporta un la superficies  con un número creo que tiene como seis decimales o   siete Qué pasa que cuando tú lo llevas a estel  sio si en las dos hojas que tienes que tienes   montado eso que yo tengo montado lo que sale de  revis y luego lo demás es el Excel para que lea   eh resulta Y esto es por comercialización eh eh  que eh Hay pequeños cambios o sea según sumes de   una manera o de otra digamos el resto de hojas  eh pueden variar centímetros lo digo porque me   ha pasado y lo he tenido que arreglar a mano vale  entonces a lo mejor es mejor decirle siempre si se   puede automatizar que que salga con dos decimales  o con tres que no salga con los 18 que sale porque   los de los comerciales bueno en mi caso los planos  comerciales eh patrimonio digamos ha sido bastante   eh puntilloso Y he tenido que redondear a mano  Simplemente porque salía lo lo de revit o sea   para tenerlo en nosotros Nosotros esto lo que  hacemos Es que la nos ha pasado a veces nos pasa   igual vale pero lo hemos resuelto de la siguiente  manera o la tabla de r lo sacamos en Excel no lo   sacamos con Dynamo Entonces se exporta lo que ves  en la tabla si redonde la tabla al valor que a   menos a menos decimales o a números enteros ya lo  tendrías Y si al final te la tienes que exportar   así como tú quieres eh después antes de meterlo  en Excel o o ya dentro de Excel lo pasas por por   Power query y por Power query lo que haces es que  le pones una regla Y esa regla hace la conversión   que quieres sí sí sí eso lo sé hacer simplemente  es porque a ver a mí me rellena directamente con   Dynamo lo pone en la tabla de superficie O sea  yo no tengo que hacer absolutamente nada o sea   por eso era eh yo lo hacía así Y es que era un  milímetro en algunos casos Era De verdad que era   un 1 mm y era simplemente eh Porque sumaba en dos  sitios o sea digamos que lo que sumaba uno y otro   y era la misma superficie la forma de sumarlo  hacía que hubiera un milímetro de diferencia y   tuve que ajustarlos ya simplemente es un una por  si acaso que no os volváis locos que ese milímetro   pasa y es lo que tú has dicho arreglarlo tiene  solución pero que que hay que ser cons buen es   hay que dejarlo muy bien contado porque si no  se olvida Porque después está ahora dig en el   proyecto pero mañana ponen a otro hacer lo mismo  entonces es complicado que la otra persona tenga   todo el feedback de Diego y todo lo que ha pasado  si no se deja bien contado esto pues se nos olvida   justamente de lo que habláis es que en este  proyecto nos pasó porque al final esa ese Excel   del final que hemos visto al final te suma la  superficie según unos criterios u otros en según   queé páginas y puede haber sensibles diferencias  en los recuentos justamente por por toda la serie   decimales que te va arrastrando Al poco que sea  cada uno como al final son muchísimos datos muchas   habitaciones Pues sí que puede ha no son notables  pero están pues eso es lo que no debería ha es lo   que estamos intentando decir y bueno si es que  es que mira si tú tienes ahora un grupo en rev   de un un apartamento tipo de un piso tipo Vale y  lo tienes en dos niveles diferentes y le pones la   superficie en cada nivel a veces el es el mismo es  el mismo contenedor vale a veces arriba te da unos   decimales más y abajo unos decimales menos porque  es como como rev detecta el como detecta a veces   con el pilar redondo te cierra de una manera  y por el otro lado te cierra de otra tú dices   [ __ ] pero es que esto no lo quiero así porque es  la misma área es igual sabes Entonces eso a veces   hay que trabajarlo para que te dé Exactamente  lo mismo sabes hay que tener ese criterio vale   el criterio del proyecto a ve si no se puede  dejar que el programa lo haga todo tienes que   sentarte tú y decir no no Yo quiero este criterio  intentad imponerle ese criterio al programa Sí   porque si no es que no el programa es tonto yo  siempre lo digo el programa es tonto nosotros   tenemos que decir al programa cómo queremos que  funcione no el programa funcionar como él quiera   o hacer que funcione como nosotros queremos vale  estoy de acuerdo contigo Ángel quiero decir creo   que tiene muchas cosas buenas y podemos traer  muchas cosas buenas Pero sabiendo lo que haces   en cada momento claro Sí sí Bueno pues tien más  preguntas alguna pregunta más si no damos por   por finalizar esta példa Bin Y si yo me recuerdo  bien la próxima pí sería en noviembre el eh 15   Vale pues que tengáis un buen fin de semana  Igualmente hasta Lu Muchas gracias Adi adiós
+[0:00:00 - 0:04:00]
+Bueno, buenas días a todos. Hoy tenemos otro Pildor Avim que tenemos preparado para este año y el
+tema de la Pildor Avim hoy es dedicarlo a los planos de venta en viviendas y a los planos
+comerciales para centros comerciales. Esta pildora para impartir por un lado a de Barcelona y Diego
+Ferro aquí desde Madrid. Si quieres algo, yo entiendo que empezas tu primero. Sí, sí, habíamos
+quedado en esto, sí. ¿Qué tal? Buenos días a todos chicos. A ver, yo voy a comentar un poco los
+planos de comercialización, ¿vale? Que hacemos en centros comerciales porque es lo que nos dedicamos
+más en Barcelona y en París, ¿vale? Y me voy a centrar un poco más en las claves que tenemos que
+tener en cuenta en Revit para que en general los planos puedan salir bien en temas de visualización
+un poco, ¿vale? Entonces voy a pasar y vamos a empezar. Son tres diapositivas porque tenemos poco
+tiempo y he dividido como en tres partes, ¿vale? La primera es el modelo y aquí tenemos dos temas
+importantes que tenemos que tener en cuenta a la hora de modelar. Primero, el proyecto, ¿vale? El
+modelo o lo que vayamos construyendo en Revit debería tener cierto carácter constructivo,
+evidentemente asociado a la fase de proyecto donde estemos, ¿vale? Si estamos haciendo un concurso,
+pues evidentemente será muy simple, ¿vale? Pero a lo que me quiero referir con esto es a que no
+hayan elementos volando, que no hayan elementos solapados unos con otros, ¿vale? Recordar que todo
+lo que hagáis en el modelo después se representa en los planos, ¿vale? Y por el otro, la otra parte
+importante es que el proyecto, ¿vale? Tiene que construirse en Revit tal cual como nos estamos
+imaginando. ¿A qué me refiero con esto? Y es que cuando modelamos un SketchUp, que Revit no es un
+SketchUp, ¿vale? Muchas veces necesitamos levantar un muro porque tenemos que representar algo y lo
+levantamos a ojo donde sea en cualquier sitio, da igual porque al final es una representación entre
+lo que vamos a ver. Pero en Revit esto no nos vale recordar que todo lo que modelemos en el 3D
+después se ve igual en el plano. Si yo quiero una fachada, por ejemplo esta fachada a 50 centímetros
+del pila, ¿se ve mi mouse? ¿Se ve mi mouse en la pantalla? Sí, sí, vale, si esta fachada yo la
+quiero a 50 centímetros del pila, pues es necesario poner esa fachada a 50 centímetros en el pila,
+¿vale? Esto en cualquier fase del proyecto, ¿vale? Y mantener el mismo criterio un poco en todo el
+modelo. ¿Vale? Voy a pasar al siguiente punto y el siguiente punto sería configurar los materiales,
+que es una de las cosas más importantes, ¿vale? Normalmente los que trabajan en 3D configuran
+siempre los materiales. ¿Por qué? Porque están habituados en Sketchup a poner una textura para la
+representación del modelo. Pero ¿qué pasa? Que en Revit necesitamos tener la representación
+realista, ¿vale? Pero además necesitamos una representación en sombreado, que parte de la realista y
+necesitamos una representación en proyección y en corte. ¿Para qué? Para cuando el modelo lo
+cortemos o en cualquier sentido lo veamos en alzado, ¿vale? Los materiales ya no están dando la
+representación que nosotros necesitamos. ¿Vale? Esto es una cosa súper importante, porque si hacemos
+esto, ¿vale? Tendremos una representación del plano entre un 60 y un 70 por ciento de serie. O sea,
+cuando hagas una sección ya te va a salir bien, ¿vale? Y por último tendríamos la creación realmente
+de planos, ¿vale? Lo primero es que el plano de Revit, cuando una es una sección o un plano en
+planta, el plano sale mudo, el plano no dice nada, el plano lo que va a hacer Revit, lo que te va a
+hacer es cortar un modelo y te va a poner las cosas como las has modelado, ¿vale? Pero a esos planos
+después que darle una serie de intenciones. ¿Vale? Por ejemplo, en este caso es un plano de falta de
+hecho de un proyecto, esto es chirol, esto es un centro comercial que está entregado, ¿vale? Y aquí
+se aplicaron filtros para definir los tipos de falsotechos que teníamos, se aplicaron etiquetas a
+los falsotechos, se aplicaron cotas, se aplicaron niveles, se aplicó toda la información que era
+
+[0:04:00 - 0:08:00]
+falsotechos, se aplicaron cotas, se aplicaron niveles, se aplicó toda la información que era
+necesaria, ¿vale? Para que ese plano comunicara lo que necesitábamos comunicar. El plano solo tal
+cual, como sale del modelo cuando cortamos, ese no nos vale, porque es un plano mudo, ¿vale?
+Entonces siempre tenemos que tener en cuenta eso. Aparte de esto, siempre deberíamos aplicarle
+plantillas de vista a los planos, ¿vale? Porque en las plantillas de vista hay una serie de
+configuraciones que ya están dadas, son los grosores de línea que debemos seguir los criterios que
+tenemos en L35, los mismos que se hacían en CAD, ¿vale? Los filtros también vienen aplicados en las
+plantillas de vista, las modificaciones gráficas que le vayamos haciendo al modelo para poder
+conseguir que se vea como queremos, ¿vale? Entonces estas tres claves yo creo que son las más
+importantes para que los modelos se nos empiecen, para que los planos se nos empiecen a ver bien a
+partir de los modelos, ¿vale? Yo aquí he terminado y dejo Diego, porque tenemos muy poquito tiempo y
+es necesario que Diego tenga más tiempo que yo. Después al final vemos preguntas, ¿vale? Dejo de
+compartir, Diego. Venga, muy bien. Gracias, Ángel. Buenos días, yo. Voy a compartir. Te he hecho en
+la toblifletcha. ¿Veis la plantilla? ¿Sí? No. Ahora sí. Ahora sí. Vale, pues ya os voy a contar cómo
+llegamos a hacer los planos de venta en un proyecto Málaga para el cliente AELCA, en el que tenemos
+varias tipologías de usos y hemos basado este trabajo en una correcta gestión del modelo de
+superficies. Entonces empezamos por el cliente, nos facilitó una lista de tipos de espacios según el
+uso para poder clasificarnos en el modelo. Entonces, nosotros, cuando tenemos el modelo de
+superficies a cada una de las habitaciones que vamos creando en Revit, le tenemos que asociar un
+parámetro que viene en este desplegable que son todos los que venían descritos en la parte anterior.
+En el momento en el que le añadimos uno de esos parámetros que serían los que tenemos en esta
+columna, automáticamente se le atribuyen todos estos datos a esas habitaciones. Lo mismo pasaría con
+las áreas que las vamos a utilizar para sacar las superficies construidas. Aquí elegiríamos el tipo
+de área del que estamos hablando y automáticamente se le atribuirían todos estos atributos. En este
+caso, en las áreas incluso unos coeficientes usados para calcular las superficies de venta o la
+edificabilidad. Una vez que tenemos identificado el uso de todas las habitaciones y de todas las
+áreas, tenemos que pasar a ubicar dónde están en el proyecto. Entonces, también tenemos esta serie
+de parámetros que nos indican en este caso la ubicación de nuestra vivienda dentro del edificio,
+según el portal escalera planta o la puerta en esa planta, tanto en las superficies construidas como
+en cada una de las habitaciones que nos van a indicar las superficies útiles que va a contener cada
+vivienda. El proceso para ir apuntando todas estas datos de ubicación pasaría por seleccionar una a
+una cada una de las áreas o de las habitaciones e ir añadiéndole el que planta está, la puerta, el
+portal, etcétera. Entonces, esto es una labor sumamente
+
+[0:08:00 - 0:12:00]
+añadiéndole el que planta está, la puerta, el portal, etcétera. Entonces, esto es una labor
+sumamente tediosa para evitar tener que ir haciendo el mismo trabajo una y otra vez. En este caso
+teníamos 344 viviendas, imaginaos lo que es esto. Optamos por hacer una tabla de Excel en la que los
+datos que están en azul los añadimos nosotros, que son la identificación de la vivienda, según el
+criterio que hemos visto ahora de parámetros, en una habitaciones que tiene el modelo de vivienda,
+según los criterios del cliente y el uso que tiene cada uno de esos espacios. Nosotros, o sea,
+concatenando todos estos parámetros, conseguimos generar un código único por cada una de las
+habitaciones del proyecto, que es la identificación de la vivienda en la que estamos y el uso que
+tiene y gracias a este parámetro conseguimos relacionar esta tabla de Excel con Revit, rellenando en
+las habitaciones de Revit solamente este parámetro y a través de Dynamo, rellenamos todo el resto de
+cosas, como hemos visto aquí. Entonces, todos estos datos están insertados a través de Dynamo. Una
+vez que ya tenemos todas las habitaciones y las áreas identificadas convenientemente, ya podemos
+pasar a hacer los planos de venta por vivienda. En este caso, todos los parámetros que hemos
+incluido nos sirven tanto para las anotaciones que nos van a indicar el uso y la superficie que
+tiene cada uno de los espacios, como hacer una tabla de planificación por vivienda que nos va a ir
+sumando en tiempo real, siempre actualizado las superficies destinadas a cada una de ellas, tanto
+las zonas exteriores como las exteriores, o sea las interiores o las exteriores o la superficie
+construida. También podemos indicar en cada uno de estos planos mediante el esquema monitor la
+ubicación que tiene cada una de las viviendas dentro de la planta, porque la estrategia que seguimos
+es la de trabajar con una única planta de todo el proyecto, trabajamos siempre con todas las
+viviendas de una planta y luego vamos haciendo tantas vistas como unidades de vivienda tenemos en
+esta planta. Este es, como se vería, directamente el plano en Revit, la visualización o el gracismo
+que estamos observando aquí como ha comentado Ángel, se basa en una plantilla de vista en la que con
+unos cambios, en una única plantilla podemos hacer grandes cambios en todas las vistas o en todos
+los planos del proyecto y esto grave que lo pasamos a pdf este sería el resultado que obtendríamos
+para que se vea que la calidad gráfica que podemos sacar de Revit más allá de que el cliente pueda
+tener unas directrices u otras es correcta. En este edificio aparte de tener viviendas también
+teníamos otros usos como pueden ser oficinas que aquí hemos que estar resuelto un plano de venta de
+una oficina de la misma manera que teníamos el de viviendas con sus tablas de planificación para
+superficies con su esquema monitor para ubicarlo dentro del proyecto y sus anotaciones relacionadas
+con los parámetros que tendría esa esta oficina. Lo mismo pasaría en este caso con un local
+comercial y bueno más allá de todos los de lo que es la documentación gráfica que estamos
+acostumbrados a ver todos esos datos que previamente hemos introducido nos podemos exportar con unas
+tablas que ya vienen definidas en este caso por nuestro cliente para conseguir sacar un listado útil
+para ellos y un resumen de todo lo que implica el proyecto. Si me desais un momento os enseño un
+vídeo de lo que podemos
+
+[0:12:00 - 0:16:00]
+de todo lo que implica el proyecto. Si me desais un momento os enseño un vídeo de lo que podemos
+hacer con estos datos. Entonces esta es la tabla que habíamos visto al principio en la que el
+cliente. Tenemos que ubicar el proyecto donde están esos documentos exportados, vemos que todo está
+vacío, es un documento todavía por rellena y siguiendo ahora sus propias instrucciones si nos vamos
+a la página de inicio del excel ya nos está avisando aquí las instrucciones de que esto tarda un
+poquito le damos ahí al botón de actualizar todo y ahora os podría dejar todo el vídeo puesto
+durante un buen rato porque dura como 10 minutos. Llega un momento en el que termina y si vemos pues
+ya tenemos un listado de todas las habitaciones y todas las áreas a las que habíamos estado
+trabajando previamente y en cada una de las pestañas pues nos va a decir pues por ejemplo aquí
+estamos viendo porque la unidad de vivienda todas las áreas o habitaciones que están relacionadas
+con ella antes hayamos todo el listado de esos usados de ellas. Aquí tenemos las superficies por
+usos y plantas, las zonas descubiertas del proyecto como pueden ser cerrados por otros usos, la
+edificabilidad y un por cada uso pues en generalmente todo aquello que pueda ser necesario desde el
+punto de vista de codificación, superficies, aquí tenemos por ejemplo todos los trasteros que
+también estaban incluidos en el proyecto, incluso las plazas de aparcamiento que al final es que si
+tuviéramos que hacer esto sin contar con las herramientas que nos proporciona a raíz sería algo como
+ya conocemos de otros proyectos muy complejo de gestión y este es el documento final además que nos
+pide nuestro cliente si realmente cuando le damos a ejecutar la ordena y todo sabe correcto los
+podemos dar por satisfechos en cuanto a que hemos hecho una buena gestión de todas las superficies y
+hasta aquí si tenéis alguna duda acerca de este proceso queréis mencionar lo que queráis. Si tenéis
+alguna pregunta o pregunta a Ángel o a Diego sobre los procesos y las posibilidades que tenemos en
+Revit que nos proporciona Revit. Todo el mundo lo tiene clarísimo, ha sido buenísimo. Hasta llega el
+próximo proyecto. Diego las dudas surgen cuando te pones a trabajar así que ahí sí que te soberan
+preguntas. Recuerdo cuando hicimos este proyecto que será continuamente hablando entre nosotros con
+el cliente solicitando información parece muy sencillo para que lo cuentas pero llevo un periodo de
+aprendizaje de adaptación. La verdad es que al final una vez que lo tienes interiorizado es que es
+sencillo de comprender. Usted ría su paráeo, su paráeo es algo de cosa que ahora mismo por ejemplo
+Diego y otros están ahora mismo entregando está entregando otro proyecto
+
+[0:16:00 - 0:20:00]
+ahora mismo por ejemplo Diego y otros están ahora mismo entregando está entregando otro proyecto de
+acciones clima de Revit que son ya un... vamos en fase de IceBuild, que ya está terminado y hablamos
+de 455 viviendas correctos. Y el cliente pide varios planos de que algunos las viviendas. Y la
+importancia de que yo supere ahí ese tema de la plantilla de vista bien configurado porque cualquier
+cambio sobre esta plantilla de vista se aplica a 454 viviendas. Entonces la plantilla de vista es
+una herramienta para hacer cambios masivos sobre el grafismo que queremos que salga igual en todos
+estos tipos de planos. Sí, bueno habla habla. Perdón me he perdido la de Diego porque me han llamado
+o sea que lo siento Diego pero una cosa que quiero decir sobre lo que ha dicho gente ahora la
+plantilla de vista lo importante es saber a la escala que van a ser los planos o sea porque no es lo
+mismo una plantilla de vista para unos planos que salgan a 1-500 que ponen unos planos que salgan a
+1-10. Y luego hay que tener en cuenta que Revit entiende que una serie de escalas el te tiene por
+defecto una serie de escalas que es aunque nosotros pongamos la escala 150 Revit no entiende que el
+grosor de las plumillas vamos a llamarle un grosor de plumillas sea 150 sino que él hace pa lo que
+le da la gana o sea cerca 200 o cerca 100. Lo que intento decir es que cuanto mejor utilicemos las
+plantillas con las escalas que viene Revit mejor nos saldrá el grafismo sin tener que utilizar un
+montón de filtro ni un montón de cosas y creo que es una de las cosas más importantes que hay de
+Revit porque bueno creo que esta conversación la tuve un día con Ángel y creo que en el fondo es eso
+o sea intentar utilizar no utilizar la escala 150 250 150 creo la de 300 no sé si la tiene pero
+tiene o sea por curiosidad creo que no creo que no tiene o sea y sale bastante o sea yo lo he
+probado y unas veces te sale bien bien el grafismo y otras veces sale mal porque no siempre digamos
+hacer lo mismo para que seamos con ciertas de ellos ahí puedo hacer yo solo una puta relación como
+yo como sabéis aprendí la arquitectura en Alemania y es para decir también a la espacia Angus a Rond
+yo aprendí las escalas 175 150 aquí en España en Alemania y en Inglaterra estas escalas ni existen
+entonces los proyectos se debe hacer con escalas estándar como contra dice pero no es porque lo
+tiene Revit no porque en cad lo hacemos o sea quiero decir que en la mayoría mayoría de nosotros que
+hemos trabajado en cad sabemos que podemos poner cualquier escala y independientemente el cad lo que
+te permite es que tengas más digamos dibujes con más líneas o menos o le ponen los grosores que
+quieras pero el Revit no esas escalas no funcionan bien entonces es simplemente el tener en cuenta
+cuando se maneja Revit o se monta un plano en Revit el intentar que las escalas sean por defectos
+las que vienen las que trae las que trae Revit simplemente o sea y realmente las plantillas deberían
+estar asociadas a las escalas no a planos de comercialización o demás sino a escalas porque el
+propio cliente nos da una plantilla de cómo querían que se mostrase gráficamente ese tipo de planos
+pero es cierto que es mejor hacerlo de la manera que dices porque al final las cosas se han de
+contar de una manera o de otra según la escala de este dibujo para yo quería
+
+[0:20:00 - 0:24:00]
+cosas se han de contar de una manera o de otra según la escala de este dibujo para yo quería
+puntualizar una cosa de lo que ha comentado Diego y es darle la importancia del tratamiento de los
+datos que ha hecho dentro del modelo o sea tener en cuenta que todo lo que han hecho ellos y todas
+esas tablas que se han rellenado han partido de los datos que están dentro de las habitaciones de
+Revit vale si hay un dato mal en las habitaciones de Revit es imposible que la tabla después se deis
+exhala bien vale me llamo perdón entonces es muy importante mantener la coherencia de los datos
+dentro de Revit vale y asegurarnos de que la información que metemos dentro de cualquier elemento de
+Revit no sólo de las habitaciones vale de cualquier elemento de Revit sea correcto y evidentemente
+esto nos trae un problema que es que cuando empiezan los cambios de proyecto porque siempre hay
+modificaciones de proyecto y variantes de proyecto y un montón de cosas pues requiere que a cada
+variante y a cada modificación de proyecto pues revisemos si los datos siguen siendo correctos vale
+porque muchas veces hacemos el archivo de superficies ponemos la superficie si nos olvidamos ponemos
+así el archivo de superficies es un archivo vivo que va a ir cambiando y los datos que están dentro
+de ese archivo de superficie pues lo mismo y lo mismo pasa con con con los muros con los pilares con
+yo que sé con los suelos con lo que vayamos ir haciendo toda la información que está dentro para un
+tipo de solución es algo y para otro tipo de solución hay que revisarla y adaptarla a lo que se
+necesite vale pero siempre siempre parte de la base de datos de Revit si empezamos a modificar el
+excel manualmente eso es morirnos o si cogemos el txt que sale de Revit y lo modificamos manualmente
+porque nos parece que es más rápido es posible que sea más rápido para ese momento pero cuando venga
+otra persona atrás y tenga que machacar ese txt para volver a exportar todo todo la información todo
+lo que sea cambiados ha perdido vale entonces las modificaciones siempre tiene que ser que es la
+raíz que es el modelo de reviv me gustaría que ahora que estabas contando eso con con el último
+proyecto que tengo que hacer unas oficinas y que tiene hemos sacado las superficies bueno del modelo
+y demás hay Revit exporta por los yo le echo con Dynamo vale no le echo con txt ni nada entonces
+Revit exporta la superficie es con un número creo que tiene como 6 decimales o 7 que pasa que cuando
+tú lo llevas a excel sino si en las dos hojas que tienes que tienes montado eso que yo tengo montado
+lo que sale de reviv y luego lo demás es el excel para que lea resulta y esto es por
+comercialización que hay pequeños cambios o sea según sumes de una manera o de otra digamos el resto
+de hojas pueden variar centímetros lo digo porque me ha pasado y lo he tenido que arreglar a mano
+vale entonces a lo mejor es mejor decirles siempre si se puede automatizar que salga con dos
+decimales y con tres que no salga con los 18 que sale porque los de comer los comerciales bueno en
+mi caso los planos comerciales patrimonio digamos ha sido bastante puntilloso y he tenido que
+redondear a mano simplemente porque salía lo de reviv o sea para tener nosotros nosotros esto lo que
+hacemos es que nos ha pasado a veces nos pasa igual vale pero lo hemos resuelto la siguiente manera
+o la tabla de reviv lo sacamos en excel no lo sacamos con dynamo entonces se exporta lo que ves en
+la tabla si redondeas la tabla al valor que a menos a menos decimales o a números enteros ya lo
+tendrías y si al final le tienes que exportar así como tú quieres después antes de meterlo en excel
+o ya dentro de excel lo pasas por por power query y por power query lo que haces es que le pones una
+regla y esa regla hace la conversión que quieres y si eso lo sé hacer simplemente es porque a ver a
+mí me rellena directamente con dynamo lo pone en la tabla de superficie o sea yo no voy a hacer
+soltamente nada o sea por eso yo lo hacía así y es que era un milímetro en algunos casos era de
+verdad que era un milímetro y era simplemente porque sumaba
+
+[0:24:00 - 0:26:38]
+algunos casos era de verdad que era un milímetro y era simplemente porque sumaba en dos sitios a
+digamos que lo que sumaba uno y otro y eran la misma superficie en la forma de sumarlo hacía que
+hubiera un milímetro de diferencia y tuve que ajustarlos ya simplemente es un una por si acaso que
+nos volváis locos que ese milímetro pasa y es lo que tú has dicho a arreglarlo tiene solución pero
+que hay que ser bueno pero eso es que dejarlo muy bien contado porque si no se olvida porque después
+está ahora digo en el proyecto pero mañana ponen a otros a hacer lo mismo entonces es complicado que
+la otra persona tenga todo el feedback de diego y todo lo que ha pasado si no se deja bien contado
+esto pues se nos olvidan justamente de lo que habláis es que en este proyecto nos pasó porque al
+final esa excel del final que hemos visto al final te suma la superficie según los criterios u otros
+en según qué páginas y puede haber sensibles diferencias en los recuentos justamente por todo lo que
+debería decir mal es que te va arrastrando al poco que sea cada uno al final son muchísimos datos
+muchas habitaciones pues sí que puede haber diferencias que no son notables pero están pues eso es
+lo que no debería ver en lo que estamos intentando decir bueno si es que es que mira si tú tienes
+ahora un grupo en revi de un apartamento tipo de un piso tipo vale y lo tienes en dos niveles
+diferente y le pones la superficie en cada nivel a veces el de ese mismo es el mismo contenedor vale
+a veces arriba te da unos decimales maya bajo unos decimales menos porque es como como revi detecta
+el área como detecta a veces con el pilar redondo te cierra de una manera y por el otro lado te
+cierra de otra tú dices hostia pero que esto no lo quiero así porque es la misma área es igual a
+veces hay que trabajarlo para que te esté exactamente lo mismo que tener ese criterio al criterio
+del proyecto a veces no se puede dejar que el programa lo haga todo tienes que sentarte tú y decir
+no no yo quiero este criterio intentar imponerles el criterio del programa si porque si no es que no
+el programa es tonto yo siempre lo digo el programa es tonto nosotros tenemos que decir la programa
+como queremos que funcione no el programa funciona como él quiera o hacer que funcione como nosotros
+queremos estoy de acuerdo contigo ángeles quiero decir que tiene muchas cosas buenas y podemos traer
+muchas cosas buenas pero sabiendo lo que hace en cada momento claro sí sí bueno si no hay más
+preguntas alguna pregunta más si no damos por por finalizar esta píldora y si yo me recuerdo bien la
+próxima píldora sería en novembro el quince pues que tengéis todo el bombo en la semana igualmente a
+los
+
