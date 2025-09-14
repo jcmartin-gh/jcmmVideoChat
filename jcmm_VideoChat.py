@@ -192,13 +192,10 @@ def get_summary(transcription_text: str, video_url_value: str) -> str:
     template = """
     You are a helpful assistant.
     Create a detailed summary of the provided text.
-    Provide an extensive and detailed summary, including all important points, topics discussed, people speaking, main ideas, and any relevant facts.
+    Provide an extensive and detailed summary, including all important points discussed, people speaking, main ideas, and any relevant facts.
     Be sure to include enough detail so that someone who has not seen the video can fully understand the content.
     Use the same language as the transcript_text to generate the summary.
-    For each important point, provide a link to access that specific part of the video.
-    You can do this by taking the URL of the video from the variable video_url and adding the parameter t=XXs with XX being the seconds from the start of the video.
-    To calculate the seconds from the beginning, you can calculate approximately with the idea that the number of words per minute of video is approximately 170.
-
+    
     Video URL: {video_url}
 
     Transcription text:
@@ -338,7 +335,9 @@ with st.sidebar:
     with col1:
         if st.button("Load video (URL)"):
             load_video_from_url(video_url_input)
-        if st.button("Summary"):
+
+        # Resumen por capítulos con enlaces (capítulos)
+        if st.button("Chapters"):
             if ss.transcription_y:
                 if not ss.blocks:
                     ss.blocks = parse_blocks_from_text(ss.transcription_y)
@@ -346,6 +345,16 @@ with st.sidebar:
                 ss.chat_history.append({"role": "assistant", "content": ss.summary})
             else:
                 st.warning("No se ha cargado ninguna transcripción aún.")
+
+        # >>> NUEVO: Resumen narrativo usando get_summary(...)
+        if st.button("Summary"):
+            if ss.transcription_y:
+                ss.summary = get_summary(ss.transcription_y, ss.video_url)
+                ss.chat_history.append({"role": "assistant", "content": ss.summary})
+            else:
+                st.warning("No se ha cargado ninguna transcripción aún.")
+        # <<< FIN NUEVO
+
     with col2:
         if st.button("Transcription"):
             if ss.transcription_y:
