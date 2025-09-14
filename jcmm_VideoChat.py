@@ -328,7 +328,7 @@ def reset_conversation():
 from simple_login import require_login
 
 if not require_login(
-    app_name="jcmm VideoChat",
+    app_name="jcmmVideoChat",
     password_key="APP_PASSWORD",   # st.secrets["APP_PASSWORD"] o env APP_PASSWORD
     session_flag="__is_auth",      # nombre del flag de sesión
 ):
