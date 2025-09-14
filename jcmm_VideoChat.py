@@ -4,6 +4,8 @@ import unicodedata
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 
+from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
+
 import streamlit as st
 from langchain_community.chat_models import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
@@ -86,6 +88,81 @@ def read_transcription_by_title(title: str) -> Tuple[Optional[str], Optional[Pat
             return text, p, find_first_url(text.splitlines()[0] if text else "")
     return None, None, None
 
+# ---- Helpers tiempo/URL/capítulos ----
+def _hms_to_seconds(hms: str) -> int:
+    parts = hms.strip().split(":")
+    parts = [int(p) for p in parts]
+    if len(parts) == 2:
+        m, s = parts
+        return m * 60 + s
+    h, m, s = parts
+    return h * 3600 + m * 60 + s
+
+def _seconds_to_hms(total_s: int) -> str:
+    total_s = max(0, int(total_s))
+    h, rem = divmod(total_s, 3600)
+    m, s = divmod(rem, 60)
+    return f"{h:d}:{m:02d}:{s:02d}"
+
+def add_ts_to_url(url: str, seconds: int) -> str:
+    """Inserta/actualiza ?t=XXs preservando el resto de parámetros."""
+    if not url:
+        return ""
+    u = urlparse(url)
+    q = dict(parse_qsl(u.query, keep_blank_values=True))
+    q["t"] = f"{int(seconds)}s"
+    new_q = urlencode(q, doseq=True)
+    return urlunparse((u.scheme, u.netloc, u.path, u.params, new_q, u.fragment))
+
+_TS_BLOCK_RE = re.compile(
+    r"\[\s*(?P<start>(?:\d+:)?\d{1,2}:\d{2})\s*-\s*(?P<end>(?:\d+:)?\d{1,2}:\d{2})\s*\]\s*",
+    flags=re.UNICODE
+)
+
+def parse_blocks_from_text(txt: str) -> List[Dict]:
+    """
+    Extrae bloques con timestamps tipo:
+    [0:00:00 - 0:04:00] ...contenido...
+    Devuelve: [{"start": seg, "end": seg, "text": "..."}]
+    """
+    blocks = []
+    if not txt:
+        return blocks
+    matches = list(_TS_BLOCK_RE.finditer(txt))
+    if not matches:
+        return blocks
+    for i, m in enumerate(matches):
+        start_s = _hms_to_seconds(m.group("start"))
+        end_s = _hms_to_seconds(m.group("end"))
+        content_start = m.end()
+        content_end = matches[i + 1].start() if i + 1 < len(matches) else len(txt)
+        content = txt[content_start:content_end].strip()
+        if content:
+            blocks.append({"start": start_s, "end": end_s, "text": content})
+    return blocks
+
+def build_blocks_from_segments(segments: List[Dict], window_s: int = 240) -> List[Dict]:
+    """
+    Agrupa los segmentos API en ventanas temporales (4 min por defecto)
+    para generar capítulos aproximados cuando no hay marcas explícitas.
+    """
+    if not segments:
+        return []
+    segs = sorted([s for s in segments if s.get("start") is not None], key=lambda x: x["start"])
+    t0 = int(segs[0]["start"]) if segs else 0
+    last = segs[-1]
+    t_last = int(last["start"] + (last.get("duration") or 0))
+    blocks = []
+    cursor = t0
+    while cursor <= t_last + 1:
+        window_end = cursor + window_s
+        chunk = [s for s in segs if cursor <= (s["start"] or 0) < window_end]
+        text = " ".join((s.get("text") or "").strip() for s in chunk if s.get("text"))
+        if text.strip():
+            blocks.append({"start": cursor, "end": window_end, "text": text.strip()})
+        cursor = window_end
+    return blocks
+
 # ---------------------- LLM HELPERS ----------------------
 def get_response(user_query: str, chat_history: List[Dict]) -> str:
     template = """
@@ -119,8 +196,8 @@ def get_summary(transcription_text: str, video_url_value: str) -> str:
     Be sure to include enough detail so that someone who has not seen the video can fully understand the content.
     Use the same language as the transcript_text to generate the summary.
     For each important point, provide a link to access that specific part of the video.
-    You can do this by taking the URL of the video from the variable 'video_url' and adding the parameter t=XXs with XX being the seconds from the start of the video.
-    To calculate the seconds from the beginning, you can calculate that the number of words per minute of video is approximately 170.
+    You can do this by taking the URL of the video from the variable video_url and adding the parameter t=XXs with XX being the seconds from the start of the video.
+    To calculate the seconds from the beginning, you can calculate approximately with the idea that the number of words per minute of video is approximately 170.
 
     Video URL: {video_url}
 
@@ -137,6 +214,39 @@ def get_summary(transcription_text: str, video_url_value: str) -> str:
     chain = LLMChain(llm=model, prompt=prompt)
     return chain.run({"transcription_t": transcription_text, "video_url": video_url_value})
 
+def generate_linked_summary(blocks: List[Dict], video_url_value: str) -> str:
+    """
+    Genera un resumen 'por capítulos' con enlace al instante de inicio de cada bloque.
+    Si no hay bloques, devuelve aviso.
+    """
+    if not blocks:
+        return "No hay capítulos detectados en la transcripción."
+    model = ChatOpenAI(
+        openai_api_key=st.session_state.get("OPENAI_API_KEY", ""),
+        model_name="gpt-4o-mini",
+        temperature=0,
+        max_tokens=400,
+    )
+    title_prompt_tpl = ChatPromptTemplate.from_template(
+        "Escribe un título conciso (máx 12 palabras) en español que resuma este fragmento:\n\n{frag}\n\nDevuelve solo el título, sin comillas."
+    )
+    title_chain = LLMChain(llm=model, prompt=title_prompt_tpl)
+
+    lines = ["## Resumen por capítulos\n"]
+    for b in blocks:
+        start = int(b["start"]) if b.get("start") is not None else 0
+        hms = _seconds_to_hms(start)
+        link = add_ts_to_url(video_url_value or "", start)
+        try:
+            title = title_chain.run({"frag": b["text"][:2000]}).strip()
+        except Exception:
+            title = (b.get("text", "")[:80] + "…").replace("\n", " ")
+        if link:
+            lines.append(f"- [{hms}] [{title}]({link})")
+        else:
+            lines.append(f"- [{hms}] {title}")
+    return "\n".join(lines)
+
 # ---------------------- SESSION STATE ----------------------
 ss = st.session_state
 ss.setdefault("chat_history", [])
@@ -146,6 +256,7 @@ ss.setdefault("summary", "")
 ss.setdefault("transcription_y", "")
 ss.setdefault("show_transcription", False)
 ss.setdefault("OPENAI_API_KEY", "")
+ss.setdefault("blocks", [])
 
 # ---------------------- ACCIONES ----------------------
 def load_video_from_url(url: str | None):
@@ -157,11 +268,24 @@ def load_video_from_url(url: str | None):
     ss.video_url = url or ""
     ss.video_title = ""
     try:
-        transcription_y = get_transcript_text(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
-        ss.transcription_y = transcription_y or ""
+        segments = []
+        try:
+            from yt_transcript_compat import get_segments
+            segments = get_segments(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
+        except Exception:
+            segments = []
+
+        if segments:
+            ss.transcription_y = " ".join(s.get("text", "") for s in segments if s.get("text")).strip()
+            ss.blocks = build_blocks_from_segments(segments, window_s=240)
+        else:
+            transcription_y = get_transcript_text(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
+            ss.transcription_y = transcription_y or ""
+            ss.blocks = parse_blocks_from_text(ss.transcription_y)
+
         ss.show_transcription = False if ss.transcription_y else False
         if ss.transcription_y:
-            st.sidebar.success("Transcripción cargada (API YouTube).")
+            st.sidebar.success("Transcripción cargada (API YouTube)." if segments else "Transcripción cargada.")
         else:
             st.sidebar.warning("No se obtuvo texto de transcripción.")
     except NoTranscriptAvailable as e:
@@ -185,6 +309,7 @@ def load_video_from_catalog(item: Dict):
     ss.video_title = title
     ss.video_url = url
     ss.transcription_y = txt
+    ss.blocks = parse_blocks_from_text(ss.transcription_y) or []
     ss.show_transcription = False  # No mostrar de inmediato
     if path_used:
         st.sidebar.success(f"Transcripción local cargada: {path_used.name}")
@@ -198,6 +323,7 @@ def reset_conversation():
     ss.transcription_y = ""
     ss.summary = ""
     ss.show_transcription = False
+    ss.blocks = []
 
 # ---------------------- SIDEBAR (BOTONES ORIGINALES ARRIBA) ----------------------
 with st.sidebar:
@@ -214,7 +340,9 @@ with st.sidebar:
             load_video_from_url(video_url_input)
         if st.button("Summary"):
             if ss.transcription_y:
-                ss.summary = get_summary(ss.transcription_y, ss.video_url)
+                if not ss.blocks:
+                    ss.blocks = parse_blocks_from_text(ss.transcription_y)
+                ss.summary = generate_linked_summary(ss.blocks, ss.video_url)
                 ss.chat_history.append({"role": "assistant", "content": ss.summary})
             else:
                 st.warning("No se ha cargado ninguna transcripción aún.")
@@ -239,7 +367,7 @@ with st.sidebar:
                 if thumb:
                     st.image(thumb, width='content')
                 st.caption(item["title"])
-                if st.button("Load this video", key=f"use_{i}"):
+                if st.button("Usar este video", key=f"use_{i}"):
                     load_video_from_catalog(item)
 
 # ---------------------- MAIN ----------------------
