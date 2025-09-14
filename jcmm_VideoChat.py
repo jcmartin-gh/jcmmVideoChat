@@ -3,7 +3,6 @@ import re
 import unicodedata
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
-
 from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
 
 import streamlit as st
@@ -12,7 +11,6 @@ from langchain.prompts.chat import ChatPromptTemplate
 from langchain.chains import LLMChain
 from youtube_transcript_api import TranscriptsDisabled, VideoUnavailable
 
-# Modo URL manual (sigue existiendo)
 from yt_transcript_compat import (
     get_transcript_text,
     NoTranscriptAvailable,
@@ -29,12 +27,11 @@ st.markdown("2. the topics that are discussed in the video,")
 
 BASE_DIR = Path(__file__).parent
 TRANS_DIR = BASE_DIR / "Transcriptions"
-TRANS_DIR.mkdir(parents=True, exist_ok=True)  # garantiza carpeta
+TRANS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ---------------------- CATÁLOGO L35PILLS ----------------------
-# Si la URL está vacía, la app intentará leerla del .txt (primera línea que contenga http).
 L35PILLS_VIDEOS: List[Dict[str, str]] = [
-    {"title": "8º L35 Pills Cómo usar la nueva plantilla corporativa de L35", 
+    {"title": "8º L35 Pills Cómo usar la nueva plantilla corporativa de L35",
      "url": "https://youtu.be/y9tRN5acyBU?si=PbplUr5HTRjTXC4Z"},
     {"title": "7º L35 Pills IA aplicada a imágenes y videos",
      "url": "https://youtu.be/jCKR4N7Okds?si=Bkm97Hps-2MTg5cg"},
@@ -54,7 +51,6 @@ L35PILLS_VIDEOS: List[Dict[str, str]] = [
 
 # ---------------------- UTILIDADES ----------------------
 def normalize(s: str) -> str:
-    """Normaliza para emparejar nombres de archivo: quita acentos, espacios y signos, y pasa a minúsculas."""
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
     s = s.lower()
@@ -70,17 +66,10 @@ def youtube_thumb(url: str) -> Optional[str]:
     return f"https://img.youtube.com/vi/{vid}/hqdefault.jpg" if vid else None
 
 def read_transcription_by_title(title: str) -> Tuple[Optional[str], Optional[Path], Optional[str]]:
-    """
-    Lee la transcripción local por título. Devuelve (texto, ruta, url_encontrada_en_txt).
-    Busca fichero exacto '<title>.txt' y, si no existe, por coincidencia 'normalizada'.
-    Extrae una URL de la primera línea si existe.
-    """
-    # 1) exacto
     exact = TRANS_DIR / f"{title}.txt"
     if exact.exists():
         text = exact.read_text(encoding="utf-8", errors="ignore")
         return text, exact, find_first_url(text.splitlines()[0] if text else "")
-    # 2) normalizado
     target = normalize(title)
     for p in TRANS_DIR.glob("*.txt"):
         if normalize(p.stem) == target:
@@ -88,10 +77,8 @@ def read_transcription_by_title(title: str) -> Tuple[Optional[str], Optional[Pat
             return text, p, find_first_url(text.splitlines()[0] if text else "")
     return None, None, None
 
-# ---- Helpers tiempo/URL/capítulos ----
 def _hms_to_seconds(hms: str) -> int:
-    parts = hms.strip().split(":")
-    parts = [int(p) for p in parts]
+    parts = [int(p) for p in hms.strip().split(":")]
     if len(parts) == 2:
         m, s = parts
         return m * 60 + s
@@ -105,7 +92,6 @@ def _seconds_to_hms(total_s: int) -> str:
     return f"{h:d}:{m:02d}:{s:02d}"
 
 def add_ts_to_url(url: str, seconds: int) -> str:
-    """Inserta/actualiza ?t=XXs preservando el resto de parámetros."""
     if not url:
         return ""
     u = urlparse(url)
@@ -120,11 +106,6 @@ _TS_BLOCK_RE = re.compile(
 )
 
 def parse_blocks_from_text(txt: str) -> List[Dict]:
-    """
-    Extrae bloques con timestamps tipo:
-    [0:00:00 - 0:04:00] ...contenido...
-    Devuelve: [{"start": seg, "end": seg, "text": "..."}]
-    """
     blocks = []
     if not txt:
         return blocks
@@ -142,18 +123,13 @@ def parse_blocks_from_text(txt: str) -> List[Dict]:
     return blocks
 
 def build_blocks_from_segments(segments: List[Dict], window_s: int = 240) -> List[Dict]:
-    """
-    Agrupa los segmentos API en ventanas temporales (4 min por defecto)
-    para generar capítulos aproximados cuando no hay marcas explícitas.
-    """
     if not segments:
         return []
     segs = sorted([s for s in segments if s.get("start") is not None], key=lambda x: x["start"])
     t0 = int(segs[0]["start"]) if segs else 0
     last = segs[-1]
     t_last = int(last["start"] + (last.get("duration") or 0))
-    blocks = []
-    cursor = t0
+    blocks, cursor = [], t0
     while cursor <= t_last + 1:
         window_end = cursor + window_s
         chunk = [s for s in segs if cursor <= (s["start"] or 0) < window_end]
@@ -162,6 +138,31 @@ def build_blocks_from_segments(segments: List[Dict], window_s: int = 240) -> Lis
             blocks.append({"start": cursor, "end": window_end, "text": text.strip()})
         cursor = window_end
     return blocks
+
+# ---------------------- SESSION STATE ----------------------
+ss = st.session_state
+ss.setdefault("chat_history", [])
+ss.setdefault("video_url", "")
+ss.setdefault("video_title", "")
+ss.setdefault("summary", "")
+ss.setdefault("transcription_y", "")
+ss.setdefault("show_transcription", False)
+ss.setdefault("OPENAI_API_KEY", "")
+ss.setdefault("blocks", [])
+
+# Cargar OPENAI_API_KEY desde secrets/env al iniciar
+def _load_openai_key() -> str:
+    key = None
+    try:
+        key = st.secrets.get("OPENAI_API_KEY", None)
+    except Exception:
+        key = None
+    if not key:
+        key = os.getenv("OPENAI_API_KEY", "")
+    ss.OPENAI_API_KEY = key or ""
+    return ss.OPENAI_API_KEY
+
+_load_openai_key()
 
 # ---------------------- LLM HELPERS ----------------------
 def get_response(user_query: str, chat_history: List[Dict]) -> str:
@@ -212,10 +213,6 @@ def get_summary(transcription_text: str, video_url_value: str) -> str:
     return chain.run({"transcription_t": transcription_text, "video_url": video_url_value})
 
 def generate_linked_summary(blocks: List[Dict], video_url_value: str) -> str:
-    """
-    Genera un resumen 'por capítulos' con enlace al instante de inicio de cada bloque.
-    Si no hay bloques, devuelve aviso.
-    """
     if not blocks:
         return "No hay capítulos detectados en la transcripción."
     model = ChatOpenAI(
@@ -244,20 +241,8 @@ def generate_linked_summary(blocks: List[Dict], video_url_value: str) -> str:
             lines.append(f"- [{hms}] {title}")
     return "\n".join(lines)
 
-# ---------------------- SESSION STATE ----------------------
-ss = st.session_state
-ss.setdefault("chat_history", [])
-ss.setdefault("video_url", "")
-ss.setdefault("video_title", "")
-ss.setdefault("summary", "")
-ss.setdefault("transcription_y", "")
-ss.setdefault("show_transcription", False)
-ss.setdefault("OPENAI_API_KEY", "")
-ss.setdefault("blocks", [])
-
 # ---------------------- ACCIONES ----------------------
 def load_video_from_url(url: str | None):
-    """Modo clásico: URL manual -> usa API YouTube para transcribir."""
     vid = extract_video_id(url or "")
     if not vid:
         st.sidebar.warning("Pon una URL válida de YouTube.")
@@ -271,7 +256,6 @@ def load_video_from_url(url: str | None):
             segments = get_segments(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
         except Exception:
             segments = []
-
         if segments:
             ss.transcription_y = " ".join(s.get("text", "") for s in segments if s.get("text")).strip()
             ss.blocks = build_blocks_from_segments(segments, window_s=240)
@@ -279,7 +263,6 @@ def load_video_from_url(url: str | None):
             transcription_y = get_transcript_text(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
             ss.transcription_y = transcription_y or ""
             ss.blocks = parse_blocks_from_text(ss.transcription_y)
-
         ss.show_transcription = False if ss.transcription_y else False
         if ss.transcription_y:
             st.sidebar.success("Transcripción cargada (API YouTube)." if segments else "Transcripción cargada.")
@@ -295,19 +278,17 @@ def load_video_from_url(url: str | None):
         st.sidebar.error(f"No se pudo cargar la transcripción: {e}")
 
 def load_video_from_catalog(item: Dict):
-    """Nuevo modo: selección en cuadrícula -> lee transcripción local, no usa API."""
     title = item["title"]
     txt, path_used, url_in_txt = read_transcription_by_title(title)
     if not txt:
         st.sidebar.error(f"No se encontró 'Transcriptions/{title}.txt' (o equivalente normalizado).")
         return
-    # Fija URL (prioridad: lista -> .txt -> vacío)
     url = item.get("url") or url_in_txt or ""
     ss.video_title = title
     ss.video_url = url
     ss.transcription_y = txt
     ss.blocks = parse_blocks_from_text(ss.transcription_y) or []
-    ss.show_transcription = False  # No mostrar de inmediato
+    ss.show_transcription = False
     if path_used:
         st.sidebar.success(f"Transcripción local cargada: {path_used.name}")
     if not ss.video_url:
@@ -322,36 +303,28 @@ def reset_conversation():
     ss.show_transcription = False
     ss.blocks = []
 
-
-
-# --- LOGIN (bloquea el resto de la app si no hay acceso) ---
+# --- LOGIN (bloquea el resto si no hay acceso) ---
 from simple_login import require_login
-
 if not require_login(
     app_name="jcmmVideoChat",
-    password_key="APP_PASSWORD",   # st.secrets["APP_PASSWORD"] o env APP_PASSWORD
-    session_flag="__is_auth",      # nombre del flag de sesión
+    password_key="APP_PASSWORD",
+    session_flag="__is_auth",
 ):
     st.stop()
 # --- FIN LOGIN ---
 
-
-
-# ---------------------- SIDEBAR (BOTONES ORIGINALES ARRIBA) ----------------------
+# ---------------------- SIDEBAR ----------------------
 with st.sidebar:
-    st.sidebar.subheader("User Autentication")
-    st.sidebar.button("Login:")
-    ss.OPENAI_API_KEY = st.sidebar.text_input("OpenAI API Key", type="password", value=ss.get("OPENAI_API_KEY", ""))
+    # Sin “Login:” ni campo “OpenAI API Key”.
+    if not ss.OPENAI_API_KEY:
+        st.info("Define OPENAI_API_KEY en secrets o como variable de entorno.")
 
     video_url_input = st.text_input("Youtube video URL", value=ss.get("video_url", ""))
 
-    # === Botones en su sitio original ===
     col1, col2 = st.columns(2)
     with col1:
         if st.button("Load video (URL)"):
             load_video_from_url(video_url_input)
-
-        # Resumen por capítulos con enlaces (capítulos)
         if st.button("Chapters"):
             if ss.transcription_y:
                 if not ss.blocks:
@@ -360,16 +333,12 @@ with st.sidebar:
                 ss.chat_history.append({"role": "assistant", "content": ss.summary})
             else:
                 st.warning("No se ha cargado ninguna transcripción aún.")
-
-        # >>> NUEVO: Resumen narrativo usando get_summary(...)
         if st.button("Summary"):
             if ss.transcription_y:
                 ss.summary = get_summary(ss.transcription_y, ss.video_url)
                 ss.chat_history.append({"role": "assistant", "content": ss.summary})
             else:
                 st.warning("No se ha cargado ninguna transcripción aún.")
-        # <<< FIN NUEVO
-
     with col2:
         if st.button("Transcription"):
             if ss.transcription_y:
@@ -380,8 +349,6 @@ with st.sidebar:
             reset_conversation()
 
     st.markdown("---")
-
-    # === Nueva selección L35PILLS (debajo, en expander, no desplaza lo anterior) ===
     with st.expander("Elegir vídeo de L35PILLS (sin usar API)"):
         grid_cols = st.columns(2, gap="small")
         for i, item in enumerate(L35PILLS_VIDEOS):
@@ -405,14 +372,12 @@ if ss.show_transcription and ss.transcription_y:
     st.subheader("Transcripción del Video")
     st.write(ss.transcription_y)
 
-# Historial de chat
 for message in ss.chat_history:
     role = message.get("role", "")
     content = message.get("content", "")
     with st.chat_message("assistant" if role == "assistant" else "user"):
         st.write(content)
 
-# Entrada de chat
 user_query = st.chat_input("Escribe tu mensaje aquí...")
 if user_query:
     ss.chat_history.append({"role": "user", "content": user_query})

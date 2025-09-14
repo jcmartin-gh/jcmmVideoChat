@@ -46,7 +46,7 @@ def require_login(
         st.session_state["login_error"] = ""
 
     with st.sidebar:
-        st.subheader("Acceso")
+        st.subheader("User Autentication")
         if not expected:
             st.info(
                 f"Configura la contraseña en st.secrets['{password_key}'] "
