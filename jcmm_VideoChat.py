@@ -156,22 +156,13 @@ def build_blocks_from_segments(segments: List[Dict], window_s: int = 240) -> Lis
         cursor = window_end
     return blocks
 
-def segments_to_timestamped_text(segments: List[Dict]) -> str:
-    """Convierte los segmentos de YouTube API en líneas con timestamps."""
-    if not segments:
-        return ""
-    segs = sorted(segments, key=lambda s: s.get("start", 0))
+def blocks_to_timestamped_text(blocks: List[Dict]) -> str:
+    """Formatea los bloques en líneas con timestamps de 4 minutos."""
     lines = []
-    for i, s in enumerate(segs):
-        start = float(s.get("start") or 0.0)
-        dur = s.get("duration")
-        if dur is None:
-            next_start = float(segs[i + 1].get("start", start + 2.0)) if i + 1 < len(segs) else start + 2.0
-            dur = max(1.0, next_start - start)
-        end = start + float(dur)
-        t1 = _seconds_to_hms(int(round(start)))
-        t2 = _seconds_to_hms(int(round(end)))
-        text = (s.get("text") or "").replace("\n", " ").strip()
+    for b in blocks:
+        t1 = _seconds_to_hms(int(b.get("start", 0)))
+        t2 = _seconds_to_hms(int(b.get("end", b.get("start", 0) + 240)))
+        text = (b.get("text") or "").strip()
         if text:
             lines.append(f"[{t1} - {t2}] {text}")
     return "\n".join(lines)
@@ -191,9 +182,8 @@ def get_response(user_query: str, chat_history: List[Dict]) -> str:
     You are a helpful assistant.
     Answer the following questions considering only the history of the conversation, the Chat history and the content of the variable "transcription_y".
     Do not search the Internet for information unless the user specifically requests it.
-    Do not use your knowledge or training data to answer user questions.
+    Do not use your knowledge or training data to answer user questions unless the user specifically requests it.
     Only use the information contained in the history of the conversation, the Chat history and the content of the variable "transcription_y".
-    
     Chat history:
     {chat_history}
 
@@ -281,12 +271,11 @@ def load_video_from_url(url: str | None):
             segments = []
 
         if segments:
-            # ✅ Transcripción con timestamps línea a línea
-            ss.transcription_y = segments_to_timestamped_text(segments)
-            # Capítulos aproximados por ventanas de 4 min
+            # ✅ Bloques de 4 min y transcripción con timestamps SOLO de esos bloques
             ss.blocks = build_blocks_from_segments(segments, window_s=240)
+            ss.transcription_y = blocks_to_timestamped_text(ss.blocks)
         else:
-            # Fallback: texto plano (intenta detectar bloques si vienen en el .txt)
+            # Fallback: texto plano (si viene con timestamps se parsea; si no, no hay tiempos)
             transcription_y = get_transcript_text(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
             ss.transcription_y = transcription_y or ""
             ss.blocks = parse_blocks_from_text(ss.transcription_y)
@@ -343,7 +332,6 @@ if not require_login(
 
 # ---------------------- SIDEBAR ----------------------
 with st.sidebar:
-    # Eliminados: "Login:" y "OpenAI API Key"
     if not ss.OPENAI_API_KEY:
         st.info("Define OPENAI_API_KEY en .streamlit/secrets.toml o como variable de entorno.")
 
