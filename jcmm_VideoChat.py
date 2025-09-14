@@ -29,6 +29,23 @@ BASE_DIR = Path(__file__).parent
 TRANS_DIR = BASE_DIR / "Transcriptions"
 TRANS_DIR.mkdir(parents=True, exist_ok=True)
 
+# ---------------------- CARGA API KEY DESDE SECRETS ----------------------
+ss = st.session_state
+ss.setdefault("OPENAI_API_KEY", "")
+
+def _load_openai_key() -> str:
+    key = None
+    try:
+        key = st.secrets.get("OPENAI_API_KEY", None)
+    except Exception:
+        key = None
+    if not key:
+        key = os.getenv("OPENAI_API_KEY", "")
+    ss.OPENAI_API_KEY = key or ""
+    return ss.OPENAI_API_KEY
+
+_load_openai_key()
+
 # ---------------------- CATÁLOGO L35PILLS ----------------------
 L35PILLS_VIDEOS: List[Dict[str, str]] = [
     {"title": "8º L35 Pills Cómo usar la nueva plantilla corporativa de L35",
@@ -139,38 +156,44 @@ def build_blocks_from_segments(segments: List[Dict], window_s: int = 240) -> Lis
         cursor = window_end
     return blocks
 
+def segments_to_timestamped_text(segments: List[Dict]) -> str:
+    """Convierte los segmentos de YouTube API en líneas con timestamps."""
+    if not segments:
+        return ""
+    segs = sorted(segments, key=lambda s: s.get("start", 0))
+    lines = []
+    for i, s in enumerate(segs):
+        start = float(s.get("start") or 0.0)
+        dur = s.get("duration")
+        if dur is None:
+            next_start = float(segs[i + 1].get("start", start + 2.0)) if i + 1 < len(segs) else start + 2.0
+            dur = max(1.0, next_start - start)
+        end = start + float(dur)
+        t1 = _seconds_to_hms(int(round(start)))
+        t2 = _seconds_to_hms(int(round(end)))
+        text = (s.get("text") or "").replace("\n", " ").strip()
+        if text:
+            lines.append(f"[{t1} - {t2}] {text}")
+    return "\n".join(lines)
+
 # ---------------------- SESSION STATE ----------------------
-ss = st.session_state
 ss.setdefault("chat_history", [])
 ss.setdefault("video_url", "")
 ss.setdefault("video_title", "")
 ss.setdefault("summary", "")
 ss.setdefault("transcription_y", "")
 ss.setdefault("show_transcription", False)
-ss.setdefault("OPENAI_API_KEY", "")
 ss.setdefault("blocks", [])
-
-# Cargar OPENAI_API_KEY desde secrets/env al iniciar
-def _load_openai_key() -> str:
-    key = None
-    try:
-        key = st.secrets.get("OPENAI_API_KEY", None)
-    except Exception:
-        key = None
-    if not key:
-        key = os.getenv("OPENAI_API_KEY", "")
-    ss.OPENAI_API_KEY = key or ""
-    return ss.OPENAI_API_KEY
-
-_load_openai_key()
 
 # ---------------------- LLM HELPERS ----------------------
 def get_response(user_query: str, chat_history: List[Dict]) -> str:
     template = """
-    You are a helpful assistant. Answer the following questions considering only the history of the conversation
-    and the Chat history.
+    You are a helpful assistant.
+    Answer the following questions considering only the history of the conversation, the Chat history and the content of the variable "transcription_y".
     Do not search the Internet for information unless the user specifically requests it.
-
+    Do not use your knowledge or training data to answer user questions.
+    Only use the information contained in the history of the conversation, the Chat history and the content of the variable "transcription_y".
+    
     Chat history:
     {chat_history}
 
@@ -196,7 +219,7 @@ def get_summary(transcription_text: str, video_url_value: str) -> str:
     Provide an extensive and detailed summary, including all important points discussed, people speaking, main ideas, and any relevant facts.
     Be sure to include enough detail so that someone who has not seen the video can fully understand the content.
     Use the same language as the transcript_text to generate the summary.
-    
+
     Video URL: {video_url}
 
     Transcription text:
@@ -256,14 +279,19 @@ def load_video_from_url(url: str | None):
             segments = get_segments(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
         except Exception:
             segments = []
+
         if segments:
-            ss.transcription_y = " ".join(s.get("text", "") for s in segments if s.get("text")).strip()
+            # ✅ Transcripción con timestamps línea a línea
+            ss.transcription_y = segments_to_timestamped_text(segments)
+            # Capítulos aproximados por ventanas de 4 min
             ss.blocks = build_blocks_from_segments(segments, window_s=240)
         else:
+            # Fallback: texto plano (intenta detectar bloques si vienen en el .txt)
             transcription_y = get_transcript_text(vid, pref_langs=["es", "es-ES", "es-419", "en", "en-US"])
             ss.transcription_y = transcription_y or ""
             ss.blocks = parse_blocks_from_text(ss.transcription_y)
-        ss.show_transcription = False if ss.transcription_y else False
+
+        ss.show_transcription = False
         if ss.transcription_y:
             st.sidebar.success("Transcripción cargada (API YouTube)." if segments else "Transcripción cargada.")
         else:
@@ -303,7 +331,7 @@ def reset_conversation():
     ss.show_transcription = False
     ss.blocks = []
 
-# --- LOGIN (bloquea el resto si no hay acceso) ---
+# --- LOGIN ---
 from simple_login import require_login
 if not require_login(
     app_name="jcmmVideoChat",
@@ -315,9 +343,9 @@ if not require_login(
 
 # ---------------------- SIDEBAR ----------------------
 with st.sidebar:
-    # Sin “Login:” ni campo “OpenAI API Key”.
+    # Eliminados: "Login:" y "OpenAI API Key"
     if not ss.OPENAI_API_KEY:
-        st.info("Define OPENAI_API_KEY en secrets o como variable de entorno.")
+        st.info("Define OPENAI_API_KEY en .streamlit/secrets.toml o como variable de entorno.")
 
     video_url_input = st.text_input("Youtube video URL", value=ss.get("video_url", ""))
 
