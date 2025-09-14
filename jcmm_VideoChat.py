@@ -322,6 +322,21 @@ def reset_conversation():
     ss.show_transcription = False
     ss.blocks = []
 
+
+
+# --- LOGIN (bloquea el resto de la app si no hay acceso) ---
+from simple_login import require_login
+
+if not require_login(
+    app_name="jcmm VideoChat",
+    password_key="APP_PASSWORD",   # st.secrets["APP_PASSWORD"] o env APP_PASSWORD
+    session_flag="__is_auth",      # nombre del flag de sesión
+):
+    st.stop()
+# --- FIN LOGIN ---
+
+
+
 # ---------------------- SIDEBAR (BOTONES ORIGINALES ARRIBA) ----------------------
 with st.sidebar:
     st.sidebar.subheader("User Autentication")
