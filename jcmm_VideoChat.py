@@ -167,6 +167,50 @@ def blocks_to_timestamped_text(blocks: List[Dict]) -> str:
             lines.append(f"[{t1} - {t2}] {text}")
     return "\n".join(lines)
 
+# ---------------------- UTILIDADES ----------------------
+
+# --- Helpers para nombre de archivo de descarga ---
+
+def _safe_filename(name: str) -> str:
+    # Compatible con Windows/Mac/Linux
+    name = name.strip() or "transcript"
+    return re.sub(r'[\\/*?:"<>|]+', "_", name)
+
+def _guess_video_title_for_filename() -> str:
+    # 1) si viene del catálogo L35PILLS ya tenemos ss.video_title
+    if ss.get("video_title"):
+        return _safe_filename(ss.video_title)
+
+    # 2) intentar obtener título de la página de YouTube (si hay URL)
+    try:
+        vid = extract_video_id(ss.get("video_url", "") or "")
+        if vid:
+            import requests
+            from bs4 import BeautifulSoup
+            headers = {"User-Agent": "Mozilla/5.0"}
+            r = requests.get(f"https://www.youtube.com/watch?v={vid}", timeout=8, headers=headers)
+            soup = BeautifulSoup(r.text, "html.parser")
+            title = None
+            og = soup.find("meta", property="og:title")
+            if og and og.get("content"):
+                title = og["content"]
+            if not title:
+                t = soup.find("title")
+                title = t.get_text().replace(" - YouTube", "") if t else None
+            if title:
+                return _safe_filename(title)
+            return _safe_filename(f"youtube_{vid}")
+    except Exception:
+        pass
+
+    # 3) último recurso
+    return _safe_filename("transcript")
+
+def make_txt_filename() -> str:
+    return _guess_video_title_for_filename() + ".txt"
+
+# --- Helpers para nombre de archivo de descarga ---
+
 # ---------------------- SESSION STATE ----------------------
 ss.setdefault("chat_history", [])
 ss.setdefault("video_url", "")
@@ -356,13 +400,18 @@ with st.sidebar:
             else:
                 st.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
-        if st.button("Transcription"):
-            if ss.transcription_y:
-                ss.show_transcription = True
-            else:
-                st.warning("No se ha cargado ninguna transcripción aún.")
-        if st.button("New Conversation"):
-            reset_conversation()
+    # Botón de descarga: solo aparece cuando hay transcripción cargada
+        if ss.transcription_y:
+            st.download_button(
+                label="Download Transcription",
+                data=ss.transcription_y,         # texto completo
+                file_name=make_txt_filename(),   # <nombre del video>.txt
+                mime="text/plain",
+                help="Descarga la transcripción como archivo .txt"
+            )
+        else:
+            st.button("Download Transcription", disabled=True)
+
 
     st.markdown("---")
     with st.expander("Elegir vídeo de L35PILLS (sin usar API)"):
