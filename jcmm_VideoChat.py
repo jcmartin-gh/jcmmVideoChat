@@ -381,39 +381,58 @@ with st.sidebar:
 
     video_url_input = st.text_input("Youtube video URL", value=ss.get("video_url", ""))
 
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Load video (URL)"):
-            load_video_from_url(video_url_input)
-        if st.button("Chapters"):
-            if ss.transcription_y:
-                if not ss.blocks:
-                    ss.blocks = parse_blocks_from_text(ss.transcription_y)
-                ss.summary = generate_linked_summary(ss.blocks, ss.video_url)
-                ss.chat_history.append({"role": "assistant", "content": ss.summary})
-            else:
-                st.warning("No se ha cargado ninguna transcripción aún.")
-        if st.button("Summary"):
-            if ss.transcription_y:
-                ss.summary = get_summary(ss.transcription_y, ss.video_url)
-                ss.chat_history.append({"role": "assistant", "content": ss.summary})
-            else:
-                st.warning("No se ha cargado ninguna transcripción aún.")
-    with col2:
-    # Botón de descarga: solo aparece cuando hay transcripción cargada
-        if ss.transcription_y:
-            st.download_button(
-                label="Transcription",
-                data=ss.transcription_y,
-                file_name=make_txt_filename(),   # <título del video>.txt
-                mime="text/plain",
-                help="Descarga la transcripción como archivo .txt"
-            )
-        else:
-            st.button("Transcription", disabled=True)
-        if st.button("New Conversation"):
-            reset_conversation()
+    # --- Una sola columna (reemplaza el bloque con col1/col2) ---
+    # Comentario + botón: Load video (URL)
+    st.caption("Carga el vídeo desde la URL escrita en el campo.")
+    if st.button("Load video (URL)", key="btn_load_url"):
+        load_video_from_url(video_url_input)
 
+    st.divider()  # opcional, separador visual
+
+    # Comentario + botón: Chapters
+    st.caption("Genera el índice con enlaces a los capítulos del vídeo.")
+    if st.button("Chapters", key="btn_chapters"):
+        if ss.transcription_y:
+            if not ss.blocks:
+                ss.blocks = parse_blocks_from_text(ss.transcription_y)
+            ss.summary = generate_linked_summary(ss.blocks, ss.video_url)
+            ss.chat_history.append({"role": "assistant", "content": ss.summary})
+        else:
+            st.warning("No se ha cargado ninguna transcripción aún.")
+
+    st.divider()
+
+    # Comentario + botón: Summary
+    st.caption("Crea un resumen del contenido del vídeo.")
+    if st.button("Summary", key="btn_summary"):
+        if ss.transcription_y:
+            ss.summary = get_summary(ss.transcription_y, ss.video_url)
+            ss.chat_history.append({"role": "assistant", "content": ss.summary})
+        else:
+            st.warning("No se ha cargado ninguna transcripción aún.")
+
+    st.divider()
+
+    # Comentario + botón/descarga: Transcription
+    st.caption("Descarga la transcripción como archivo .txt.")
+    if ss.transcription_y:
+        st.download_button(
+            label="Transcription",
+            data=ss.transcription_y,
+            file_name=make_txt_filename(),   # <título del video>.txt
+            mime="text/plain",
+            help="Descarga la transcripción como archivo .txt",
+            key="btn_transcription_dl",
+        )
+    else:
+        st.button("Transcription", disabled=True, key="btn_transcription_disabled")
+
+    st.divider()
+
+    # Comentario + botón: New Conversation
+    st.caption("Limpia el historial y empieza una nueva conversación.")
+    if st.button("New Conversation", key="btn_new_conv"):
+        reset_conversation()
 
     st.markdown("---")
     with st.expander("Elegir vídeo de L35PILLS (sin usar API)"):
