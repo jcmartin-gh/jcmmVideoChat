@@ -391,16 +391,16 @@ div[data-testid="stSidebar"] .stDownloadButton > button {
 
 /* Reducir separación vertical entre comentario (label) y botón */
 div[data-testid="stSidebar"] .sb-label {
-    font-size: 0.85rem;
+    font-size: 0.70rem !important;
     opacity: 0.85;
-    margin: 2px 0 6px 2px; /* muy pegado al botón */
+    margin: 0px 0 6px 2px; /* muy pegado al botón */
 }
 
 /* Compactar un poco el bloque del botón */
 div[data-testid="stSidebar"] .stButton,
 div[data-testid="stSidebar"] .stDownloadButton {
-    margin-top: 0.15rem !important;
-    margin-bottom: 0.75rem !important;
+    margin-top: 0.10rem !important;
+    margin-bottom: 0.60rem !important;
 }
 </style>
 """, unsafe_allow_html=True)
