@@ -410,7 +410,7 @@ with st.sidebar:
                 help="Descarga la transcripción como archivo .txt"
             )
         else:
-            st.download_button("Transcription", disabled=True)
+            st.button("Transcription", disabled=True)
 
 
     st.markdown("---")
