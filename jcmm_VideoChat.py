@@ -410,6 +410,8 @@ with st.sidebar:
         disabled=not bool(ss.transcription_y),
         key="download_transcription"
         )
+        if st.button("New Conversation"):
+            reset_conversation()
 
 
     st.markdown("---")
