@@ -389,19 +389,26 @@ div[data-testid="stSidebar"] .stDownloadButton > button {
     padding-left: 0.75rem !important;       /* un poco de sangría */
 }
 
-/* Reducir separación vertical entre comentario (label) y botón */
+/* Label compacto y más pequeño (similar a labels de inputs) */
 div[data-testid="stSidebar"] .sb-label {
-    font-size: 0.85rem;
+    font-size: 0.80rem;     /* tamaño pequeño */
+    line-height: 1.15;      /* compacto */
     opacity: 0.85;
-    margin: 2px 0 6px 2px; /* muy pegado al botón */
-}
+    margin: 0 0 4px 2px;    /* pegado al botón */
+    display: block;
 
 /* Compactar un poco el bloque del botón */
 div[data-testid="stSidebar"] .stButton,
 div[data-testid="stSidebar"] .stDownloadButton {
-    margin-top: 0.15rem !important;
-    margin-bottom: 0.75rem !important;
+    margin-top: 0.10rem !important;
+    margin-bottom: 0.60rem !important;
 }
+
+/* Por si algún span interno fuerza centrado */
+div[data-testid="stSidebar"] .stButton > button * {
+    text-align: left !important;
+}
+            
 </style>
 """, unsafe_allow_html=True)
 
