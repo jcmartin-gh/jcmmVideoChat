@@ -374,19 +374,41 @@ if not require_login(
     st.stop()
 # --- FIN LOGIN ---
 
-# ---------------------- SIDEBAR ----------------------
+
 # --- Estilos: ancho completo y texto alineado a la izquierda solo en el sidebar ---
+# --- CSS solo para el sidebar ---
 st.markdown("""
-    <style>
-    /* Solo afecta al sidebar */
-    div[data-testid="stSidebar"] .stButton > button,
-    div[data-testid="stSidebar"] .stDownloadButton > button {
-        width: 100%;                 /* ocupa todo el ancho del sidebar */
-        justify-content: flex-start; /* alinea el contenido a la izquierda */
-        text-align: left;            /* por si el texto no sigue flex */
-    }
-    </style>
+<style>
+/* Botones del sidebar: ancho completo y texto a la izquierda */
+div[data-testid="stSidebar"] .stButton > button,
+div[data-testid="stSidebar"] .stDownloadButton > button {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-start !important; /* alinear contenido a la izquierda */
+    text-align: left !important;
+    padding-left: 0.75rem !important;       /* un poco de sangría */
+}
+
+/* Reducir separación vertical entre comentario (label) y botón */
+div[data-testid="stSidebar"] .sb-label {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin: 2px 0 6px 2px; /* muy pegado al botón */
+}
+
+/* Compactar un poco el bloque del botón */
+div[data-testid="stSidebar"] .stButton,
+div[data-testid="stSidebar"] .stDownloadButton {
+    margin-top: 0.15rem !important;
+    margin-bottom: 0.75rem !important;
+}
+</style>
 """, unsafe_allow_html=True)
+
+def sidebar_label(texto: str):
+    st.markdown(f'<div class="sb-label">{texto}</div>', unsafe_allow_html=True)
+
+# ---------------------- SIDEBAR ----------------------
 
 with st.sidebar:
     if not ss.OPENAI_API_KEY:
@@ -394,11 +416,11 @@ with st.sidebar:
 
     video_url_input = st.text_input("Youtube video URL", value=ss.get("video_url", ""))
 
-    st.caption("Carga el vídeo desde la URL.")
+    sidebar_label("Carga el vídeo desde la URL.")
     if st.button("Load video (URL)", key="btn_load_url", use_container_width=True):
         load_video_from_url(video_url_input)
 
-    st.caption("Genera índice con enlaces a capítulos.")
+    sidebar_label("Genera índice con enlaces a capítulos.")
     if st.button("Chapters", key="btn_chapters", use_container_width=True):
         if ss.transcription_y:
             if not ss.blocks:
@@ -408,7 +430,7 @@ with st.sidebar:
         else:
             st.warning("No se ha cargado ninguna transcripción aún.")
 
-    st.caption("Crea un resumen del vídeo.")
+    sidebar_label("Crea un resumen del vídeo.")
     if st.button("Summary", key="btn_summary", use_container_width=True):
         if ss.transcription_y:
             ss.summary = get_summary(ss.transcription_y, ss.video_url)
@@ -416,7 +438,7 @@ with st.sidebar:
         else:
             st.warning("No se ha cargado ninguna transcripción aún.")
 
-    st.caption("Descarga la transcripción como .txt.")
+    sidebar_label("Descarga la transcripción como .txt.")
     if ss.transcription_y:
         st.download_button(
             label="Transcription",
@@ -429,7 +451,7 @@ with st.sidebar:
     else:
         st.button("Transcription", disabled=True, key="btn_transcription_disabled", use_container_width=True)
 
-    st.caption("Nueva conversación.")
+    sidebar_label("Nueva conversación.")
     if st.button("New Conversation", key="btn_new_conv", use_container_width=True):
         reset_conversation()
 
