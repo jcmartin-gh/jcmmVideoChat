@@ -403,14 +403,14 @@ with st.sidebar:
     # Botón de descarga: solo aparece cuando hay transcripción cargada
         if ss.transcription_y:
             st.download_button(
-                label="Download Transcription",
+                label="Transcription",
                 data=ss.transcription_y,         # texto completo
                 file_name=make_txt_filename(),   # <nombre del video>.txt
                 mime="text/plain",
                 help="Descarga la transcripción como archivo .txt"
             )
         else:
-            st.button("Download Transcription", disabled=True)
+            st.button("Transcription", disabled=True)
 
 
     st.markdown("---")
