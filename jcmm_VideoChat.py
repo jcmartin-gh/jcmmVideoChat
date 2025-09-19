@@ -401,16 +401,15 @@ with st.sidebar:
                 st.warning("No se ha cargado ninguna transcripción aún.")
     with col2:
     # Botón de descarga: solo aparece cuando hay transcripción cargada
-        if ss.transcription_y:
-            st.download_button(
-                label="Transcription",
-                data=ss.transcription_y,         # texto completo
-                file_name=make_txt_filename(),   # <nombre del video>.txt
-                mime="text/plain",
-                help="Descarga la transcripción como archivo .txt"
-            )
-        else:
-            st.button("Transcription", disabled=True)
+        st.download_button(
+        label="Transcription",
+        data=ss.transcription_y or "",
+        file_name=make_txt_filename(),  # usa ss.video_title si viene del catálogo
+        mime="text/plain",
+        help="Descarga la transcripción como archivo .txt",
+        disabled=not bool(ss.transcription_y),
+        key="download_transcription"
+        )
 
 
     st.markdown("---")
